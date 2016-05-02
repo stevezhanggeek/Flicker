@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AA07EB7A176BA47F00AB755D /* CustomCellBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = AA07EB79176BA47F00AB755D /* CustomCellBackground.m */; };
 		AA4D789117DFBCF70029ACE0 /* off.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AA4D788F17DFBCF70029ACE0 /* off.jpg */; };
 		AA4D789217DFBCF70029ACE0 /* on.jpg in Resources */ = {isa = PBXBuildFile; fileRef = AA4D789017DFBCF70029ACE0 /* on.jpg */; };
 		AA4D78A117E0052C0029ACE0 /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = AA4D789D17E0052C0029ACE0 /* icon-72.png */; };
@@ -26,15 +25,15 @@
 		AAC4276416C9D52700149784 /* AppViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC4276216C9D52700149784 /* AppViewController.m */; };
 		AAC4276516C9D52700149784 /* AppViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AAC4276316C9D52700149784 /* AppViewController.xib */; };
 		AAC4276716C9D6B200149784 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAC4276616C9D6B200149784 /* CoreBluetooth.framework */; };
-		AAC427C216C9DC9B00149784 /* RFduino.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC427BA16C9DC9B00149784 /* RFduino.m */; };
-		AAC427C316C9DC9B00149784 /* RfduinoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC427BD16C9DC9B00149784 /* RfduinoManager.m */; };
-		AAC427C416C9DC9B00149784 /* ScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC427C016C9DC9B00149784 /* ScanViewController.m */; };
-		AAC428BB16C9FE1300149784 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AAC428BA16C9FE1300149784 /* AppDelegate.m */; };
+		DA8D3DDF1CD7D7B600CF2D79 /* rfduino in Resources */ = {isa = PBXBuildFile; fileRef = DA8D3DDE1CD7D7B600CF2D79 /* rfduino */; };
+		DA8D3DF01CD7D7FD00CF2D79 /* CustomCellBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8D3DE41CD7D7FD00CF2D79 /* CustomCellBackground.m */; };
+		DA8D3DF21CD7D7FD00CF2D79 /* RFduino.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8D3DE61CD7D7FD00CF2D79 /* RFduino.m */; };
+		DA8D3DF51CD7D7FD00CF2D79 /* RfduinoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8D3DE91CD7D7FD00CF2D79 /* RfduinoManager.m */; };
+		DA8D3DF81CD7D7FD00CF2D79 /* ScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8D3DEC1CD7D7FD00CF2D79 /* ScanViewController.m */; };
+		DA8D3DF91CD7D85400CF2D79 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DA8D3DE21CD7D7FD00CF2D79 /* AppDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		AA07EB78176BA47F00AB755D /* CustomCellBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCellBackground.h; sourceTree = "<group>"; };
-		AA07EB79176BA47F00AB755D /* CustomCellBackground.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCellBackground.m; sourceTree = "<group>"; };
 		AA4D788F17DFBCF70029ACE0 /* off.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = off.jpg; path = rfduinoLedButton/off.jpg; sourceTree = SOURCE_ROOT; };
 		AA4D789017DFBCF70029ACE0 /* on.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = on.jpg; path = rfduinoLedButton/on.jpg; sourceTree = SOURCE_ROOT; };
 		AA4D789D17E0052C0029ACE0 /* icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72.png"; sourceTree = "<group>"; };
@@ -57,16 +56,19 @@
 		AAC4276216C9D52700149784 /* AppViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppViewController.m; sourceTree = "<group>"; };
 		AAC4276316C9D52700149784 /* AppViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppViewController.xib; sourceTree = "<group>"; };
 		AAC4276616C9D6B200149784 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
-		AAC427B916C9DC9B00149784 /* RFduino.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFduino.h; sourceTree = "<group>"; };
-		AAC427BA16C9DC9B00149784 /* RFduino.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RFduino.m; sourceTree = "<group>"; };
-		AAC427BB16C9DC9B00149784 /* RFduinoDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFduinoDelegate.h; sourceTree = "<group>"; };
-		AAC427BC16C9DC9B00149784 /* RfduinoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RfduinoManager.h; sourceTree = "<group>"; };
-		AAC427BD16C9DC9B00149784 /* RfduinoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RfduinoManager.m; sourceTree = "<group>"; };
-		AAC427BE16C9DC9B00149784 /* RFduinoManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RFduinoManagerDelegate.h; sourceTree = "<group>"; };
-		AAC427BF16C9DC9B00149784 /* ScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanViewController.h; sourceTree = "<group>"; };
-		AAC427C016C9DC9B00149784 /* ScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanViewController.m; sourceTree = "<group>"; };
-		AAC428B916C9FE1300149784 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		AAC428BA16C9FE1300149784 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		DA8D3DDE1CD7D7B600CF2D79 /* rfduino */ = {isa = PBXFileReference; lastKnownFileType = folder; name = rfduino; path = /Users/stevezhanggeek/Desktop/Flicker/rfduino; sourceTree = "<absolute>"; };
+		DA8D3DE11CD7D7FD00CF2D79 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = rfduino/AppDelegate.h; sourceTree = "<group>"; };
+		DA8D3DE21CD7D7FD00CF2D79 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = rfduino/AppDelegate.m; sourceTree = "<group>"; };
+		DA8D3DE31CD7D7FD00CF2D79 /* CustomCellBackground.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CustomCellBackground.h; path = rfduino/CustomCellBackground.h; sourceTree = "<group>"; };
+		DA8D3DE41CD7D7FD00CF2D79 /* CustomCellBackground.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CustomCellBackground.m; path = rfduino/CustomCellBackground.m; sourceTree = "<group>"; };
+		DA8D3DE51CD7D7FD00CF2D79 /* RFduino.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFduino.h; path = rfduino/RFduino.h; sourceTree = "<group>"; };
+		DA8D3DE61CD7D7FD00CF2D79 /* RFduino.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RFduino.m; path = rfduino/RFduino.m; sourceTree = "<group>"; };
+		DA8D3DE71CD7D7FD00CF2D79 /* RFduinoDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFduinoDelegate.h; path = rfduino/RFduinoDelegate.h; sourceTree = "<group>"; };
+		DA8D3DE81CD7D7FD00CF2D79 /* RfduinoManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RfduinoManager.h; path = rfduino/RfduinoManager.h; sourceTree = "<group>"; };
+		DA8D3DE91CD7D7FD00CF2D79 /* RfduinoManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RfduinoManager.m; path = rfduino/RfduinoManager.m; sourceTree = "<group>"; };
+		DA8D3DEA1CD7D7FD00CF2D79 /* RFduinoManagerDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RFduinoManagerDelegate.h; path = rfduino/RFduinoManagerDelegate.h; sourceTree = "<group>"; };
+		DA8D3DEB1CD7D7FD00CF2D79 /* ScanViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ScanViewController.h; path = rfduino/ScanViewController.h; sourceTree = "<group>"; };
+		DA8D3DEC1CD7D7FD00CF2D79 /* ScanViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ScanViewController.m; path = rfduino/ScanViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +96,7 @@
 				AA4D78A017E0052C0029ACE0 /* icon@2x.png */,
 				AA4D789017DFBCF70029ACE0 /* on.jpg */,
 				AA4D788F17DFBCF70029ACE0 /* off.jpg */,
-				AAC427B716C9DC9B00149784 /* rfduino */,
+				DA8D3DFA1CD7D86800CF2D79 /* rfduino */,
 				AAC4273C16C9D4A500149784 /* rfduinoLedButton */,
 				AAC4273516C9D4A500149784 /* Frameworks */,
 				AAC4273316C9D4A500149784 /* Products */,
@@ -146,24 +148,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		AAC427B716C9DC9B00149784 /* rfduino */ = {
+		DA8D3DFA1CD7D86800CF2D79 /* rfduino */ = {
 			isa = PBXGroup;
 			children = (
-				AAC428B916C9FE1300149784 /* AppDelegate.h */,
-				AAC428BA16C9FE1300149784 /* AppDelegate.m */,
-				AAC427B916C9DC9B00149784 /* RFduino.h */,
-				AAC427BA16C9DC9B00149784 /* RFduino.m */,
-				AAC427BB16C9DC9B00149784 /* RFduinoDelegate.h */,
-				AAC427BC16C9DC9B00149784 /* RfduinoManager.h */,
-				AAC427BD16C9DC9B00149784 /* RfduinoManager.m */,
-				AAC427BE16C9DC9B00149784 /* RFduinoManagerDelegate.h */,
-				AAC427BF16C9DC9B00149784 /* ScanViewController.h */,
-				AAC427C016C9DC9B00149784 /* ScanViewController.m */,
-				AA07EB78176BA47F00AB755D /* CustomCellBackground.h */,
-				AA07EB79176BA47F00AB755D /* CustomCellBackground.m */,
+				DA8D3DE11CD7D7FD00CF2D79 /* AppDelegate.h */,
+				DA8D3DE21CD7D7FD00CF2D79 /* AppDelegate.m */,
+				DA8D3DE31CD7D7FD00CF2D79 /* CustomCellBackground.h */,
+				DA8D3DE41CD7D7FD00CF2D79 /* CustomCellBackground.m */,
+				DA8D3DE51CD7D7FD00CF2D79 /* RFduino.h */,
+				DA8D3DE61CD7D7FD00CF2D79 /* RFduino.m */,
+				DA8D3DE71CD7D7FD00CF2D79 /* RFduinoDelegate.h */,
+				DA8D3DE81CD7D7FD00CF2D79 /* RfduinoManager.h */,
+				DA8D3DE91CD7D7FD00CF2D79 /* RfduinoManager.m */,
+				DA8D3DEA1CD7D7FD00CF2D79 /* RFduinoManagerDelegate.h */,
+				DA8D3DEB1CD7D7FD00CF2D79 /* ScanViewController.h */,
+				DA8D3DEC1CD7D7FD00CF2D79 /* ScanViewController.m */,
 			);
 			name = rfduino;
-			path = ../rfduino;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,6 +224,7 @@
 				AAC4274D16C9D4A500149784 /* Default-568h@2x.png in Resources */,
 				AAC4276516C9D52700149784 /* AppViewController.xib in Resources */,
 				AA4D789117DFBCF70029ACE0 /* off.jpg in Resources */,
+				DA8D3DDF1CD7D7B600CF2D79 /* rfduino in Resources */,
 				AA4D789217DFBCF70029ACE0 /* on.jpg in Resources */,
 				AA4D78A117E0052C0029ACE0 /* icon-72.png in Resources */,
 				AA4D78A217E0052C0029ACE0 /* icon-144.png in Resources */,
@@ -238,13 +240,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA8D3DF91CD7D85400CF2D79 /* AppDelegate.m in Sources */,
+				DA8D3DF01CD7D7FD00CF2D79 /* CustomCellBackground.m in Sources */,
+				DA8D3DF21CD7D7FD00CF2D79 /* RFduino.m in Sources */,
+				DA8D3DF51CD7D7FD00CF2D79 /* RfduinoManager.m in Sources */,
+				DA8D3DF81CD7D7FD00CF2D79 /* ScanViewController.m in Sources */,
 				AAC4274316C9D4A500149784 /* main.m in Sources */,
 				AAC4276416C9D52700149784 /* AppViewController.m in Sources */,
-				AAC427C216C9DC9B00149784 /* RFduino.m in Sources */,
-				AAC427C316C9DC9B00149784 /* RfduinoManager.m in Sources */,
-				AAC427C416C9DC9B00149784 /* ScanViewController.m in Sources */,
-				AAC428BB16C9FE1300149784 /* AppDelegate.m in Sources */,
-				AA07EB7A176BA47F00AB755D /* CustomCellBackground.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
