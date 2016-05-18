@@ -33,11 +33,7 @@
     __weak IBOutlet UILabel *label1;
     __weak IBOutlet UIButton *button1;
     
-    __weak IBOutlet UILabel *label2;
-    __weak IBOutlet UIImageView *image1;
-    
-    UIImage *off;
-    UIImage *on;
+    __weak IBOutlet UILabel *frequencyLabel;
 }
 
 @property(strong, nonatomic) RFduino *rfduino;

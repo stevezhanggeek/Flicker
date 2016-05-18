@@ -41,6 +41,11 @@ the application.
 // (can be turned on/off from the iPhone app)
 int led = 3;
 
+// pin 5 on the RGB shield is button 1
+// (button press will be shown on the iPhone app)
+int button = 5;
+
+int freq = -1;
 
 void setup() {
   // led turned on/off from the iPhone app
@@ -50,14 +55,15 @@ void setup() {
   RFduinoBLE.begin();
 }
 
-
 void loop() {
-
-  digitalWrite(led, HIGH);
-  delay(10);
-  digitalWrite(led, LOW);
-  delay(10);
-
+  if (freq == -1) {
+    digitalWrite(led, LOW);
+  } else {
+    digitalWrite(led, HIGH);
+    delay(500/freq);
+    digitalWrite(led, LOW);
+    delay(500/freq);
+  }
 }
 
 void RFduinoBLE_onDisconnect()
@@ -68,9 +74,10 @@ void RFduinoBLE_onDisconnect()
 
 void RFduinoBLE_onReceive(char *data, int len)
 {
-  // if the first byte is 0x01 / on / true
-  if (data[0])
-    digitalWrite(led, HIGH);
-  else
-    digitalWrite(led, LOW);
+  if (data[0]) {
+    freq = data[0];
+    if (data[0] == 1) {
+      freq = -1;
+    }
+  }
 }
