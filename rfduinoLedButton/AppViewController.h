@@ -30,15 +30,9 @@
 
 @interface AppViewController : UIViewController<RFduinoDelegate>
 {
-    __weak IBOutlet UILabel *label1;
-    __weak IBOutlet UIButton *button1;
-    
     __weak IBOutlet UILabel *frequencyLabel;
 }
 
 @property(strong, nonatomic) RFduino *rfduino;
-
-- (IBAction)buttonTouchDown:(id)sender;
-- (IBAction)buttonTouchUpInside:(id)sender;
 
 @end

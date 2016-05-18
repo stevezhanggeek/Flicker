@@ -40,17 +40,6 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-        UIButton *backButton = [UIButton buttonWithType:101];  // left-pointing shape
-        [backButton setTitle:@"Disconnect" forState:UIControlStateNormal];
-        [backButton addTarget:self action:@selector(disconnect:) forControlEvents:UIControlEventTouchUpInside];
-        
-        UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-        [[self navigationItem] setLeftBarButtonItem:backItem];
-        
-        [[self navigationItem] setTitle:@"RFduino LedBtn"];
-    }
     return self;
 }
 
@@ -60,34 +49,20 @@
     // Do any additional setup after loading the view from its nib.
  
     [rfduino setDelegate:self];
-
-    UIColor *start = [UIColor colorWithRed:58/255.0 green:108/255.0 blue:183/255.0 alpha:0.15];
-    UIColor *stop = [UIColor colorWithRed:58/255.0 green:108/255.0 blue:183/255.0 alpha:0.45];
-    
-    CAGradientLayer *gradient = [CAGradientLayer layer];
-    //gradient.frame = [self.view bounds];
-    gradient.frame = CGRectMake(0.0, 0.0, 1024.0, 1024.0);
-    gradient.colors = [NSArray arrayWithObjects:(id)start.CGColor, (id)stop.CGColor, nil];
-    [self.view.layer insertSublayer:gradient atIndex:0];
-    
 }
 
 - (IBAction)sliderUpdated:(UISlider *)sender {
     frequencyLabel.text = [NSString stringWithFormat:@"%dHz", (int)(sender.value)];
     [self sendByte: (int)(sender.value)];
 }
+- (IBAction)disconnectButtonPressed:(id)sender {
+    [rfduino disconnect];
+}
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (IBAction)disconnect:(id)sender
-{
-    NSLog(@"disconnect pressed");
-
-    [rfduino disconnect];
 }
 
 - (void)sendByte:(uint8_t)byte
