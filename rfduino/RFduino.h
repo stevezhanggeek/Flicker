@@ -48,7 +48,7 @@ extern NSString *customUUID;
 {
 }
 
-@property(assign, nonatomic) id<RFduinoDelegate> delegate;
+@property(weak, nonatomic) id<RFduinoDelegate> delegate;
 
 @property(strong, nonatomic) CBPeripheral *peripheral;
 

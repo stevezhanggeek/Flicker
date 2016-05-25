@@ -31,7 +31,8 @@
 #import "RFduinoManager.h"
 #import "RFduino.h"
 
-#import "AppViewController.h"
+#import "RFDuinoLedButtonInSwift-Swift.h"
+//#import "ViewController.h"
 
 #import "CustomCellBackground.h"
 
@@ -155,7 +156,7 @@
     [detail appendFormat:@"RSSI: %d dBm", rssi];
     while ([detail length] < 25)
         [detail appendString:@" "];
-    [detail appendFormat:@"Packets: %d\n", rfduino.advertisementPackets];
+    [detail appendFormat:@"Packets: %ld\n", (long)rfduino.advertisementPackets];
     [detail appendFormat:@"Advertising: %@\n", advertising];
     
     cell.textLabel.text = text;
@@ -306,12 +307,16 @@
 
 - (void)didLoadServiceRFduino:(RFduino *)rfduino
 {
-    AppViewController *viewController = [[AppViewController alloc] init];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UINavigationController * myStoryBoardInitialViewController = [storyboard instantiateInitialViewController];
+    FlickerTestViewController *viewController = [myStoryBoardInitialViewController.viewControllers objectAtIndex:0];
+    
     viewController.rfduino = rfduino;
-
+    
     loadService = true;
     [[self navigationController] pushViewController:viewController animated:YES];
 }
+
 
 - (void)didDisconnectRFduino:(RFduino *)rfduino
 {
