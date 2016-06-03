@@ -22,8 +22,8 @@ class FlickerTestViewController: UIViewController, RFduinoDelegate {
     var limitsTimerFromMin:NSTimer?
     var limitsTimerFromMax:NSTimer?
 
-    var staircaseFreq_0:Int!
-    var staircaseFreq_1:Int!
+    var staircaseFreqFromMax:Int!
+    var staircaseFreqFromMin:Int!
     var staircaseFreq:Int!
     var staircaseTimerFromMin:NSTimer?
     var staircaseTimerFromMax:NSTimer?
@@ -64,44 +64,32 @@ class FlickerTestViewController: UIViewController, RFduinoDelegate {
         thresholdMethod = "Staircase"
         bigButton.setTitle("Start: Staircase", forState: UIControlState.Normal)
         staircaseFreq = maxFreq
-        staircaseFreq_0 = maxFreq
-        staircaseFreq_1 = minFreq
+        staircaseFreqFromMax = maxFreq
+        staircaseFreqFromMin = minFreq
     }
     
     func updateLimitsFromMin() {
+        resultLabel.text = "Current Freq from Min: " + String(limitsFreqFromMin)
         sendByte(limitsFreqFromMin)
         limitsFreqFromMin = limitsFreqFromMin + 1
     }
 
     func updateLimitsFromMax() {
+        resultLabel.text = "Current Freq from Max: " + String(limitsFreqFromMax)
         sendByte(limitsFreqFromMax)
         limitsFreqFromMax = limitsFreqFromMax - 1
     }
     
     func updateStaircaseFromMin() {
-        if (abs(staircaseFreq_0-staircaseFreq_1) < 5) {
-            staircaseTimerFromMin?.invalidate()
-            staircaseTimerFromMax?.invalidate()
-            resultLabel.text = "Result: " + String((staircaseFreq_0+staircaseFreq_1)/2) +
-                "->" + String(staircaseFreq_0) + "," + String(staircaseFreq_1)
-        } else {
-            resultLabel.text = "Result: Min = " + String(staircaseFreq)
-            sendByte(staircaseFreq)
-            staircaseFreq = staircaseFreq + 1
-        }
+        resultLabel.text = "Result: Min = " + String(staircaseFreq)
+        sendByte(staircaseFreq)
+        staircaseFreq = staircaseFreq + 1
     }
     
     func updateStaircaseFromMax() {
-        if (abs(staircaseFreq_0-staircaseFreq_1) < 5) {
-            staircaseTimerFromMin?.invalidate()
-            staircaseTimerFromMax?.invalidate()
-            resultLabel.text = "Result: " + String((staircaseFreq_0+staircaseFreq_1)/2) +
-                "->" + String(staircaseFreq_0) + "," + String(staircaseFreq_1)
-        } else {
-            resultLabel.text = "Result: Max = " + String(staircaseFreq)
-            sendByte(staircaseFreq)
-            staircaseFreq = staircaseFreq - 1
-        }
+        resultLabel.text = "Result: Max = " + String(staircaseFreq)
+        sendByte(staircaseFreq)
+        staircaseFreq = staircaseFreq - 1
     }
     
     func playSound(soundName: String) {
@@ -142,18 +130,40 @@ class FlickerTestViewController: UIViewController, RFduinoDelegate {
             case 0:
                 testStep = 1
                 staircaseTimerFromMin?.invalidate()
-                staircaseFreq_0 = staircaseFreq + 5
+                
+                if (abs(staircaseFreq-staircaseFreqFromMin) <= 5) {
+                    staircaseTimerFromMin?.invalidate()
+                    staircaseTimerFromMax?.invalidate()
+                    resultLabel.text = "Result: " + String((staircaseFreq+staircaseFreqFromMin)/2) +
+                        "->" + String(staircaseFreq) + "," + String(staircaseFreqFromMin)
+                    testStep = -1
+                    return
+                }
+                
+                staircaseFreqFromMax = staircaseFreq
+                staircaseFreq = staircaseFreq + 5
                 bigButton.setTitle("See Flicker Now", forState: UIControlState.Normal)
                 playSound("AudioFlicker")
-                staircaseTimerFromMax = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: #selector(FlickerTestViewController.updateStaircaseFromMax), userInfo: nil, repeats: true)
+                staircaseTimerFromMax = NSTimer.scheduledTimerWithTimeInterval(0.5, target:self, selector: #selector(FlickerTestViewController.updateStaircaseFromMax), userInfo: nil, repeats: true)
                 break
             case 1:
                 testStep = 0
                 staircaseTimerFromMax?.invalidate()
-                staircaseFreq_1 = staircaseFreq - 5
+                
+                if (abs(staircaseFreqFromMax-staircaseFreq) <= 5) {
+                    staircaseTimerFromMin?.invalidate()
+                    staircaseTimerFromMax?.invalidate()
+                    resultLabel.text = "Result: " + String((staircaseFreqFromMax+staircaseFreq)/2) +
+                        "->" + String(staircaseFreqFromMax) + "," + String(staircaseFreq)
+                    testStep = -1
+                    return
+                }
+                
+                staircaseFreqFromMin = staircaseFreq
+                staircaseFreq = staircaseFreq - 5
                 bigButton.setTitle("Light Steady Now", forState: UIControlState.Normal)
                 playSound("AudioSteady")
-                staircaseTimerFromMin = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: #selector(FlickerTestViewController.updateStaircaseFromMin), userInfo: nil, repeats: true)
+                staircaseTimerFromMin = NSTimer.scheduledTimerWithTimeInterval(0.5, target:self, selector: #selector(FlickerTestViewController.updateStaircaseFromMin), userInfo: nil, repeats: true)
                 break
             default:
                 testStep = 0
@@ -161,8 +171,8 @@ class FlickerTestViewController: UIViewController, RFduinoDelegate {
                 staircaseTimerFromMax?.invalidate()
                 playSound("AudioResult")
                 bigButton.setTitle("Start: Staircase", forState: UIControlState.Normal)
-                resultLabel.text = "Result: " + String((staircaseFreq_0+staircaseFreq_1)/2) +
-                    "->" + String(staircaseFreq_0) + "," + String(staircaseFreq_1)
+                resultLabel.text = "Result: " + String((staircaseFreqFromMax+staircaseFreqFromMin)/2) +
+                    "->" + String(staircaseFreqFromMax) + "," + String(staircaseFreqFromMin)
                 break
             }
         }
