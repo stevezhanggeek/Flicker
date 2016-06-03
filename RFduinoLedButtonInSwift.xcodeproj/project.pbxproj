@@ -18,6 +18,9 @@
 		4080F48A1BA8ACFB00573116 /* RFduino.m in Sources */ = {isa = PBXBuildFile; fileRef = 4080F4811BA8ACFB00573116 /* RFduino.m */; };
 		4080F48B1BA8ACFB00573116 /* RfduinoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4080F4841BA8ACFB00573116 /* RfduinoManager.m */; };
 		4080F48C1BA8ACFB00573116 /* ScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4080F4871BA8ACFB00573116 /* ScanViewController.m */; };
+		DA4A46BC1D01122B003CE51A /* AudioFlicker.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DA4A46BB1D01122B003CE51A /* AudioFlicker.mp3 */; };
+		DA4A46BE1D01126D003CE51A /* AudioSteady.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DA4A46BD1D01126D003CE51A /* AudioSteady.mp3 */; };
+		DA4A46C01D0113AB003CE51A /* AudioResult.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DA4A46BF1D0113AB003CE51A /* AudioResult.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +57,9 @@
 		4080F4861BA8ACFB00573116 /* ScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanViewController.h; sourceTree = "<group>"; };
 		4080F4871BA8ACFB00573116 /* ScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanViewController.m; sourceTree = "<group>"; };
 		4080F48F1BA8AEC400573116 /* RFduinoLedButtonInSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RFduinoLedButtonInSwift-Bridging-Header.h"; sourceTree = "<group>"; };
+		DA4A46BB1D01122B003CE51A /* AudioFlicker.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = AudioFlicker.mp3; sourceTree = "<group>"; };
+		DA4A46BD1D01126D003CE51A /* AudioSteady.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = AudioSteady.mp3; sourceTree = "<group>"; };
+		DA4A46BF1D0113AB003CE51A /* AudioResult.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = AudioResult.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +105,9 @@
 				4080F48F1BA8AEC400573116 /* RFduinoLedButtonInSwift-Bridging-Header.h */,
 				4080F45B1BA8ACC200573116 /* AppDelegate.swift */,
 				4080F45D1BA8ACC200573116 /* FlickerTestViewController.swift */,
+				DA4A46BB1D01122B003CE51A /* AudioFlicker.mp3 */,
+				DA4A46BD1D01126D003CE51A /* AudioSteady.mp3 */,
+				DA4A46BF1D0113AB003CE51A /* AudioResult.mp3 */,
 				4080F45F1BA8ACC200573116 /* Main.storyboard */,
 				4080F4621BA8ACC200573116 /* Images.xcassets */,
 				4080F4641BA8ACC200573116 /* LaunchScreen.xib */,
@@ -233,9 +242,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA4A46BC1D01122B003CE51A /* AudioFlicker.mp3 in Resources */,
 				4080F4611BA8ACC200573116 /* Main.storyboard in Resources */,
+				DA4A46C01D0113AB003CE51A /* AudioResult.mp3 in Resources */,
 				4080F4661BA8ACC200573116 /* LaunchScreen.xib in Resources */,
 				4080F4631BA8ACC200573116 /* Images.xcassets in Resources */,
+				DA4A46BE1D01126D003CE51A /* AudioSteady.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

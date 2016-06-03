@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import AudioToolbox
 
 class FlickerTestViewController: UIViewController, RFduinoDelegate {
     var rfduino = RFduino()
@@ -19,14 +19,14 @@ class FlickerTestViewController: UIViewController, RFduinoDelegate {
     
     var limitsFreqFromMin:Int!
     var limitsFreqFromMax:Int!
-    var limitsTimerFromMin:NSTimer!
-    var limitsTimerFromMax:NSTimer!
+    var limitsTimerFromMin:NSTimer?
+    var limitsTimerFromMax:NSTimer?
 
     var staircaseFreq_0:Int!
     var staircaseFreq_1:Int!
     var staircaseFreq:Int!
-    var staircaseTimerFromMin:NSTimer!
-    var staircaseTimerFromMax:NSTimer!
+    var staircaseTimerFromMin:NSTimer?
+    var staircaseTimerFromMax:NSTimer?
 
     @IBOutlet weak var bigButton: UIButton!
     @IBOutlet weak var resultLabel: UILabel!
@@ -104,25 +104,36 @@ class FlickerTestViewController: UIViewController, RFduinoDelegate {
         }
     }
     
-    @IBAction func BigButtonTouched(sender: AnyObject) {
+    func playSound(soundName: String) {
+        if let soundURL = NSBundle.mainBundle().URLForResource(soundName, withExtension: "mp3") {
+            var mySound: SystemSoundID = 0
+            AudioServicesCreateSystemSoundID(soundURL, &mySound)
+            AudioServicesPlaySystemSound(mySound);
+        }
+    }
+    
+    func stepProgress() {
         if (thresholdMethod == "Limits") {
             switch testStep {
             case 0:
                 testStep += 1
-                bigButton.setTitle("Saw Flicker", forState: UIControlState.Normal)
-                limitsTimerFromMin = NSTimer.scheduledTimerWithTimeInterval(0.3, target:self, selector: #selector(FlickerTestViewController.updateLimitsFromMin), userInfo: nil, repeats: true)
+                bigButton.setTitle("Light Steady Now", forState: UIControlState.Normal)
+                playSound("AudioSteady")
+                limitsTimerFromMin = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: #selector(FlickerTestViewController.updateLimitsFromMin), userInfo: nil, repeats: true)
                 break
             case 1:
                 testStep += 1
-                limitsTimerFromMin.invalidate()
-                bigButton.setTitle("Saw Flicker Again", forState: UIControlState.Normal)
-                limitsTimerFromMax = NSTimer.scheduledTimerWithTimeInterval(0.3, target:self, selector: #selector(FlickerTestViewController.updateLimitsFromMax), userInfo: nil, repeats: true)
+                limitsTimerFromMin?.invalidate()
+                bigButton.setTitle("See Flicker Now", forState: UIControlState.Normal)
+                playSound("AudioFlicker")
+                limitsTimerFromMax = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: #selector(FlickerTestViewController.updateLimitsFromMax), userInfo: nil, repeats: true)
                 break
             default:
                 testStep = 0
-                limitsTimerFromMax.invalidate()
+                limitsTimerFromMax?.invalidate()
                 //sendByte(-1)
-                bigButton.setTitle("", forState: UIControlState.Normal)
+                playSound("AudioResult")
+                bigButton.setTitle("Start: Limits", forState: UIControlState.Normal)
                 resultLabel.text = "Result: Min = " + String(limitsFreqFromMin) + ", Max = " + String(limitsFreqFromMax)
                 break
             }
@@ -131,26 +142,47 @@ class FlickerTestViewController: UIViewController, RFduinoDelegate {
             case 0:
                 testStep = 1
                 staircaseTimerFromMin?.invalidate()
-                staircaseFreq_0 = staircaseFreq
-                bigButton.setTitle("Max: Saw Flicker", forState: UIControlState.Normal)
-                staircaseTimerFromMax = NSTimer.scheduledTimerWithTimeInterval(0.3, target:self, selector: #selector(FlickerTestViewController.updateStaircaseFromMax), userInfo: nil, repeats: true)
+                staircaseFreq_0 = staircaseFreq + 5
+                bigButton.setTitle("See Flicker Now", forState: UIControlState.Normal)
+                playSound("AudioFlicker")
+                staircaseTimerFromMax = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: #selector(FlickerTestViewController.updateStaircaseFromMax), userInfo: nil, repeats: true)
                 break
             case 1:
                 testStep = 0
                 staircaseTimerFromMax?.invalidate()
-                staircaseFreq_1 = staircaseFreq
-                bigButton.setTitle("Min: Saw Flicker", forState: UIControlState.Normal)
-                staircaseTimerFromMin = NSTimer.scheduledTimerWithTimeInterval(0.3, target:self, selector: #selector(FlickerTestViewController.updateStaircaseFromMin), userInfo: nil, repeats: true)
+                staircaseFreq_1 = staircaseFreq - 5
+                bigButton.setTitle("Light Steady Now", forState: UIControlState.Normal)
+                playSound("AudioSteady")
+                staircaseTimerFromMin = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: #selector(FlickerTestViewController.updateStaircaseFromMin), userInfo: nil, repeats: true)
                 break
             default:
                 testStep = 0
                 staircaseTimerFromMin?.invalidate()
                 staircaseTimerFromMax?.invalidate()
+                playSound("AudioResult")
+                bigButton.setTitle("Start: Staircase", forState: UIControlState.Normal)
                 resultLabel.text = "Result: " + String((staircaseFreq_0+staircaseFreq_1)/2) +
                     "->" + String(staircaseFreq_0) + "," + String(staircaseFreq_1)
                 break
             }
         }
     }
+    
+    @IBAction func BigButtonTouched(sender: AnyObject) {
+        stepProgress()
+    }
+    
+    /* // Button is not stable yet...
+    func didReceive(data: NSData!) {
+        print("Received Data")
+        print(data)
+        var value : [UInt8] = [0]
+        data.getBytes(&value, length: 1)
+        if (value[0] == 0) {
+            print("step")
+            stepProgress()
+        }
+    }
+     */
 }
 
