@@ -35,11 +35,9 @@ class FlickerTestViewController: UIViewController, RFduinoDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         rfduino.delegate = self
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        self.navigationItem.leftBarButtonItem  = UIBarButtonItem(title: "Method", style: .Plain, target: self, action: #selector(self.methodButtonTouched))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "SettingIcon"), style: .Plain, target: self, action: #selector(self.settingsButtonTouched))
     }
     
     func disconnect(sender: String) {
@@ -51,6 +49,25 @@ class FlickerTestViewController: UIViewController, RFduinoDelegate {
         var tx: [UInt8] = [UInt8(bitPattern: Int8(byte))]
         let data = NSData(bytes: &tx, length: sizeof(UInt8))
         rfduino.send(data)
+    }
+    
+    func settingsButtonTouched() {
+        self.performSegueWithIdentifier("gotoSettings", sender: nil)
+
+//        self.navigationController?.popToRootViewControllerAnimated(true)
+    }
+    
+    func methodButtonTouched() {
+        let alertController = UIAlertController(title: "", message: "Which method would you like to choose?", preferredStyle: .ActionSheet)
+        alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Limits", style: .Default) { (action) in
+            })
+        alertController.addAction(UIAlertAction(title: "Staircase", style: .Default) { (action) in
+            })
+        alertController.addAction(UIAlertAction(title: "2AFC", style: .Default) { (action) in
+            })
+        self.presentViewController(alertController, animated: true, completion: nil)
+
     }
 
     @IBAction func LimitsButtonTouched(sender: AnyObject) {

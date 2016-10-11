@@ -21,6 +21,7 @@
 		DA4A46BC1D01122B003CE51A /* AudioFlicker.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DA4A46BB1D01122B003CE51A /* AudioFlicker.mp3 */; };
 		DA4A46BE1D01126D003CE51A /* AudioSteady.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DA4A46BD1D01126D003CE51A /* AudioSteady.mp3 */; };
 		DA4A46C01D0113AB003CE51A /* AudioResult.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DA4A46BF1D0113AB003CE51A /* AudioResult.mp3 */; };
+		DA7BF16B1DACC8D000D27A26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA7BF16A1DACC8D000D27A26 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		DA4A46BB1D01122B003CE51A /* AudioFlicker.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = AudioFlicker.mp3; sourceTree = "<group>"; };
 		DA4A46BD1D01126D003CE51A /* AudioSteady.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = AudioSteady.mp3; sourceTree = "<group>"; };
 		DA4A46BF1D0113AB003CE51A /* AudioResult.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = AudioResult.mp3; sourceTree = "<group>"; };
+		DA7BF16A1DACC8D000D27A26 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 		4080F4581BA8ACC200573116 /* RFduinoLedButtonInSwift */ = {
 			isa = PBXGroup;
 			children = (
+				DA7BF16A1DACC8D000D27A26 /* Assets.xcassets */,
 				4080F48F1BA8AEC400573116 /* RFduinoLedButtonInSwift-Bridging-Header.h */,
 				4080F45B1BA8ACC200573116 /* AppDelegate.swift */,
 				4080F45D1BA8ACC200573116 /* FlickerTestViewController.swift */,
@@ -211,9 +214,13 @@
 				TargetAttributes = {
 					4080F4551BA8ACC200573116 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = DKZNRX975N;
+						LastSwiftMigration = 0800;
 					};
 					4080F46A1BA8ACC200573116 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = DKZNRX975N;
+						LastSwiftMigration = 0800;
 						TestTargetID = 4080F4551BA8ACC200573116;
 					};
 				};
@@ -246,6 +253,7 @@
 				4080F4611BA8ACC200573116 /* Main.storyboard in Resources */,
 				DA4A46C01D0113AB003CE51A /* AudioResult.mp3 in Resources */,
 				4080F4661BA8ACC200573116 /* LaunchScreen.xib in Resources */,
+				DA7BF16B1DACC8D000D27A26 /* Assets.xcassets in Resources */,
 				4080F4631BA8ACC200573116 /* Images.xcassets in Resources */,
 				DA4A46BE1D01126D003CE51A /* AudioSteady.mp3 in Resources */,
 			);
@@ -398,12 +406,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = DKZNRX975N;
 				INFOPLIST_FILE = RFduinoLedButtonInSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xiaoyiz.rfduinoFlicker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "RFduinoLedButtonInSwift/RFDuinoLedButtonInSwift-Bridging-Header.h";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -411,12 +421,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = DKZNRX975N;
 				INFOPLIST_FILE = RFduinoLedButtonInSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xiaoyiz.rfduinoFlicker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "RFduinoLedButtonInSwift/RFDuinoLedButtonInSwift-Bridging-Header.h";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
@@ -424,6 +436,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = DKZNRX975N;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -435,6 +448,7 @@
 				INFOPLIST_FILE = RFduinoLedButtonInSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RFduinoLedButtonInSwift.app/RFduinoLedButtonInSwift";
 			};
 			name = Debug;
@@ -443,6 +457,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = DKZNRX975N;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -450,6 +465,7 @@
 				INFOPLIST_FILE = RFduinoLedButtonInSwiftTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RFduinoLedButtonInSwift.app/RFduinoLedButtonInSwift";
 			};
 			name = Release;

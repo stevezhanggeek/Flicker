@@ -32,6 +32,7 @@
 @interface AppDelegate()
 {
     RFduinoManager *rfduinoManager;
+    ScanViewController *viewController;
     bool wasScanning;
 }
 @end
@@ -44,7 +45,7 @@
     
     rfduinoManager = RFduinoManager.sharedRFduinoManager;
     
-    ScanViewController *viewController = [[ScanViewController alloc] init];
+    viewController = [[ScanViewController alloc] init];
     
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewController];
     [self.window setRootViewController:navController];

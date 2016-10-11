@@ -15,15 +15,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var wasScanning :  Bool = false
     var rfduinoManager = RFduinoManager()
-    
+    var viewController = ScanViewController(style: .Plain)
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        
-        
-        let viewController: ScanViewController = ScanViewController(style: .Plain)
+
         let navController: UINavigationController = UINavigationController(rootViewController: viewController)
         
         self.window!.rootViewController = navController
