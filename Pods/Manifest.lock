@@ -1,0 +1,34 @@
+PODS:
+  - Eureka (1.7.0)
+  - Realm (2.0.0):
+    - Realm/Headers (= 2.0.0)
+  - Realm/Headers (2.0.0)
+  - RealmSwift (2.0.0):
+    - Realm (= 2.0.0)
+  - ZFRippleButton (0.5.1)
+
+DEPENDENCIES:
+  - Eureka (from `https://github.com/xmartlabs/Eureka.git`, branch `swift2.3`)
+  - Realm
+  - RealmSwift
+  - ZFRippleButton
+
+EXTERNAL SOURCES:
+  Eureka:
+    :branch: swift2.3
+    :git: https://github.com/xmartlabs/Eureka.git
+
+CHECKOUT OPTIONS:
+  Eureka:
+    :commit: be9e11baaba4092c36373e8c8ba774fddd6788cc
+    :git: https://github.com/xmartlabs/Eureka.git
+
+SPEC CHECKSUMS:
+  Eureka: 2020d9faeef7b7e9adeb9e3d8af779e5931c1897
+  Realm: 6dda421ae4b3e9a09742fc2cf4b876d459cbedcd
+  RealmSwift: 7d015f34a2781a50889be9b5a15c36c08597ea0e
+  ZFRippleButton: 263bdf4e31dabd5826133b121d9ff908c87a6a11
+
+PODFILE CHECKSUM: 8489491cd443614cda77039d6cc37aabbd121f75
+
+COCOAPODS: 1.0.1

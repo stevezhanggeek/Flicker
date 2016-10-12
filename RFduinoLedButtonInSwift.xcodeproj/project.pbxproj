@@ -18,11 +18,10 @@
 		4080F48A1BA8ACFB00573116 /* RFduino.m in Sources */ = {isa = PBXBuildFile; fileRef = 4080F4811BA8ACFB00573116 /* RFduino.m */; };
 		4080F48B1BA8ACFB00573116 /* RfduinoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4080F4841BA8ACFB00573116 /* RfduinoManager.m */; };
 		4080F48C1BA8ACFB00573116 /* ScanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4080F4871BA8ACFB00573116 /* ScanViewController.m */; };
-		DA4A46BC1D01122B003CE51A /* AudioFlicker.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DA4A46BB1D01122B003CE51A /* AudioFlicker.mp3 */; };
-		DA4A46BE1D01126D003CE51A /* AudioSteady.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DA4A46BD1D01126D003CE51A /* AudioSteady.mp3 */; };
-		DA4A46C01D0113AB003CE51A /* AudioResult.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DA4A46BF1D0113AB003CE51A /* AudioResult.mp3 */; };
+		CAB6C7032EB2BADEB8989BB8 /* Pods_RFduinoLedButtonInSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC57B5BDADF9090839F9AA27 /* Pods_RFduinoLedButtonInSwift.framework */; };
 		DA7BF16B1DACC8D000D27A26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA7BF16A1DACC8D000D27A26 /* Assets.xcassets */; };
 		DA7BF16D1DADA67B00D27A26 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BF16C1DADA67B00D27A26 /* Utility.swift */; };
+		DA7BF16F1DAECA1E00D27A26 /* ZFRippleButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA7BF16E1DAECA1E00D27A26 /* ZFRippleButton.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,11 +58,12 @@
 		4080F4861BA8ACFB00573116 /* ScanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScanViewController.h; sourceTree = "<group>"; };
 		4080F4871BA8ACFB00573116 /* ScanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScanViewController.m; sourceTree = "<group>"; };
 		4080F48F1BA8AEC400573116 /* RFduinoLedButtonInSwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RFduinoLedButtonInSwift-Bridging-Header.h"; sourceTree = "<group>"; };
-		DA4A46BB1D01122B003CE51A /* AudioFlicker.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = AudioFlicker.mp3; sourceTree = "<group>"; };
-		DA4A46BD1D01126D003CE51A /* AudioSteady.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = AudioSteady.mp3; sourceTree = "<group>"; };
-		DA4A46BF1D0113AB003CE51A /* AudioResult.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = AudioResult.mp3; sourceTree = "<group>"; };
+		9FB37730C2C256EEA3EDBABA /* Pods-RFduinoLedButtonInSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RFduinoLedButtonInSwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-RFduinoLedButtonInSwift/Pods-RFduinoLedButtonInSwift.release.xcconfig"; sourceTree = "<group>"; };
 		DA7BF16A1DACC8D000D27A26 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA7BF16C1DADA67B00D27A26 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		DA7BF16E1DAECA1E00D27A26 /* ZFRippleButton.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZFRippleButton.framework; path = "../../Library/Developer/Xcode/DerivedData/RFduinoLedButtonInSwift-aglwwkjylwyvvtezcosuvlsykajr/Build/Products/Debug-iphoneos/ZFRippleButton/ZFRippleButton.framework"; sourceTree = "<group>"; };
+		DDC2956900284B987BDE2D7F /* Pods-RFduinoLedButtonInSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RFduinoLedButtonInSwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RFduinoLedButtonInSwift/Pods-RFduinoLedButtonInSwift.debug.xcconfig"; sourceTree = "<group>"; };
+		FC57B5BDADF9090839F9AA27 /* Pods_RFduinoLedButtonInSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RFduinoLedButtonInSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +71,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA7BF16F1DAECA1E00D27A26 /* ZFRippleButton.framework in Frameworks */,
+				CAB6C7032EB2BADEB8989BB8 /* Pods_RFduinoLedButtonInSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +86,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2764B9F1E48A1C66BD9DC4AB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DDC2956900284B987BDE2D7F /* Pods-RFduinoLedButtonInSwift.debug.xcconfig */,
+				9FB37730C2C256EEA3EDBABA /* Pods-RFduinoLedButtonInSwift.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		4080F44D1BA8ACC100573116 = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +102,8 @@
 				4080F4581BA8ACC200573116 /* RFduinoLedButtonInSwift */,
 				4080F46E1BA8ACC200573116 /* RFduinoLedButtonInSwiftTests */,
 				4080F4571BA8ACC200573116 /* Products */,
+				2764B9F1E48A1C66BD9DC4AB /* Pods */,
+				690A9BE10CD2FB01B53071AD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -110,9 +123,6 @@
 				4080F48F1BA8AEC400573116 /* RFduinoLedButtonInSwift-Bridging-Header.h */,
 				4080F45B1BA8ACC200573116 /* AppDelegate.swift */,
 				4080F45D1BA8ACC200573116 /* FlickerTestViewController.swift */,
-				DA4A46BB1D01122B003CE51A /* AudioFlicker.mp3 */,
-				DA4A46BD1D01126D003CE51A /* AudioSteady.mp3 */,
-				DA4A46BF1D0113AB003CE51A /* AudioResult.mp3 */,
 				4080F45F1BA8ACC200573116 /* Main.storyboard */,
 				4080F4621BA8ACC200573116 /* Images.xcassets */,
 				4080F4641BA8ACC200573116 /* LaunchScreen.xib */,
@@ -166,6 +176,15 @@
 			path = rfduino;
 			sourceTree = "<group>";
 		};
+		690A9BE10CD2FB01B53071AD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DA7BF16E1DAECA1E00D27A26 /* ZFRippleButton.framework */,
+				FC57B5BDADF9090839F9AA27 /* Pods_RFduinoLedButtonInSwift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -173,9 +192,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4080F4751BA8ACC200573116 /* Build configuration list for PBXNativeTarget "RFduinoLedButtonInSwift" */;
 			buildPhases = (
+				69E55830BA6BFFA06EAED036 /* [CP] Check Pods Manifest.lock */,
 				4080F4521BA8ACC200573116 /* Sources */,
 				4080F4531BA8ACC200573116 /* Frameworks */,
 				4080F4541BA8ACC200573116 /* Resources */,
+				1A887BDC13ACFB82F590C3F5 /* [CP] Embed Pods Frameworks */,
+				0F138EA5BA479FF50BA4F8CA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -252,13 +274,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA4A46BC1D01122B003CE51A /* AudioFlicker.mp3 in Resources */,
 				4080F4611BA8ACC200573116 /* Main.storyboard in Resources */,
-				DA4A46C01D0113AB003CE51A /* AudioResult.mp3 in Resources */,
 				4080F4661BA8ACC200573116 /* LaunchScreen.xib in Resources */,
 				DA7BF16B1DACC8D000D27A26 /* Assets.xcassets in Resources */,
 				4080F4631BA8ACC200573116 /* Images.xcassets in Resources */,
-				DA4A46BE1D01126D003CE51A /* AudioSteady.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +289,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0F138EA5BA479FF50BA4F8CA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RFduinoLedButtonInSwift/Pods-RFduinoLedButtonInSwift-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1A887BDC13ACFB82F590C3F5 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RFduinoLedButtonInSwift/Pods-RFduinoLedButtonInSwift-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		69E55830BA6BFFA06EAED036 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4080F4521BA8ACC200573116 /* Sources */ = {
@@ -408,9 +475,11 @@
 		};
 		4080F4761BA8ACC200573116 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DDC2956900284B987BDE2D7F /* Pods-RFduinoLedButtonInSwift.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = DKZNRX975N;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = RFduinoLedButtonInSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -423,9 +492,11 @@
 		};
 		4080F4771BA8ACC200573116 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9FB37730C2C256EEA3EDBABA /* Pods-RFduinoLedButtonInSwift.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = DKZNRX975N;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = RFduinoLedButtonInSwift/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

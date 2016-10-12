@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import ZFRippleButton
 
 class FlickerTestViewController: UIViewController, RFduinoDelegate {
     var rfduino = RFduino()
@@ -51,7 +52,7 @@ class FlickerTestViewController: UIViewController, RFduinoDelegate {
         self.navigationItem.leftBarButtonItem  = UIBarButtonItem(title: "Method", style: .Plain, target: self, action: #selector(self.methodButtonTouched))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "SettingIcon"), style: .Plain, target: self, action: #selector(self.settingsButtonTouched))
 
-        bigButton = UIButton(frame: self.view.frame)
+        bigButton = ZFRippleButton(frame: self.view.frame)
         bigButton.backgroundColor = UIColor.init(red: 1, green: 0, blue: 0, alpha: 0.5)
         bigButton.addTarget(self, action: #selector(self.bigButtonTouched), forControlEvents: .TouchUpInside)
         bigButton.hidden = true
@@ -61,8 +62,8 @@ class FlickerTestViewController: UIViewController, RFduinoDelegate {
         twoAFCButtons.hidden = true
         self.view.addSubview(twoAFCButtons)
 
-        twoAFCFirstButton  = UIButton(frame: CGRectMake(0, 0, twoAFCButtons.frame.width, twoAFCButtons.frame.height/2))
-        twoAFCSecondButton = UIButton(frame: CGRectMake(0, twoAFCButtons.frame.height/2, twoAFCButtons.frame.width, twoAFCButtons.frame.height/2))
+        twoAFCFirstButton  = ZFRippleButton(frame: CGRectMake(0, 0, twoAFCButtons.frame.width, twoAFCButtons.frame.height/2))
+        twoAFCSecondButton = ZFRippleButton(frame: CGRectMake(0, twoAFCButtons.frame.height/2, twoAFCButtons.frame.width, twoAFCButtons.frame.height/2))
         twoAFCFirstButton.backgroundColor  = UIColor.lightGrayColor()
         twoAFCSecondButton.backgroundColor = UIColor.darkGrayColor()
         twoAFCFirstButton.addTarget(self,  action: #selector(self.twoAFCFirstButtonTouched),  forControlEvents: .TouchUpInside)
@@ -100,14 +101,15 @@ class FlickerTestViewController: UIViewController, RFduinoDelegate {
         testStep = 0
         bigButton.hidden = true
         twoAFCButtons.hidden = true
+        resultLabel.text = ""
+        self.navigationItem.title = ""
+        self.navigationItem.leftBarButtonItem  = UIBarButtonItem(title: "Method", style: .Plain, target: self, action: #selector(self.methodButtonTouched))
         
         sendByte(1)
     }
     
     func stopButtonTouched() {
         resetAll()
-        bigButton.hidden = true
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Method", style: .Plain, target: self, action: #selector(self.methodButtonTouched))
     }
     
     func methodButtonTouched() {
@@ -120,23 +122,26 @@ class FlickerTestViewController: UIViewController, RFduinoDelegate {
             self.bigButton.setTitle("Start (Limits)", forState: UIControlState.Normal)
             self.limitsFreqFromMin = self.minFreq
             self.limitsFreqFromMax = self.maxFreq
+            self.navigationItem.title = "Limits"
             self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Stop", style: .Plain, target: self, action: #selector(self.stopButtonTouched))
             })
         alertController.addAction(UIAlertAction(title: "Staircase", style: .Default) { (action) in
             self.resetAll()
             self.thresholdMethod = enumMethod.staircase
             self.bigButton.hidden = false
-            self.bigButton.setTitle("Start (Staircase)", forState: UIControlState.Normal)
+            self.bigButton.setTitle("Start", forState: UIControlState.Normal)
             self.staircaseFreq = self.maxFreq
             self.staircaseFreqFromMax = self.maxFreq
             self.staircaseFreqFromMin = self.minFreq
+            self.navigationItem.title = "Staircase"
             self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Stop", style: .Plain, target: self, action: #selector(self.stopButtonTouched))
             })
         alertController.addAction(UIAlertAction(title: "2AFC", style: .Default) { (action) in
             self.resetAll()
             self.thresholdMethod = enumMethod.twoAFC
             self.bigButton.hidden = false
-            self.bigButton.setTitle("Start (2AFC)", forState: UIControlState.Normal)
+            self.bigButton.setTitle("Start", forState: UIControlState.Normal)
+            self.navigationItem.title = "2AFC"
             self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Stop", style: .Plain, target: self, action: #selector(self.stopButtonTouched))
             })
         self.presentViewController(alertController, animated: true, completion: nil)
@@ -200,6 +205,7 @@ class FlickerTestViewController: UIViewController, RFduinoDelegate {
             readAloudText("Please check result on screen.")
             resultLabel.hidden = false
             resultLabel.text = "Result: Min = " + String(limitsFreqFromMin) + ", Max = " + String(limitsFreqFromMax)
+            self.navigationItem.title = "Results(Limits)"
             break
         }
     }
@@ -250,6 +256,7 @@ class FlickerTestViewController: UIViewController, RFduinoDelegate {
             readAloudText("Please check result on screen.")
             print("Result: " + String((staircaseFreqFromMax+staircaseFreqFromMin)/2) +
                 "->" + String(staircaseFreqFromMax) + "," + String(staircaseFreqFromMin))
+            self.navigationItem.title = "Results(Staircase)"
             break
         }
     }
@@ -257,6 +264,7 @@ class FlickerTestViewController: UIViewController, RFduinoDelegate {
     func processTwoAFCTest() {
         if (testStep < twoAFCTestCount - 1) {
             testStep += 1
+            self.navigationItem.title = String(testStep+1) + "/" + String(twoAFCTestCount)
         } else {
             resetAll()
             readAloudText("Please check result on screen.")
@@ -265,8 +273,8 @@ class FlickerTestViewController: UIViewController, RFduinoDelegate {
             for result in twoAFCResults {
                 resultString += (String(result) + " ")
             }
-            resultLabel.text = "Result: " + resultString
-            print(twoAFCResults)
+            resultLabel.text = resultString
+            self.navigationItem.title = "Results(2AFC)"
         }
     }
     
@@ -293,6 +301,7 @@ class FlickerTestViewController: UIViewController, RFduinoDelegate {
             twoAFCButtons.hidden = false
             twoAFCFirstButton.setTitle("The first light flickers",   forState: UIControlState.Normal)
             twoAFCSecondButton.setTitle("The second light flickers", forState: UIControlState.Normal)
+            self.navigationItem.title = "1/" + String(twoAFCTestCount)
             break
         }
     }
