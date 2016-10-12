@@ -22,6 +22,7 @@
 		DA4A46BE1D01126D003CE51A /* AudioSteady.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DA4A46BD1D01126D003CE51A /* AudioSteady.mp3 */; };
 		DA4A46C01D0113AB003CE51A /* AudioResult.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DA4A46BF1D0113AB003CE51A /* AudioResult.mp3 */; };
 		DA7BF16B1DACC8D000D27A26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA7BF16A1DACC8D000D27A26 /* Assets.xcassets */; };
+		DA7BF16D1DADA67B00D27A26 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7BF16C1DADA67B00D27A26 /* Utility.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		DA4A46BD1D01126D003CE51A /* AudioSteady.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = AudioSteady.mp3; sourceTree = "<group>"; };
 		DA4A46BF1D0113AB003CE51A /* AudioResult.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = AudioResult.mp3; sourceTree = "<group>"; };
 		DA7BF16A1DACC8D000D27A26 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DA7BF16C1DADA67B00D27A26 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				4080F4621BA8ACC200573116 /* Images.xcassets */,
 				4080F4641BA8ACC200573116 /* LaunchScreen.xib */,
 				4080F4591BA8ACC200573116 /* Supporting Files */,
+				DA7BF16C1DADA67B00D27A26 /* Utility.swift */,
 			);
 			path = RFduinoLedButtonInSwift;
 			sourceTree = "<group>";
@@ -277,6 +280,7 @@
 				4080F48B1BA8ACFB00573116 /* RfduinoManager.m in Sources */,
 				4080F45E1BA8ACC200573116 /* FlickerTestViewController.swift in Sources */,
 				4080F45C1BA8ACC200573116 /* AppDelegate.swift in Sources */,
+				DA7BF16D1DADA67B00D27A26 /* Utility.swift in Sources */,
 				4080F48C1BA8ACFB00573116 /* ScanViewController.m in Sources */,
 				4080F4881BA8ACFB00573116 /* AppDelegate.m in Sources */,
 				4080F48A1BA8ACFB00573116 /* RFduino.m in Sources */,
@@ -408,7 +412,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = DKZNRX975N;
 				INFOPLIST_FILE = RFduinoLedButtonInSwift/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xiaoyiz.rfduinoFlicker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -423,7 +427,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = DKZNRX975N;
 				INFOPLIST_FILE = RFduinoLedButtonInSwift/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xiaoyiz.rfduinoFlicker;
 				PRODUCT_NAME = "$(TARGET_NAME)";

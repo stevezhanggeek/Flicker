@@ -7,16 +7,23 @@
 //
 
 import UIKit
-import AudioToolbox
+import AVFoundation
 
 class FlickerTestViewController: UIViewController, RFduinoDelegate {
     var rfduino = RFduino()
-    
-    var thresholdMethod = "Limits"
+    let synthesizer = AVSpeechSynthesizer()
+
+    var thresholdMethod = enumMethod.limits
     var testStep = 0
     let maxFreq = 60
     let minFreq = 20
     
+    var resultLabel: UILabel!
+    var bigButton: UIButton!
+    var twoAFCButtons: UIView!
+    var twoAFCFirstButton: UIButton!
+    var twoAFCSecondButton: UIButton!
+
     var limitsFreqFromMin:Int!
     var limitsFreqFromMax:Int!
     var limitsTimerFromMin:NSTimer?
@@ -27,17 +34,45 @@ class FlickerTestViewController: UIViewController, RFduinoDelegate {
     var staircaseFreq:Int!
     var staircaseTimerFromMin:NSTimer?
     var staircaseTimerFromMax:NSTimer?
-
-    @IBOutlet weak var bigButton: UIButton!
-    @IBOutlet weak var resultLabel: UILabel!
+    
+    let twoAFCTestCount = 5
+    var twoAFCResults = [Int]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         rfduino.delegate = self
         
+        readAloudText("")
+        
+        twoAFCResults = [Int](count: twoAFCTestCount, repeatedValue: 0)
+        print(twoAFCResults)
+        
         self.navigationItem.leftBarButtonItem  = UIBarButtonItem(title: "Method", style: .Plain, target: self, action: #selector(self.methodButtonTouched))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "SettingIcon"), style: .Plain, target: self, action: #selector(self.settingsButtonTouched))
+
+        bigButton = UIButton(frame: self.view.frame)
+        bigButton.backgroundColor = UIColor.init(red: 1, green: 0, blue: 0, alpha: 0.5)
+        bigButton.addTarget(self, action: #selector(self.bigButtonTouched), forControlEvents: .TouchUpInside)
+        bigButton.hidden = true
+        self.view.addSubview(bigButton)
+
+        twoAFCButtons = UIView(frame: self.view.frame)
+        twoAFCButtons.hidden = true
+        self.view.addSubview(twoAFCButtons)
+
+        twoAFCFirstButton  = UIButton(frame: CGRectMake(0, 0, twoAFCButtons.frame.width, twoAFCButtons.frame.height/2))
+        twoAFCSecondButton = UIButton(frame: CGRectMake(0, twoAFCButtons.frame.height/2, twoAFCButtons.frame.width, twoAFCButtons.frame.height/2))
+        twoAFCFirstButton.backgroundColor  = UIColor.lightGrayColor()
+        twoAFCSecondButton.backgroundColor = UIColor.darkGrayColor()
+        twoAFCFirstButton.addTarget(self,  action: #selector(self.twoAFCFirstButtonTouched),  forControlEvents: .TouchUpInside)
+        twoAFCSecondButton.addTarget(self, action: #selector(self.twoAFCSecondButtonTouched), forControlEvents: .TouchUpInside)
+        twoAFCButtons.addSubview(twoAFCFirstButton)
+        twoAFCButtons.addSubview(twoAFCSecondButton)
+
+        resultLabel = UILabel(frame: self.view.frame)
+        resultLabel.hidden = true
+        self.view.addSubview(resultLabel)
     }
     
     func disconnect(sender: String) {
@@ -57,146 +92,209 @@ class FlickerTestViewController: UIViewController, RFduinoDelegate {
 //        self.navigationController?.popToRootViewControllerAnimated(true)
     }
     
-    func methodButtonTouched() {
-        let alertController = UIAlertController(title: "", message: "Which method would you like to choose?", preferredStyle: .ActionSheet)
-        alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
-        alertController.addAction(UIAlertAction(title: "Limits", style: .Default) { (action) in
-            })
-        alertController.addAction(UIAlertAction(title: "Staircase", style: .Default) { (action) in
-            })
-        alertController.addAction(UIAlertAction(title: "2AFC", style: .Default) { (action) in
-            })
-        self.presentViewController(alertController, animated: true, completion: nil)
-
-    }
-
-    @IBAction func LimitsButtonTouched(sender: AnyObject) {
-        thresholdMethod = "Limits"
-        bigButton.setTitle("Start: Limits", forState: UIControlState.Normal)
-        limitsFreqFromMin = minFreq
-        limitsFreqFromMax = maxFreq
+    func resetAll() {
+        staircaseTimerFromMin?.invalidate()
+        staircaseTimerFromMax?.invalidate()
+        limitsTimerFromMin?.invalidate()
+        limitsTimerFromMax?.invalidate()
+        testStep = 0
+        bigButton.hidden = true
+        twoAFCButtons.hidden = true
+        
+        sendByte(1)
     }
     
-    @IBAction func StaircaseButtonTouched(sender: AnyObject) {
-        thresholdMethod = "Staircase"
-        bigButton.setTitle("Start: Staircase", forState: UIControlState.Normal)
-        staircaseFreq = maxFreq
-        staircaseFreqFromMax = maxFreq
-        staircaseFreqFromMin = minFreq
+    func stopButtonTouched() {
+        resetAll()
+        bigButton.hidden = true
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Method", style: .Plain, target: self, action: #selector(self.methodButtonTouched))
+    }
+    
+    func methodButtonTouched() {
+        let alertController = UIAlertController(title: "Which method would you like to choose?", message: "", preferredStyle: .ActionSheet)
+        alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Limits", style: .Default) { (action) in
+            self.resetAll()
+            self.thresholdMethod = enumMethod.limits
+            self.bigButton.hidden = false
+            self.bigButton.setTitle("Start (Limits)", forState: UIControlState.Normal)
+            self.limitsFreqFromMin = self.minFreq
+            self.limitsFreqFromMax = self.maxFreq
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Stop", style: .Plain, target: self, action: #selector(self.stopButtonTouched))
+            })
+        alertController.addAction(UIAlertAction(title: "Staircase", style: .Default) { (action) in
+            self.resetAll()
+            self.thresholdMethod = enumMethod.staircase
+            self.bigButton.hidden = false
+            self.bigButton.setTitle("Start (Staircase)", forState: UIControlState.Normal)
+            self.staircaseFreq = self.maxFreq
+            self.staircaseFreqFromMax = self.maxFreq
+            self.staircaseFreqFromMin = self.minFreq
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Stop", style: .Plain, target: self, action: #selector(self.stopButtonTouched))
+            })
+        alertController.addAction(UIAlertAction(title: "2AFC", style: .Default) { (action) in
+            self.resetAll()
+            self.thresholdMethod = enumMethod.twoAFC
+            self.bigButton.hidden = false
+            self.bigButton.setTitle("Start (2AFC)", forState: UIControlState.Normal)
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Stop", style: .Plain, target: self, action: #selector(self.stopButtonTouched))
+            })
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
     
     func updateLimitsFromMin() {
-        resultLabel.text = "Current Freq from Min: " + String(limitsFreqFromMin)
+        print("Current Freq from Min: " + String(limitsFreqFromMin))
+        if (limitsFreqFromMin > maxFreq) {
+            return
+        }
         sendByte(limitsFreqFromMin)
         limitsFreqFromMin = limitsFreqFromMin + 1
     }
 
     func updateLimitsFromMax() {
-        resultLabel.text = "Current Freq from Max: " + String(limitsFreqFromMax)
+        print("Current Freq from Max: " + String(limitsFreqFromMax))
+        if (limitsFreqFromMax < minFreq) {
+            return
+        }
         sendByte(limitsFreqFromMax)
         limitsFreqFromMax = limitsFreqFromMax - 1
     }
     
     func updateStaircaseFromMin() {
-        resultLabel.text = "Result: Min = " + String(staircaseFreq)
+        print("Result: Min = " + String(staircaseFreq))
         sendByte(staircaseFreq)
         staircaseFreq = staircaseFreq + 1
     }
     
     func updateStaircaseFromMax() {
-        resultLabel.text = "Result: Max = " + String(staircaseFreq)
+        print("Result: Max = " + String(staircaseFreq))
         sendByte(staircaseFreq)
         staircaseFreq = staircaseFreq - 1
     }
     
-    func playSound(soundName: String) {
-        if let soundURL = NSBundle.mainBundle().URLForResource(soundName, withExtension: "mp3") {
-            var mySound: SystemSoundID = 0
-            AudioServicesCreateSystemSoundID(soundURL, &mySound)
-            AudioServicesPlaySystemSound(mySound);
+    func readAloudText(text: String) {
+        let utterance = AVSpeechUtterance(string: text)
+        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
+        // Change speed here.
+        utterance.rate = 0.5
+        synthesizer.speakUtterance(utterance)
+    }
+    
+    func processLimitsTest() {
+        switch testStep {
+        case 0:
+            testStep += 1
+            bigButton.setTitle("Light Steady Now", forState: UIControlState.Normal)
+            readAloudText("Touch screen when the light is steady.")
+            limitsTimerFromMin = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: #selector(FlickerTestViewController.updateLimitsFromMin), userInfo: nil, repeats: true)
+            break
+        case 1:
+            testStep += 1
+            limitsTimerFromMin?.invalidate()
+            bigButton.setTitle("See Flicker Now", forState: UIControlState.Normal)
+            readAloudText("Touch screen when the light flickers.")
+            limitsTimerFromMax = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: #selector(FlickerTestViewController.updateLimitsFromMax), userInfo: nil, repeats: true)
+            break
+        default:
+            resetAll()
+            readAloudText("Please check result on screen.")
+            resultLabel.hidden = false
+            resultLabel.text = "Result: Min = " + String(limitsFreqFromMin) + ", Max = " + String(limitsFreqFromMax)
+            break
         }
     }
     
-    func stepProgress() {
-        if (thresholdMethod == "Limits") {
-            switch testStep {
-            case 0:
-                testStep += 1
-                bigButton.setTitle("Light Steady Now", forState: UIControlState.Normal)
-                playSound("AudioSteady")
-                limitsTimerFromMin = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: #selector(FlickerTestViewController.updateLimitsFromMin), userInfo: nil, repeats: true)
-                break
-            case 1:
-                testStep += 1
-                limitsTimerFromMin?.invalidate()
-                bigButton.setTitle("See Flicker Now", forState: UIControlState.Normal)
-                playSound("AudioFlicker")
-                limitsTimerFromMax = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: #selector(FlickerTestViewController.updateLimitsFromMax), userInfo: nil, repeats: true)
-                break
-            default:
-                testStep = 0
-                limitsTimerFromMax?.invalidate()
-                //sendByte(-1)
-                playSound("AudioResult")
-                bigButton.setTitle("Start: Limits", forState: UIControlState.Normal)
-                resultLabel.text = "Result: Min = " + String(limitsFreqFromMin) + ", Max = " + String(limitsFreqFromMax)
-                break
-            }
-        } else if (thresholdMethod == "Staircase") {
-            switch testStep {
-            case 0:
-                testStep = 1
-                staircaseTimerFromMin?.invalidate()
-                
-                if (abs(staircaseFreq-staircaseFreqFromMin) <= 5) {
-                    staircaseTimerFromMin?.invalidate()
-                    staircaseTimerFromMax?.invalidate()
-                    resultLabel.text = "Result: " + String((staircaseFreq+staircaseFreqFromMin)/2) +
-                        "->" + String(staircaseFreq) + "," + String(staircaseFreqFromMin)
-                    testStep = -1
-                    return
-                }
-                
-                staircaseFreqFromMax = staircaseFreq
-                staircaseFreq = staircaseFreq + 5
-                bigButton.setTitle("See Flicker Now", forState: UIControlState.Normal)
-                playSound("AudioFlicker")
-                staircaseTimerFromMax = NSTimer.scheduledTimerWithTimeInterval(0.5, target:self, selector: #selector(FlickerTestViewController.updateStaircaseFromMax), userInfo: nil, repeats: true)
-                break
-            case 1:
-                testStep = 0
-                staircaseTimerFromMax?.invalidate()
-                
-                if (abs(staircaseFreqFromMax-staircaseFreq) <= 5) {
-                    staircaseTimerFromMin?.invalidate()
-                    staircaseTimerFromMax?.invalidate()
-                    resultLabel.text = "Result: " + String((staircaseFreqFromMax+staircaseFreq)/2) +
-                        "->" + String(staircaseFreqFromMax) + "," + String(staircaseFreq)
-                    testStep = -1
-                    return
-                }
-                
-                staircaseFreqFromMin = staircaseFreq
-                staircaseFreq = staircaseFreq - 5
-                bigButton.setTitle("Light Steady Now", forState: UIControlState.Normal)
-                playSound("AudioSteady")
-                staircaseTimerFromMin = NSTimer.scheduledTimerWithTimeInterval(0.5, target:self, selector: #selector(FlickerTestViewController.updateStaircaseFromMin), userInfo: nil, repeats: true)
-                break
-            default:
-                testStep = 0
+    func processStaircaseTest() {
+        switch testStep {
+        case 0:
+            resetAll()
+            testStep = 1
+            staircaseTimerFromMin?.invalidate()
+            
+            if (abs(staircaseFreq-staircaseFreqFromMin) <= 5) {
                 staircaseTimerFromMin?.invalidate()
                 staircaseTimerFromMax?.invalidate()
-                playSound("AudioResult")
-                bigButton.setTitle("Start: Staircase", forState: UIControlState.Normal)
-                resultLabel.text = "Result: " + String((staircaseFreqFromMax+staircaseFreqFromMin)/2) +
-                    "->" + String(staircaseFreqFromMax) + "," + String(staircaseFreqFromMin)
-                break
+                print("Result: " + String((staircaseFreq+staircaseFreqFromMin)/2) +
+                    "->" + String(staircaseFreq) + "," + String(staircaseFreqFromMin))
+                testStep = -1
+                return
             }
+            
+            staircaseFreqFromMax = staircaseFreq
+            staircaseFreq = staircaseFreq + 5
+            bigButton.setTitle("See Flicker Now", forState: UIControlState.Normal)
+            readAloudText("Touch screen when the light flickers.")
+            staircaseTimerFromMax = NSTimer.scheduledTimerWithTimeInterval(0.5, target:self, selector: #selector(FlickerTestViewController.updateStaircaseFromMax), userInfo: nil, repeats: true)
+            break
+        case 1:
+            testStep = 0
+            staircaseTimerFromMax?.invalidate()
+            
+            if (abs(staircaseFreqFromMax-staircaseFreq) <= 5) {
+                staircaseTimerFromMin?.invalidate()
+                staircaseTimerFromMax?.invalidate()
+                print("Result: " + String((staircaseFreqFromMax+staircaseFreq)/2) +
+                    "->" + String(staircaseFreqFromMax) + "," + String(staircaseFreq))
+                testStep = -1
+                return
+            }
+            
+            staircaseFreqFromMin = staircaseFreq
+            staircaseFreq = staircaseFreq - 5
+            bigButton.setTitle("Light Steady Now", forState: UIControlState.Normal)
+            readAloudText("Touch screen when the light is steady.")
+            staircaseTimerFromMin = NSTimer.scheduledTimerWithTimeInterval(0.5, target:self, selector: #selector(FlickerTestViewController.updateStaircaseFromMin), userInfo: nil, repeats: true)
+            break
+        default:
+            resetAll()
+            readAloudText("Please check result on screen.")
+            print("Result: " + String((staircaseFreqFromMax+staircaseFreqFromMin)/2) +
+                "->" + String(staircaseFreqFromMax) + "," + String(staircaseFreqFromMin))
+            break
         }
     }
     
-    @IBAction func BigButtonTouched(sender: AnyObject) {
-        stepProgress()
+    func processTwoAFCTest() {
+        if (testStep < twoAFCTestCount - 1) {
+            testStep += 1
+        } else {
+            resetAll()
+            readAloudText("Please check result on screen.")
+            resultLabel.hidden = false
+            var resultString = ""
+            for result in twoAFCResults {
+                resultString += (String(result) + " ")
+            }
+            resultLabel.text = "Result: " + resultString
+            print(twoAFCResults)
+        }
+    }
+    
+    func twoAFCFirstButtonTouched() {
+        twoAFCResults[testStep] = 1
+        processTwoAFCTest()
+    }
+
+    func twoAFCSecondButtonTouched() {
+        twoAFCResults[testStep] = 2
+        processTwoAFCTest()
+    }
+
+    func bigButtonTouched() {
+        switch thresholdMethod {
+        case .limits:
+            processLimitsTest()
+            break
+        case .staircase:
+            processStaircaseTest()
+            break
+        case .twoAFC:
+            bigButton.hidden = true
+            twoAFCButtons.hidden = false
+            twoAFCFirstButton.setTitle("The first light flickers",   forState: UIControlState.Normal)
+            twoAFCSecondButton.setTitle("The second light flickers", forState: UIControlState.Normal)
+            break
+        }
     }
     
     /* // Button is not stable yet...
