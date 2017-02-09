@@ -309,7 +309,7 @@
 {
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UINavigationController * myStoryBoardInitialViewController = [storyboard instantiateInitialViewController];
-    FlickerTestViewController *viewController = [myStoryBoardInitialViewController.viewControllers objectAtIndex:0];
+    FlickerTestVC *viewController = [myStoryBoardInitialViewController.viewControllers objectAtIndex:0];
     
     viewController.rfduino = rfduino;
     
