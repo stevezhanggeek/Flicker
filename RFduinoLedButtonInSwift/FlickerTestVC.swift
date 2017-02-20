@@ -38,6 +38,9 @@ class FlickerTestVC: UIViewController, RFduinoDelegate {
     
     let twoAFCTestCount = 5
     var twoAFCResults = [Int]()
+    
+    var testCount = 1
+    let maxTestCount = 4
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +52,7 @@ class FlickerTestVC: UIViewController, RFduinoDelegate {
         twoAFCResults = [Int](count: twoAFCTestCount, repeatedValue: 0)
         print(twoAFCResults)
         
-        self.navigationItem.leftBarButtonItem  = UIBarButtonItem(title: "Method", style: .Plain, target: self, action: #selector(self.methodButtonTouched))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Method", style: .Plain, target: self, action: #selector(self.methodButtonTouched))
 
         bigButton = ZFRippleButton(frame: self.view.frame)
         bigButton.backgroundColor = UIColor.init(red: 1, green: 0, blue: 0, alpha: 0.5)
@@ -81,7 +84,6 @@ class FlickerTestVC: UIViewController, RFduinoDelegate {
     }
     
     func sendByte(byte: Int) {
-        return
         var tx: [UInt8] = [UInt8(bitPattern: Int8(byte))]
         let data = NSData(bytes: &tx, length: sizeof(UInt8))
         rfduino.send(data)
@@ -110,16 +112,18 @@ class FlickerTestVC: UIViewController, RFduinoDelegate {
         let alertController = UIAlertController(title: "Which method would you like to choose?", message: "", preferredStyle: .ActionSheet)
         alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
         alertController.addAction(UIAlertAction(title: "Limits", style: .Default) { (action) in
+            self.sendByte(3)
             self.resetAll()
             self.thresholdMethod = enumMethod.limits
             self.bigButton.hidden = false
-            self.bigButton.setTitle("Start (Limits)", forState: UIControlState.Normal)
+            self.bigButton.setTitle("Start", forState: UIControlState.Normal)
             self.limitsFreqFromMin = self.minFreq
             self.limitsFreqFromMax = self.maxFreq
-            self.navigationItem.title = "Limits"
+            self.navigationItem.title = "Test " + String(self.testCount) + "/" + String(self.maxTestCount) + " (Limits)"
             self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Stop", style: .Plain, target: self, action: #selector(self.stopButtonTouched))
             })
         alertController.addAction(UIAlertAction(title: "Staircase", style: .Default) { (action) in
+            self.sendByte(4)
             self.resetAll()
             self.thresholdMethod = enumMethod.staircase
             self.bigButton.hidden = false
@@ -179,6 +183,29 @@ class FlickerTestVC: UIViewController, RFduinoDelegate {
         synthesizer.speakUtterance(utterance)
     }
     
+    func testCompleted() {
+        let alertController = UIAlertController(title: "Test Completed!", message: "Please let researchers enter information.", preferredStyle: .Alert)
+        
+        alertController.addTextFieldWithConfigurationHandler { (textField) in
+            textField.text = ""
+        }
+        
+        let saveAction = UIAlertAction(title: "Save", style: .Default) { (_) in
+            let textField = alertController.textFields![0] as UITextField
+            if (textField.text?.characters.count > 0) {
+                
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (_) in }
+        
+        alertController.addAction(saveAction)
+        alertController.addAction(cancelAction)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
+    }
+
+    
     func processLimitsTest() {
         switch testStep {
         case 0:
@@ -196,10 +223,19 @@ class FlickerTestVC: UIViewController, RFduinoDelegate {
             break
         default:
             resetAll()
-            readAloudText("Please check result on screen.")
-            resultLabel.hidden = false
-            resultLabel.text = "Result: Min = " + String(limitsFreqFromMin) + ", Max = " + String(limitsFreqFromMax)
-            self.navigationItem.title = "Results(Limits)"
+            bigButton.hidden = false
+            bigButton.setTitle("Start", forState: UIControlState.Normal)
+            
+            if testCount >= maxTestCount {
+                testCompleted()
+            } else {
+                print("Min = " + String(limitsFreqFromMin) + ", Max = " + String(limitsFreqFromMax))
+                testCount += 1
+                self.navigationItem.title = "Test " + String(testCount) + "/" + String(maxTestCount) + " (Limits)"
+            }
+            limitsFreqFromMin = minFreq
+            limitsFreqFromMax = maxFreq
+
             break
         }
     }
