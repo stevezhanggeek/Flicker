@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '4C0DCCC0574144941CBCC4EC32FE4C47'
+               BlueprintIdentifier = '2D73632FCFCF81C0AC4AF775A80ED0A4'
                BlueprintName = 'ZFRippleButton'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'ZFRippleButton.framework'>

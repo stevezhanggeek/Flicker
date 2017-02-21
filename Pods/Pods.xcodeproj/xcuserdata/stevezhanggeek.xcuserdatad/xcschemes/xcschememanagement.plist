@@ -4,22 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Eureka.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods-RFduinoLedButtonInSwift.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>Realm.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>RealmSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -32,27 +17,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>05E885534E3AE255547EAA8E5D080A5C</key>
+		<key>2D73632FCFCF81C0AC4AF775A80ED0A4</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4C0DCCC0574144941CBCC4EC32FE4C47</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7A957C0F15AB0ACAEA3C91C4F37EEE9B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>93D67067EBB061789771E3E06D421D16</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>99618F1D7F985A1BAEA827FFF6EF3481</key>
+		<key>BD52ECF7CC8F02A893F387C79880DB82</key>
 		<dict>
 			<key>primary</key>
 			<true/>
