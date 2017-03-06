@@ -335,18 +335,10 @@ class FlickerTestVC: UIViewController, RFduinoDelegate {
             break
         }
     }
-    
-    /* // Button is not stable yet...
-    func didReceive(data: NSData!) {
-        print("Received Data")
-        print(data)
-        var value : [UInt8] = [0]
-        data.getBytes(&value, length: 1)
-        if (value[0] == 0) {
-            print("step")
-            stepProgress()
-        }
+
+    func saveToCSV() {
+        
     }
-     */
+
 }
 
