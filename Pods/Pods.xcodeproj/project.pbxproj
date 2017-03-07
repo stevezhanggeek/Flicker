@@ -7,111 +7,360 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0D60D0687213202BCAFA8B8410387D1D /* Pods-RFduinoLedButtonInSwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 952674176074785A5B74D3CAE4BCA3B8 /* Pods-RFduinoLedButtonInSwift-dummy.m */; };
-		5BEAF592E23AF781027379E343D4B9C1 /* ZFRippleButton-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 18482E3A82F91F05CBD815FAE34273FE /* ZFRippleButton-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6A7389D8797213AB1220C74B38DF08EF /* ZFRippleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA1D3686EF3A396772BC245F6A94781 /* ZFRippleButton.swift */; };
-		6EF6C563825EAD88BA23778C8419F8BB /* Pods-RFduinoLedButtonInSwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E995515B0B9504E71D1166D7C7F78E72 /* Pods-RFduinoLedButtonInSwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EB9E6B1F7D3932AC3AAE8F6A452D97B3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		EEAAD081689C463B5BEC4EBFD1540E55 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		F298717F5CA93D00F8A12704E9FFE1CB /* ZFRippleButton-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B7755B4CF973E66959DE22AEBABC842B /* ZFRippleButton-dummy.m */; };
+		040FC3B50EB8AD3DA133F7FDFCD0D60F /* OptionsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22017D87581C4D327C6E750BF60503B3 /* OptionsRow.swift */; };
+		075275CE3B5E664E0F3795FE48B2EB8F /* ImageRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CD9A4AC925E5A26ABFBD97412606A2 /* ImageRow.swift */; };
+		07F3FA2D7E769356117A424D803A985C /* SelectableRowType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCD081946C885F4D91C8A7A4EE945BA /* SelectableRowType.swift */; };
+		08B8F3A75CE9B9FECAFDA94BE4A79A69 /* Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BA808D607A6F75E00914725299AD25 /* Operators.swift */; };
+		0948EBB2DA2F5CE08FD27630B726F6C7 /* Pods-RFduinoLedButtonInSwift-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 952674176074785A5B74D3CAE4BCA3B8 /* Pods-RFduinoLedButtonInSwift-dummy.m */; };
+		100212CAFA20201068ADD0BD81AC08AE /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D68B3F214A79BCBCEDB4C29990A75E /* Helpers.swift */; };
+		11A044B8C31303378B8237DCB44D318D /* Eureka-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D8E5204E3FEE76E6E441B85629F7DD3 /* Eureka-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		19264965154E9EDB5226D4EDAB89025D /* Eureka.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 10102F72533BE694E40E158C3EDE8FC8 /* Eureka.bundle */; };
+		205DBD80795243E7F1F2706CF0BAB658 /* ActionSheetRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD9769B8DF4F01848E732A11CF5E901 /* ActionSheetRow.swift */; };
+		24408967224602F9F433B419A0480DB9 /* SwitchRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45FA9849DEE7A787FF3921E5CD586DA6 /* SwitchRow.swift */; };
+		2F5C90A0614064B41262E2041813D62B /* RuleEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B81C27349282F5B16E2C77E0E00226D5 /* RuleEmail.swift */; };
+		32887D58D006EDF5DDA652675EE3AF07 /* DecimalFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D3C7C0093494C0CACF6B85B27D7EA0 /* DecimalFormatter.swift */; };
+		33826DBF6CB3CA3BC4122496517D65B7 /* PickerInlineRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A25B4C156FF937B915DFBECF6A81B97 /* PickerInlineRow.swift */; };
+		367071879B7879526848D982C8AF9335 /* ZFRippleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F826F17C1887AB1D2A338344E89820 /* ZFRippleButton.swift */; };
+		3700C94E5C374A95625D3E0F240A4784 /* ListCheckRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A37500EB3A1C4F67E3BD92309B218D6E /* ListCheckRow.swift */; };
+		38C6CFC14B65E350CD8B902254C3D134 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */; };
+		3EC732E46BFDCA0FE3758C58EA4E397E /* DateInlineFieldRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B92C6A782D4D97928E1DC1964905F5 /* DateInlineFieldRow.swift */; };
+		3FDBDFCA0F88C5E5B5F2FB2287B98299 /* SliderRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73468FA94673925805C5332869743D8 /* SliderRow.swift */; };
+		42425F2C755A7CE9B21A5CC9A19285AB /* RuleLength.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93D8551CC78049A99C04E2CC1126CE62 /* RuleLength.swift */; };
+		475A3FBAC4338A7652294300AFC9E10F /* CheckRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA2C823356D4003D9A53E8EC5D152AD /* CheckRow.swift */; };
+		4A06316C2EE5C4EAD2D6329B011083EF /* MultipleSelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61E0E803458F3F3D69C461864829F4B9 /* MultipleSelectorViewController.swift */; };
+		4DD9782D6EDDE4A3E0E152F3057B368E /* Row.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB26E258C25D45DF7E9EAA80B25399E9 /* Row.swift */; };
+		4DFF53B04C9D8AEBC0D131616FDFC930 /* PickerRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D925E77A267CA792117741CE7AF5E0 /* PickerRow.swift */; };
+		572673C2B8B9D82F0E2D5F818D5EDFB4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */; };
+		57DA5179C227C98388093D8BE14E09AD /* AlertRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967B2CEDB153F7CC651F693996A17AE3 /* AlertRow.swift */; };
+		59004ADD092154D9411F5BFA85F8CB76 /* RuleRange.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE139027755C8D2BFA77218E9C8EE0B /* RuleRange.swift */; };
+		59783DD1D7B7EE3EA4E08D9E4B45AB7C /* ZFRippleButton-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BC23C16155613F0DF191EF134851DB2E /* ZFRippleButton-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5A1E6D7B6271C5BB393BF4C18154945F /* Eureka-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 46CD73EE755DCA7B8A449B295BFE3E26 /* Eureka-dummy.m */; };
+		5A9BD5F3DA89253CD0DBF2837362433B /* MultipleSelectorRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1140625AF898DC128ED9562BD9E8E9 /* MultipleSelectorRow.swift */; };
+		5C39033449AFA9AA4F1677C5827BDCAD /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7F0B5C0CAC971F3908D6DDEAB259F1 /* Cell.swift */; };
+		6125CB4F44198735F73A584809EC5C77 /* BaseRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279A2FF410D9FFC6680679EF5B5B1A77 /* BaseRow.swift */; };
+		627EF66A8132039363361C9B73F571BC /* PopoverSelectorRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C2408A3B33C01A9FC7ABC5ECEEAE7B6 /* PopoverSelectorRow.swift */; };
+		63A5781B85464CB28F1357CA70FAC03C /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE424BE0BA99254534AAC3032973E21 /* Section.swift */; };
+		6AF65E1E19A63090F1F8E459BA6B969E /* RowControllerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11150FA8DCF0E641D7942E4EB9A51134 /* RowControllerType.swift */; };
+		6B7A9A891115AB85DC1FE8FED58B944B /* SelectorAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E2FBC52E900ABA93D1E69652E3B7FFB /* SelectorAlertController.swift */; };
+		6CDFB7F9541B4B015F0DD87F68A65822 /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38A59D7EFF01C46A05430B688478947 /* Core.swift */; };
+		6D0BA76BF0C3A60193AC3BCC80CEDF0C /* PresenterRowType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD186C33058DF939196F648A830B4506 /* PresenterRowType.swift */; };
+		6F2A10CEE632791904A513A194D2A662 /* StepperRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0896853D1B872327596A6A4E6B6205 /* StepperRow.swift */; };
+		76069458ABF3FC965E1F29CE753EAFDB /* Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A066EA17F18F202FC1FE9DB5601C0D71 /* Validation.swift */; };
+		80B9D90A49E9B046B50F7B74309E0D97 /* LabelRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D1F3D9652791FB7EF233556D42D303 /* LabelRow.swift */; };
+		85ED5888EB48C9C1A192FE9B022357DA /* DateInlineRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EF1F83841CF4CE0168735FC24FF324 /* DateInlineRow.swift */; };
+		8E570E0E72987EAF1C39ED3AEFC86C15 /* Pods-RFduinoLedButtonInSwift-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E995515B0B9504E71D1166D7C7F78E72 /* Pods-RFduinoLedButtonInSwift-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9137D4FC8E74AE2410A3EC354018DF7D /* FieldRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FF10D0B2F587BB6E6F7291E58BD4A4 /* FieldRow.swift */; };
+		92CA7F5CFBFBED0A0F98C9AF688F3233 /* RuleClosure.swift in Sources */ = {isa = PBXBuildFile; fileRef = B736E68331872370D6F6EE1B345A5EA0 /* RuleClosure.swift */; };
+		943F9D0C26D5EF6EE5EAD0A111D166B0 /* ZFRippleButton-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 24CE9503DBB6AB2CEC89E4F9508EA607 /* ZFRippleButton-dummy.m */; };
+		966E1E6C2C86DE793863BF6FC5366A59 /* RowType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2E01AC929B1C8B0140FA17D4A4EAED /* RowType.swift */; };
+		979664EC1833E95B58781E1A43E6B8B7 /* DateRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60F64B2EAE68A23F123E13EB9F6DC95F /* DateRow.swift */; };
+		9F653BE07BB2E5AE5FF3D2829F27276D /* Form.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA4D4172824FBF63ED7AA5FD787E80A2 /* Form.swift */; };
+		9FD5042DB9CECD7B527C075496C005A2 /* CellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD0BED240823306DEA6DFD5DDBAD7B6 /* CellType.swift */; };
+		A6BF74547E0C0D7EE6CAC6A09677856F /* ImagePickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A0B22025E14505EBA3A8B784792213 /* ImagePickerController.swift */; };
+		A7B399EA9DB0669B2F5941B0E0A9A8AA /* RowProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0492536418465EB72BAD9F7878E1AAC3 /* RowProtocols.swift */; };
+		AC139C1A36D74C05D0F5A7B7BA4EFF67 /* SegmentedRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EF234F0F0B633E41A4E954CC96DAED8 /* SegmentedRow.swift */; };
+		AE303ED6FFE4F093CF1268D260CB3115 /* RuleRequired.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B0AF35CCCB7F24980C23CB9A86AC8FC /* RuleRequired.swift */; };
+		B5933A8391A6A543A6505D5B0DB89AD2 /* GenericMultipleSelectorRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 838C56CD10C97CF9829BCDA9DD615920 /* GenericMultipleSelectorRow.swift */; };
+		B8B8626096DA5F03BF77A73FAD5B72B4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EC994CDC2D681BA26389F78A7E4B325 /* UIKit.framework */; };
+		BCBFA0EFED02E3D34E6197E59413AC2C /* RuleURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4ADB7388FF86F0B54AA9281720FAC3F /* RuleURL.swift */; };
+		BE0FF7C139CC3FA2F75D7019A82F49F1 /* SelectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD14AB04A88876745016620A22B3375C /* SelectorViewController.swift */; };
+		BE9F65BD192A3D61CDF954F3089EB5BD /* DatePickerRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37ABDBEB1965EF43D0703F7BB6EFF3E2 /* DatePickerRow.swift */; };
+		C41A1871D49485777DDA42CEFE23BBC4 /* ButtonRowWithPresent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C54784DC04832EC29BE3B65460EABE /* ButtonRowWithPresent.swift */; };
+		C4909B6DA77B90367DB590B986414E26 /* PushRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDF12320659DC91250BEFE9E25BE3758 /* PushRow.swift */; };
+		C8DE499A1197BCCE48EA1589BFD6E4D7 /* HeaderFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9AAFC59B7205B5DCF59A88F4939618B /* HeaderFooterView.swift */; };
+		D1DB2CBABDCB1154A2D7B8DB2A5BCDBB /* PostalAddressRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2FC03341B3E2B0D6BB9EB0FA0218DE5 /* PostalAddressRow.swift */; };
+		D5F055CE50E153E0995A63C8F87D5E62 /* InlineRowType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D9B1CA5A2F9A50866B03067C9A0925 /* InlineRowType.swift */; };
+		D731D1B1DD38EF61A197D5686A5A4220 /* ButtonRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33EF9FA7AC9CE1008D67858361C31C70 /* ButtonRow.swift */; };
+		DAF560833E1DD9F775B85DDFDBB5E7EC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */; };
+		DD422FE21F3FDC3702E163972B0B30FF /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = B61C9BAB7AEB49D9C2B3E6E0810EB626 /* Protocols.swift */; };
+		DDBDB14B58BD880B3DD2F0279920369E /* RuleRegExp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE8824E6B29EA8A62988AB4727CBA2E /* RuleRegExp.swift */; };
+		E01A5C2AA9EDAEBF7ADE9EB99E54CA05 /* SelectableSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68454A90A76402B1EC9DB7AB5306AB4 /* SelectableSection.swift */; };
+		E77BB22DA973DA7F4A21A187C1FD7B9E /* NavigationAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD9530B7AB22FB6C269D4E20CDF554C /* NavigationAccessoryView.swift */; };
+		E794E1D3B883A0648631CF6BC3719942 /* FieldsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E10AA97050A1F11C3C62193645F0C1 /* FieldsRow.swift */; };
+		F02B3FB5D2A63FCDF56FCD6DDCD81976 /* TextAreaRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE5FB076000E7513F0AD5425D81FD82 /* TextAreaRow.swift */; };
+		F505C06578EEF89698189EAB97ACCDF5 /* DateFieldRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09999CF43CCC91A8D5F739437029538 /* DateFieldRow.swift */; };
+		F5324A6E826E11F79B31DDA4B47E4156 /* SelectorRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CE9CF3551DCE8A22A350628C253C3A /* SelectorRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		8E4FC19DE2235E42EC53F0189654A3AF /* PBXContainerItemProxy */ = {
+		99C2BB29EC9E5A83A02D27BC703B9521 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 2D73632FCFCF81C0AC4AF775A80ED0A4;
+			remoteGlobalIDString = 6714684D1854593CE52E081A4A8E23CA;
+			remoteInfo = Eureka;
+		};
+		CA8921E8C13B3DF37D9677D1F754E6F1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B0CC6F39BF8C32EE7558E82725C608BF;
 			remoteInfo = ZFRippleButton;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0492536418465EB72BAD9F7878E1AAC3 /* RowProtocols.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RowProtocols.swift; path = Source/Core/RowProtocols.swift; sourceTree = "<group>"; };
+		04F826F17C1887AB1D2A338344E89820 /* ZFRippleButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZFRippleButton.swift; path = Classes/ZFRippleButton.swift; sourceTree = "<group>"; };
+		06D7812A17CDB3A51BEC3FB5E751B78D /* ZFRippleButton.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ZFRippleButton.xcconfig; sourceTree = "<group>"; };
+		08D9B1CA5A2F9A50866B03067C9A0925 /* InlineRowType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InlineRowType.swift; path = Source/Core/InlineRowType.swift; sourceTree = "<group>"; };
+		0A0896853D1B872327596A6A4E6B6205 /* StepperRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StepperRow.swift; path = Source/Rows/StepperRow.swift; sourceTree = "<group>"; };
+		0B153899DC3B911C203F380288E372A0 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0D8E5204E3FEE76E6E441B85629F7DD3 /* Eureka-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Eureka-umbrella.h"; sourceTree = "<group>"; };
+		0E15C1237F0E83B73D338E363FDB71C1 /* Eureka.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Eureka.framework; path = Eureka.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		10102F72533BE694E40E158C3EDE8FC8 /* Eureka.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = Eureka.bundle; path = Source/Resources/Eureka.bundle; sourceTree = "<group>"; };
+		11150FA8DCF0E641D7942E4EB9A51134 /* RowControllerType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RowControllerType.swift; path = Source/Core/RowControllerType.swift; sourceTree = "<group>"; };
+		11A0B22025E14505EBA3A8B784792213 /* ImagePickerController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImagePickerController.swift; path = Source/Rows/Controllers/ImagePickerController.swift; sourceTree = "<group>"; };
 		13CA12879F51E22CA0AC01CA4042538E /* Pods-RFduinoLedButtonInSwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RFduinoLedButtonInSwift.debug.xcconfig"; sourceTree = "<group>"; };
-		18482E3A82F91F05CBD815FAE34273FE /* ZFRippleButton-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ZFRippleButton-umbrella.h"; sourceTree = "<group>"; };
-		4892C020FC6D44DCD4F8DBCEB93F898E /* Pods_RFduinoLedButtonInSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_RFduinoLedButtonInSwift.framework; path = "Pods-RFduinoLedButtonInSwift.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		5AC3E22142BCA6A43E1625B40BB5F277 /* ZFRippleButton-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ZFRippleButton-prefix.pch"; sourceTree = "<group>"; };
-		60B58DDA86DA4F72E6AED165E78A4FA3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		72FE0ADB38CA13C417C556F66A2E28C6 /* ZFRippleButton.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = ZFRippleButton.modulemap; sourceTree = "<group>"; };
+		1A25B4C156FF937B915DFBECF6A81B97 /* PickerInlineRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PickerInlineRow.swift; path = Source/Rows/PickerInlineRow.swift; sourceTree = "<group>"; };
+		1B0AF35CCCB7F24980C23CB9A86AC8FC /* RuleRequired.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RuleRequired.swift; path = Source/Validations/RuleRequired.swift; sourceTree = "<group>"; };
+		1BD0BED240823306DEA6DFD5DDBAD7B6 /* CellType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CellType.swift; path = Source/Core/CellType.swift; sourceTree = "<group>"; };
+		1CD9530B7AB22FB6C269D4E20CDF554C /* NavigationAccessoryView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NavigationAccessoryView.swift; path = Source/Core/NavigationAccessoryView.swift; sourceTree = "<group>"; };
+		1E2FBC52E900ABA93D1E69652E3B7FFB /* SelectorAlertController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SelectorAlertController.swift; path = Source/Rows/Controllers/SelectorAlertController.swift; sourceTree = "<group>"; };
+		22017D87581C4D327C6E750BF60503B3 /* OptionsRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = OptionsRow.swift; path = Source/Rows/Common/OptionsRow.swift; sourceTree = "<group>"; };
+		22E10AA97050A1F11C3C62193645F0C1 /* FieldsRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FieldsRow.swift; path = Source/Rows/FieldsRow.swift; sourceTree = "<group>"; };
+		24CE9503DBB6AB2CEC89E4F9508EA607 /* ZFRippleButton-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ZFRippleButton-dummy.m"; sourceTree = "<group>"; };
+		26CE9CF3551DCE8A22A350628C253C3A /* SelectorRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SelectorRow.swift; path = Source/Rows/Common/SelectorRow.swift; sourceTree = "<group>"; };
+		279A2FF410D9FFC6680679EF5B5B1A77 /* BaseRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BaseRow.swift; path = Source/Core/BaseRow.swift; sourceTree = "<group>"; };
+		2A1140625AF898DC128ED9562BD9E8E9 /* MultipleSelectorRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipleSelectorRow.swift; path = Source/Rows/MultipleSelectorRow.swift; sourceTree = "<group>"; };
+		2DE424BE0BA99254534AAC3032973E21 /* Section.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Section.swift; path = Source/Core/Section.swift; sourceTree = "<group>"; };
+		2EF234F0F0B633E41A4E954CC96DAED8 /* SegmentedRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SegmentedRow.swift; path = Source/Rows/SegmentedRow.swift; sourceTree = "<group>"; };
+		33EF9FA7AC9CE1008D67858361C31C70 /* ButtonRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ButtonRow.swift; path = Source/Rows/ButtonRow.swift; sourceTree = "<group>"; };
+		354968FF4664B42FF9C5B6DE5A081B8E /* Eureka.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Eureka.xcconfig; sourceTree = "<group>"; };
+		37ABDBEB1965EF43D0703F7BB6EFF3E2 /* DatePickerRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DatePickerRow.swift; path = Source/Rows/DatePickerRow.swift; sourceTree = "<group>"; };
+		38EF1F83841CF4CE0168735FC24FF324 /* DateInlineRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DateInlineRow.swift; path = Source/Rows/DateInlineRow.swift; sourceTree = "<group>"; };
+		3DE8824E6B29EA8A62988AB4727CBA2E /* RuleRegExp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RuleRegExp.swift; path = Source/Validations/RuleRegExp.swift; sourceTree = "<group>"; };
+		40C1A98D2DA8F59EB21B499A83E6FBEB /* Pods_RFduinoLedButtonInSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_RFduinoLedButtonInSwift.framework; path = "Pods-RFduinoLedButtonInSwift.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		45FA9849DEE7A787FF3921E5CD586DA6 /* SwitchRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwitchRow.swift; path = Source/Rows/SwitchRow.swift; sourceTree = "<group>"; };
+		46CD73EE755DCA7B8A449B295BFE3E26 /* Eureka-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Eureka-dummy.m"; sourceTree = "<group>"; };
+		58C54784DC04832EC29BE3B65460EABE /* ButtonRowWithPresent.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ButtonRowWithPresent.swift; path = Source/Rows/ButtonRowWithPresent.swift; sourceTree = "<group>"; };
+		60D68B3F214A79BCBCEDB4C29990A75E /* Helpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Helpers.swift; path = Source/Core/Helpers.swift; sourceTree = "<group>"; };
+		60F64B2EAE68A23F123E13EB9F6DC95F /* DateRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DateRow.swift; path = Source/Rows/DateRow.swift; sourceTree = "<group>"; };
+		616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		61E0E803458F3F3D69C461864829F4B9 /* MultipleSelectorViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MultipleSelectorViewController.swift; path = Source/Rows/Controllers/MultipleSelectorViewController.swift; sourceTree = "<group>"; };
+		69BA808D607A6F75E00914725299AD25 /* Operators.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Operators.swift; path = Source/Core/Operators.swift; sourceTree = "<group>"; };
+		6BE5FB076000E7513F0AD5425D81FD82 /* TextAreaRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TextAreaRow.swift; path = Source/Rows/TextAreaRow.swift; sourceTree = "<group>"; };
+		77B92C6A782D4D97928E1DC1964905F5 /* DateInlineFieldRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DateInlineFieldRow.swift; path = Source/Rows/Common/DateInlineFieldRow.swift; sourceTree = "<group>"; };
 		77EE97E4B2AA1B51F4DE0ECD8829E330 /* Pods-RFduinoLedButtonInSwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-RFduinoLedButtonInSwift.release.xcconfig"; sourceTree = "<group>"; };
+		7EC994CDC2D681BA26389F78A7E4B325 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		838C56CD10C97CF9829BCDA9DD615920 /* GenericMultipleSelectorRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GenericMultipleSelectorRow.swift; path = Source/Rows/Common/GenericMultipleSelectorRow.swift; sourceTree = "<group>"; };
+		87D1F3D9652791FB7EF233556D42D303 /* LabelRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LabelRow.swift; path = Source/Rows/LabelRow.swift; sourceTree = "<group>"; };
+		884C0D27691D2CA8F19C63F2ED79F566 /* ZFRippleButton-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ZFRippleButton-prefix.pch"; sourceTree = "<group>"; };
+		8A7F0B5C0CAC971F3908D6DDEAB259F1 /* Cell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Cell.swift; path = Source/Core/Cell.swift; sourceTree = "<group>"; };
+		8CFDEDCFD82CFEBA308BB5B1F04368E1 /* ZFRippleButton.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ZFRippleButton.framework; path = ZFRippleButton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		90FF10D0B2F587BB6E6F7291E58BD4A4 /* FieldRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FieldRow.swift; path = Source/Rows/Common/FieldRow.swift; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93D8551CC78049A99C04E2CC1126CE62 /* RuleLength.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RuleLength.swift; path = Source/Validations/RuleLength.swift; sourceTree = "<group>"; };
 		952674176074785A5B74D3CAE4BCA3B8 /* Pods-RFduinoLedButtonInSwift-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-RFduinoLedButtonInSwift-dummy.m"; sourceTree = "<group>"; };
+		967B2CEDB153F7CC651F693996A17AE3 /* AlertRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AlertRow.swift; path = Source/Rows/AlertRow.swift; sourceTree = "<group>"; };
+		9B2E01AC929B1C8B0140FA17D4A4EAED /* RowType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RowType.swift; path = Source/Core/RowType.swift; sourceTree = "<group>"; };
+		9C2408A3B33C01A9FC7ABC5ECEEAE7B6 /* PopoverSelectorRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PopoverSelectorRow.swift; path = Source/Rows/PopoverSelectorRow.swift; sourceTree = "<group>"; };
+		A066EA17F18F202FC1FE9DB5601C0D71 /* Validation.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Validation.swift; path = Source/Core/Validation.swift; sourceTree = "<group>"; };
+		A1CD9A4AC925E5A26ABFBD97412606A2 /* ImageRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageRow.swift; path = Source/Rows/ImageRow.swift; sourceTree = "<group>"; };
+		A1D925E77A267CA792117741CE7AF5E0 /* PickerRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PickerRow.swift; path = Source/Rows/PickerRow.swift; sourceTree = "<group>"; };
+		A37500EB3A1C4F67E3BD92309B218D6E /* ListCheckRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ListCheckRow.swift; path = Source/Rows/SelectableRows/ListCheckRow.swift; sourceTree = "<group>"; };
+		A426178609DBDF249292F38F4B2C3129 /* ZFRippleButton.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = ZFRippleButton.modulemap; sourceTree = "<group>"; };
+		AA4D4172824FBF63ED7AA5FD787E80A2 /* Form.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Form.swift; path = Source/Core/Form.swift; sourceTree = "<group>"; };
+		ABD9769B8DF4F01848E732A11CF5E901 /* ActionSheetRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ActionSheetRow.swift; path = Source/Rows/ActionSheetRow.swift; sourceTree = "<group>"; };
 		AF36566645912653FA617EFC76181385 /* Pods-RFduinoLedButtonInSwift-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-RFduinoLedButtonInSwift-acknowledgements.markdown"; sourceTree = "<group>"; };
-		B7755B4CF973E66959DE22AEBABC842B /* ZFRippleButton-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "ZFRippleButton-dummy.m"; sourceTree = "<group>"; };
-		C624927152A5B54CDA44828B716B07ED /* ZFRippleButton.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ZFRippleButton.framework; path = ZFRippleButton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		B61C9BAB7AEB49D9C2B3E6E0810EB626 /* Protocols.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Protocols.swift; path = Source/Rows/Common/Protocols.swift; sourceTree = "<group>"; };
+		B736E68331872370D6F6EE1B345A5EA0 /* RuleClosure.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RuleClosure.swift; path = Source/Validations/RuleClosure.swift; sourceTree = "<group>"; };
+		B81C27349282F5B16E2C77E0E00226D5 /* RuleEmail.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RuleEmail.swift; path = Source/Validations/RuleEmail.swift; sourceTree = "<group>"; };
+		B8D3C7C0093494C0CACF6B85B27D7EA0 /* DecimalFormatter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DecimalFormatter.swift; path = Source/Rows/Common/DecimalFormatter.swift; sourceTree = "<group>"; };
+		BB26E258C25D45DF7E9EAA80B25399E9 /* Row.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Row.swift; path = Source/Core/Row.swift; sourceTree = "<group>"; };
+		BC23C16155613F0DF191EF134851DB2E /* ZFRippleButton-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ZFRippleButton-umbrella.h"; sourceTree = "<group>"; };
+		BD14AB04A88876745016620A22B3375C /* SelectorViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SelectorViewController.swift; path = Source/Rows/Controllers/SelectorViewController.swift; sourceTree = "<group>"; };
+		C2FC03341B3E2B0D6BB9EB0FA0218DE5 /* PostalAddressRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PostalAddressRow.swift; path = Source/Rows/PostalAddressRow.swift; sourceTree = "<group>"; };
+		C73468FA94673925805C5332869743D8 /* SliderRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SliderRow.swift; path = Source/Rows/SliderRow.swift; sourceTree = "<group>"; };
 		CDC679EEEEF5F23D4693543B8DC9F01C /* Pods-RFduinoLedButtonInSwift-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RFduinoLedButtonInSwift-resources.sh"; sourceTree = "<group>"; };
-		D49ABFA0FCA2ED3BCFDAD4A42F19DC42 /* ZFRippleButton.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ZFRippleButton.xcconfig; sourceTree = "<group>"; };
+		CFCD081946C885F4D91C8A7A4EE945BA /* SelectableRowType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SelectableRowType.swift; path = Source/Core/SelectableRowType.swift; sourceTree = "<group>"; };
+		D09999CF43CCC91A8D5F739437029538 /* DateFieldRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DateFieldRow.swift; path = Source/Rows/Common/DateFieldRow.swift; sourceTree = "<group>"; };
+		D9AAFC59B7205B5DCF59A88F4939618B /* HeaderFooterView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HeaderFooterView.swift; path = Source/Core/HeaderFooterView.swift; sourceTree = "<group>"; };
+		DAE139027755C8D2BFA77218E9C8EE0B /* RuleRange.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RuleRange.swift; path = Source/Validations/RuleRange.swift; sourceTree = "<group>"; };
+		E08FD62EB88E555F07DDEEBF65F36E5B /* Eureka-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Eureka-prefix.pch"; sourceTree = "<group>"; };
 		E28E9CB4619A5C1E02EA2E0935EF8912 /* Pods-RFduinoLedButtonInSwift-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-RFduinoLedButtonInSwift-frameworks.sh"; sourceTree = "<group>"; };
+		E39472F54B1DB72ECF187604E3BDBFE7 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E4ADB7388FF86F0B54AA9281720FAC3F /* RuleURL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RuleURL.swift; path = Source/Validations/RuleURL.swift; sourceTree = "<group>"; };
 		E52AEC671008D8022F16B7897647A0FA /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E995515B0B9504E71D1166D7C7F78E72 /* Pods-RFduinoLedButtonInSwift-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-RFduinoLedButtonInSwift-umbrella.h"; sourceTree = "<group>"; };
 		ED0D92E28DC2D9D3D5ED0FBE8093B694 /* Pods-RFduinoLedButtonInSwift-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-RFduinoLedButtonInSwift-acknowledgements.plist"; sourceTree = "<group>"; };
+		F38A59D7EFF01C46A05430B688478947 /* Core.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Core.swift; path = Source/Core/Core.swift; sourceTree = "<group>"; };
+		F68454A90A76402B1EC9DB7AB5306AB4 /* SelectableSection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SelectableSection.swift; path = Source/Core/SelectableSection.swift; sourceTree = "<group>"; };
+		F76960B724B93525A7A5FBBDAC0BF535 /* Eureka.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Eureka.modulemap; sourceTree = "<group>"; };
 		FBEF72453BF59BF902B24484B3E2F22B /* Pods-RFduinoLedButtonInSwift.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-RFduinoLedButtonInSwift.modulemap"; sourceTree = "<group>"; };
-		FCA1D3686EF3A396772BC245F6A94781 /* ZFRippleButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ZFRippleButton.swift; path = Classes/ZFRippleButton.swift; sourceTree = "<group>"; };
+		FD186C33058DF939196F648A830B4506 /* PresenterRowType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PresenterRowType.swift; path = Source/Core/PresenterRowType.swift; sourceTree = "<group>"; };
+		FDF12320659DC91250BEFE9E25BE3758 /* PushRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PushRow.swift; path = Source/Rows/PushRow.swift; sourceTree = "<group>"; };
+		FFA2C823356D4003D9A53E8EC5D152AD /* CheckRow.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CheckRow.swift; path = Source/Rows/CheckRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		6A9B7CF798406D2311DE070972AC2611 /* Frameworks */ = {
+		1111C824369E52722B6A77192154A214 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EEAAD081689C463B5BEC4EBFD1540E55 /* Foundation.framework in Frameworks */,
+				572673C2B8B9D82F0E2D5F818D5EDFB4 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		76C65F1D5B29CED8B7C8A5F87E8A875D /* Frameworks */ = {
+		5DDC94B6AC03872CE52942E345226156 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EB9E6B1F7D3932AC3AAE8F6A452D97B3 /* Foundation.framework in Frameworks */,
+				DAF560833E1DD9F775B85DDFDBB5E7EC /* Foundation.framework in Frameworks */,
+				B8B8626096DA5F03BF77A73FAD5B72B4 /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7F2C2402558EA77403592774E276F78C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				38C6CFC14B65E350CD8B902254C3D134 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		295B57EA29B86AF22BBD4F922AA3B792 /* Pods */ = {
+		1B15C382F3210874FE886E8518735369 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				F71C7DDB9F5D97D9FE77CAB69AC10024 /* ZFRippleButton */,
+				10102F72533BE694E40E158C3EDE8FC8 /* Eureka.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		3B70A32E5FD6A86BBAB035013602CA90 /* Eureka */ = {
+			isa = PBXGroup;
+			children = (
+				ABD9769B8DF4F01848E732A11CF5E901 /* ActionSheetRow.swift */,
+				967B2CEDB153F7CC651F693996A17AE3 /* AlertRow.swift */,
+				279A2FF410D9FFC6680679EF5B5B1A77 /* BaseRow.swift */,
+				33EF9FA7AC9CE1008D67858361C31C70 /* ButtonRow.swift */,
+				58C54784DC04832EC29BE3B65460EABE /* ButtonRowWithPresent.swift */,
+				8A7F0B5C0CAC971F3908D6DDEAB259F1 /* Cell.swift */,
+				1BD0BED240823306DEA6DFD5DDBAD7B6 /* CellType.swift */,
+				FFA2C823356D4003D9A53E8EC5D152AD /* CheckRow.swift */,
+				F38A59D7EFF01C46A05430B688478947 /* Core.swift */,
+				D09999CF43CCC91A8D5F739437029538 /* DateFieldRow.swift */,
+				77B92C6A782D4D97928E1DC1964905F5 /* DateInlineFieldRow.swift */,
+				38EF1F83841CF4CE0168735FC24FF324 /* DateInlineRow.swift */,
+				37ABDBEB1965EF43D0703F7BB6EFF3E2 /* DatePickerRow.swift */,
+				60F64B2EAE68A23F123E13EB9F6DC95F /* DateRow.swift */,
+				B8D3C7C0093494C0CACF6B85B27D7EA0 /* DecimalFormatter.swift */,
+				90FF10D0B2F587BB6E6F7291E58BD4A4 /* FieldRow.swift */,
+				22E10AA97050A1F11C3C62193645F0C1 /* FieldsRow.swift */,
+				AA4D4172824FBF63ED7AA5FD787E80A2 /* Form.swift */,
+				838C56CD10C97CF9829BCDA9DD615920 /* GenericMultipleSelectorRow.swift */,
+				D9AAFC59B7205B5DCF59A88F4939618B /* HeaderFooterView.swift */,
+				60D68B3F214A79BCBCEDB4C29990A75E /* Helpers.swift */,
+				11A0B22025E14505EBA3A8B784792213 /* ImagePickerController.swift */,
+				A1CD9A4AC925E5A26ABFBD97412606A2 /* ImageRow.swift */,
+				08D9B1CA5A2F9A50866B03067C9A0925 /* InlineRowType.swift */,
+				87D1F3D9652791FB7EF233556D42D303 /* LabelRow.swift */,
+				A37500EB3A1C4F67E3BD92309B218D6E /* ListCheckRow.swift */,
+				2A1140625AF898DC128ED9562BD9E8E9 /* MultipleSelectorRow.swift */,
+				61E0E803458F3F3D69C461864829F4B9 /* MultipleSelectorViewController.swift */,
+				1CD9530B7AB22FB6C269D4E20CDF554C /* NavigationAccessoryView.swift */,
+				69BA808D607A6F75E00914725299AD25 /* Operators.swift */,
+				22017D87581C4D327C6E750BF60503B3 /* OptionsRow.swift */,
+				1A25B4C156FF937B915DFBECF6A81B97 /* PickerInlineRow.swift */,
+				A1D925E77A267CA792117741CE7AF5E0 /* PickerRow.swift */,
+				9C2408A3B33C01A9FC7ABC5ECEEAE7B6 /* PopoverSelectorRow.swift */,
+				C2FC03341B3E2B0D6BB9EB0FA0218DE5 /* PostalAddressRow.swift */,
+				FD186C33058DF939196F648A830B4506 /* PresenterRowType.swift */,
+				B61C9BAB7AEB49D9C2B3E6E0810EB626 /* Protocols.swift */,
+				FDF12320659DC91250BEFE9E25BE3758 /* PushRow.swift */,
+				BB26E258C25D45DF7E9EAA80B25399E9 /* Row.swift */,
+				11150FA8DCF0E641D7942E4EB9A51134 /* RowControllerType.swift */,
+				0492536418465EB72BAD9F7878E1AAC3 /* RowProtocols.swift */,
+				9B2E01AC929B1C8B0140FA17D4A4EAED /* RowType.swift */,
+				B736E68331872370D6F6EE1B345A5EA0 /* RuleClosure.swift */,
+				B81C27349282F5B16E2C77E0E00226D5 /* RuleEmail.swift */,
+				93D8551CC78049A99C04E2CC1126CE62 /* RuleLength.swift */,
+				DAE139027755C8D2BFA77218E9C8EE0B /* RuleRange.swift */,
+				3DE8824E6B29EA8A62988AB4727CBA2E /* RuleRegExp.swift */,
+				1B0AF35CCCB7F24980C23CB9A86AC8FC /* RuleRequired.swift */,
+				E4ADB7388FF86F0B54AA9281720FAC3F /* RuleURL.swift */,
+				2DE424BE0BA99254534AAC3032973E21 /* Section.swift */,
+				2EF234F0F0B633E41A4E954CC96DAED8 /* SegmentedRow.swift */,
+				CFCD081946C885F4D91C8A7A4EE945BA /* SelectableRowType.swift */,
+				F68454A90A76402B1EC9DB7AB5306AB4 /* SelectableSection.swift */,
+				1E2FBC52E900ABA93D1E69652E3B7FFB /* SelectorAlertController.swift */,
+				26CE9CF3551DCE8A22A350628C253C3A /* SelectorRow.swift */,
+				BD14AB04A88876745016620A22B3375C /* SelectorViewController.swift */,
+				C73468FA94673925805C5332869743D8 /* SliderRow.swift */,
+				0A0896853D1B872327596A6A4E6B6205 /* StepperRow.swift */,
+				45FA9849DEE7A787FF3921E5CD586DA6 /* SwitchRow.swift */,
+				6BE5FB076000E7513F0AD5425D81FD82 /* TextAreaRow.swift */,
+				A066EA17F18F202FC1FE9DB5601C0D71 /* Validation.swift */,
+				1B15C382F3210874FE886E8518735369 /* Resources */,
+				90FA928788F5BE5481AB5BEAC33F8E19 /* Support Files */,
+			);
+			name = Eureka;
+			path = Eureka;
+			sourceTree = "<group>";
+		};
+		433CD3331B6C3787F473C941B61FC68F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E6EE98446B568159EE277B68FD442AF0 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		69953B3E6CCE8E3A8C88CB6C36AE4CD5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3B70A32E5FD6A86BBAB035013602CA90 /* Eureka */,
+				7CDBCA4B4CB91C33E0364F5C0FF3F986 /* ZFRippleButton */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		3AAEA555148D3E4F5A28446A15217E93 /* Products */ = {
+		7CDBCA4B4CB91C33E0364F5C0FF3F986 /* ZFRippleButton */ = {
 			isa = PBXGroup;
 			children = (
-				4892C020FC6D44DCD4F8DBCEB93F898E /* Pods_RFduinoLedButtonInSwift.framework */,
-				C624927152A5B54CDA44828B716B07ED /* ZFRippleButton.framework */,
+				04F826F17C1887AB1D2A338344E89820 /* ZFRippleButton.swift */,
+				D1AF5F40635CC909E91426BF7AAF5489 /* Support Files */,
 			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */,
-			);
-			name = iOS;
+			name = ZFRippleButton;
+			path = ZFRippleButton;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				295B57EA29B86AF22BBD4F922AA3B792 /* Pods */,
-				3AAEA555148D3E4F5A28446A15217E93 /* Products */,
+				433CD3331B6C3787F473C941B61FC68F /* Frameworks */,
+				69953B3E6CCE8E3A8C88CB6C36AE4CD5 /* Pods */,
+				8231082769314C06698B8B3B86897A61 /* Products */,
 				D31DD875DCE6A357A4411FB9BE1D91DD /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+		8231082769314C06698B8B3B86897A61 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */,
+				0E15C1237F0E83B73D338E363FDB71C1 /* Eureka.framework */,
+				40C1A98D2DA8F59EB21B499A83E6FBEB /* Pods_RFduinoLedButtonInSwift.framework */,
+				8CFDEDCFD82CFEBA308BB5B1F04368E1 /* ZFRippleButton.framework */,
 			);
-			name = Frameworks;
+			name = Products;
+			sourceTree = "<group>";
+		};
+		90FA928788F5BE5481AB5BEAC33F8E19 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				F76960B724B93525A7A5FBBDAC0BF535 /* Eureka.modulemap */,
+				354968FF4664B42FF9C5B6DE5A081B8E /* Eureka.xcconfig */,
+				46CD73EE755DCA7B8A449B295BFE3E26 /* Eureka-dummy.m */,
+				E08FD62EB88E555F07DDEEBF65F36E5B /* Eureka-prefix.pch */,
+				0D8E5204E3FEE76E6E441B85629F7DD3 /* Eureka-umbrella.h */,
+				0B153899DC3B911C203F380288E372A0 /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Eureka";
 			sourceTree = "<group>";
 		};
 		D15908CDAE2354856C2D569C5F3AB3D9 /* Pods-RFduinoLedButtonInSwift */ = {
@@ -132,6 +381,20 @@
 			path = "Target Support Files/Pods-RFduinoLedButtonInSwift";
 			sourceTree = "<group>";
 		};
+		D1AF5F40635CC909E91426BF7AAF5489 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				E39472F54B1DB72ECF187604E3BDBFE7 /* Info.plist */,
+				A426178609DBDF249292F38F4B2C3129 /* ZFRippleButton.modulemap */,
+				06D7812A17CDB3A51BEC3FB5E751B78D /* ZFRippleButton.xcconfig */,
+				24CE9503DBB6AB2CEC89E4F9508EA607 /* ZFRippleButton-dummy.m */,
+				884C0D27691D2CA8F19C63F2ED79F566 /* ZFRippleButton-prefix.pch */,
+				BC23C16155613F0DF191EF134851DB2E /* ZFRippleButton-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/ZFRippleButton";
+			sourceTree = "<group>";
+		};
 		D31DD875DCE6A357A4411FB9BE1D91DD /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -140,59 +403,89 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		DD534366180C3A61A6FDED77BCC17EFA /* Support Files */ = {
+		E6EE98446B568159EE277B68FD442AF0 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				60B58DDA86DA4F72E6AED165E78A4FA3 /* Info.plist */,
-				72FE0ADB38CA13C417C556F66A2E28C6 /* ZFRippleButton.modulemap */,
-				D49ABFA0FCA2ED3BCFDAD4A42F19DC42 /* ZFRippleButton.xcconfig */,
-				B7755B4CF973E66959DE22AEBABC842B /* ZFRippleButton-dummy.m */,
-				5AC3E22142BCA6A43E1625B40BB5F277 /* ZFRippleButton-prefix.pch */,
-				18482E3A82F91F05CBD815FAE34273FE /* ZFRippleButton-umbrella.h */,
+				616BEB51ECCAD129BDBCB7A956B56CC6 /* Foundation.framework */,
+				7EC994CDC2D681BA26389F78A7E4B325 /* UIKit.framework */,
 			);
-			name = "Support Files";
-			path = "../Target Support Files/ZFRippleButton";
-			sourceTree = "<group>";
-		};
-		F71C7DDB9F5D97D9FE77CAB69AC10024 /* ZFRippleButton */ = {
-			isa = PBXGroup;
-			children = (
-				FCA1D3686EF3A396772BC245F6A94781 /* ZFRippleButton.swift */,
-				DD534366180C3A61A6FDED77BCC17EFA /* Support Files */,
-			);
-			name = ZFRippleButton;
-			path = ZFRippleButton;
+			name = iOS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		AD6EC7846C65F275A2732DB0EC3AFC78 /* Headers */ = {
+		7213D46C538380FE84DFB3A6854A4A09 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6EF6C563825EAD88BA23778C8419F8BB /* Pods-RFduinoLedButtonInSwift-umbrella.h in Headers */,
+				59783DD1D7B7EE3EA4E08D9E4B45AB7C /* ZFRippleButton-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CFD8E6D7452DEA20207E2DC925EC2B35 /* Headers */ = {
+		BAE348C9EC4D57A7A7F78CA770382AE1 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BEAF592E23AF781027379E343D4B9C1 /* ZFRippleButton-umbrella.h in Headers */,
+				11A044B8C31303378B8237DCB44D318D /* Eureka-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F57849062D7AB5158E01E0D51D240652 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E570E0E72987EAF1C39ED3AEFC86C15 /* Pods-RFduinoLedButtonInSwift-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		2D73632FCFCF81C0AC4AF775A80ED0A4 /* ZFRippleButton */ = {
+		2B5B912D4A9FCFB53C4E96B092CAA7A0 /* Pods-RFduinoLedButtonInSwift */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C8F8D4B17CD8D0905BA1BB25F11D42AE /* Build configuration list for PBXNativeTarget "ZFRippleButton" */;
+			buildConfigurationList = 43148C5843680E7476C49EF00601FB5F /* Build configuration list for PBXNativeTarget "Pods-RFduinoLedButtonInSwift" */;
 			buildPhases = (
-				786AB3EF5450ABE56B25649652B15655 /* Sources */,
-				76C65F1D5B29CED8B7C8A5F87E8A875D /* Frameworks */,
-				CFD8E6D7452DEA20207E2DC925EC2B35 /* Headers */,
+				D6A62352E751FAF5F32ECEA766508669 /* Sources */,
+				7F2C2402558EA77403592774E276F78C /* Frameworks */,
+				F57849062D7AB5158E01E0D51D240652 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F56AE40400F8D9BF92482351653A96F5 /* PBXTargetDependency */,
+				03C7139D55C49CA01FEF7318EF2C1C25 /* PBXTargetDependency */,
+			);
+			name = "Pods-RFduinoLedButtonInSwift";
+			productName = "Pods-RFduinoLedButtonInSwift";
+			productReference = 40C1A98D2DA8F59EB21B499A83E6FBEB /* Pods_RFduinoLedButtonInSwift.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		6714684D1854593CE52E081A4A8E23CA /* Eureka */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EB4E47F222003A91469E9225D9CCADD7 /* Build configuration list for PBXNativeTarget "Eureka" */;
+			buildPhases = (
+				A2B6E97A5F42205B6E225E1AD7AD57CD /* Sources */,
+				5DDC94B6AC03872CE52942E345226156 /* Frameworks */,
+				F0F6B842E1DB1172004ADF39FB6B5E24 /* Resources */,
+				BAE348C9EC4D57A7A7F78CA770382AE1 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Eureka;
+			productName = Eureka;
+			productReference = 0E15C1237F0E83B73D338E363FDB71C1 /* Eureka.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		B0CC6F39BF8C32EE7558E82725C608BF /* ZFRippleButton */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 56615069D55B5916FD6CD588A079E46A /* Build configuration list for PBXNativeTarget "ZFRippleButton" */;
+			buildPhases = (
+				5A1703E066AF852A5019D0C6BB89FC4F /* Sources */,
+				1111C824369E52722B6A77192154A214 /* Frameworks */,
+				7213D46C538380FE84DFB3A6854A4A09 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -200,25 +493,7 @@
 			);
 			name = ZFRippleButton;
 			productName = ZFRippleButton;
-			productReference = C624927152A5B54CDA44828B716B07ED /* ZFRippleButton.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		BD52ECF7CC8F02A893F387C79880DB82 /* Pods-RFduinoLedButtonInSwift */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 18630565B042F1C4CFC68CFABE229C3E /* Build configuration list for PBXNativeTarget "Pods-RFduinoLedButtonInSwift" */;
-			buildPhases = (
-				D0A31D012D5A98CDF0FDF69327D9BBC5 /* Sources */,
-				6A9B7CF798406D2311DE070972AC2611 /* Frameworks */,
-				AD6EC7846C65F275A2732DB0EC3AFC78 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				60C89182303A0E0AA0A1840D5F6A53BF /* PBXTargetDependency */,
-			);
-			name = "Pods-RFduinoLedButtonInSwift";
-			productName = "Pods-RFduinoLedButtonInSwift";
-			productReference = 4892C020FC6D44DCD4F8DBCEB93F898E /* Pods_RFduinoLedButtonInSwift.framework */;
+			productReference = 8CFDEDCFD82CFEBA308BB5B1F04368E1 /* ZFRippleButton.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -238,49 +513,170 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 3AAEA555148D3E4F5A28446A15217E93 /* Products */;
+			productRefGroup = 8231082769314C06698B8B3B86897A61 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				BD52ECF7CC8F02A893F387C79880DB82 /* Pods-RFduinoLedButtonInSwift */,
-				2D73632FCFCF81C0AC4AF775A80ED0A4 /* ZFRippleButton */,
+				6714684D1854593CE52E081A4A8E23CA /* Eureka */,
+				2B5B912D4A9FCFB53C4E96B092CAA7A0 /* Pods-RFduinoLedButtonInSwift */,
+				B0CC6F39BF8C32EE7558E82725C608BF /* ZFRippleButton */,
 			);
 		};
 /* End PBXProject section */
 
-/* Begin PBXSourcesBuildPhase section */
-		786AB3EF5450ABE56B25649652B15655 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
+/* Begin PBXResourcesBuildPhase section */
+		F0F6B842E1DB1172004ADF39FB6B5E24 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F298717F5CA93D00F8A12704E9FFE1CB /* ZFRippleButton-dummy.m in Sources */,
-				6A7389D8797213AB1220C74B38DF08EF /* ZFRippleButton.swift in Sources */,
+				19264965154E9EDB5226D4EDAB89025D /* Eureka.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D0A31D012D5A98CDF0FDF69327D9BBC5 /* Sources */ = {
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5A1703E066AF852A5019D0C6BB89FC4F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D60D0687213202BCAFA8B8410387D1D /* Pods-RFduinoLedButtonInSwift-dummy.m in Sources */,
+				943F9D0C26D5EF6EE5EAD0A111D166B0 /* ZFRippleButton-dummy.m in Sources */,
+				367071879B7879526848D982C8AF9335 /* ZFRippleButton.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A2B6E97A5F42205B6E225E1AD7AD57CD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				205DBD80795243E7F1F2706CF0BAB658 /* ActionSheetRow.swift in Sources */,
+				57DA5179C227C98388093D8BE14E09AD /* AlertRow.swift in Sources */,
+				6125CB4F44198735F73A584809EC5C77 /* BaseRow.swift in Sources */,
+				D731D1B1DD38EF61A197D5686A5A4220 /* ButtonRow.swift in Sources */,
+				C41A1871D49485777DDA42CEFE23BBC4 /* ButtonRowWithPresent.swift in Sources */,
+				5C39033449AFA9AA4F1677C5827BDCAD /* Cell.swift in Sources */,
+				9FD5042DB9CECD7B527C075496C005A2 /* CellType.swift in Sources */,
+				475A3FBAC4338A7652294300AFC9E10F /* CheckRow.swift in Sources */,
+				6CDFB7F9541B4B015F0DD87F68A65822 /* Core.swift in Sources */,
+				F505C06578EEF89698189EAB97ACCDF5 /* DateFieldRow.swift in Sources */,
+				3EC732E46BFDCA0FE3758C58EA4E397E /* DateInlineFieldRow.swift in Sources */,
+				85ED5888EB48C9C1A192FE9B022357DA /* DateInlineRow.swift in Sources */,
+				BE9F65BD192A3D61CDF954F3089EB5BD /* DatePickerRow.swift in Sources */,
+				979664EC1833E95B58781E1A43E6B8B7 /* DateRow.swift in Sources */,
+				32887D58D006EDF5DDA652675EE3AF07 /* DecimalFormatter.swift in Sources */,
+				5A1E6D7B6271C5BB393BF4C18154945F /* Eureka-dummy.m in Sources */,
+				9137D4FC8E74AE2410A3EC354018DF7D /* FieldRow.swift in Sources */,
+				E794E1D3B883A0648631CF6BC3719942 /* FieldsRow.swift in Sources */,
+				9F653BE07BB2E5AE5FF3D2829F27276D /* Form.swift in Sources */,
+				B5933A8391A6A543A6505D5B0DB89AD2 /* GenericMultipleSelectorRow.swift in Sources */,
+				C8DE499A1197BCCE48EA1589BFD6E4D7 /* HeaderFooterView.swift in Sources */,
+				100212CAFA20201068ADD0BD81AC08AE /* Helpers.swift in Sources */,
+				A6BF74547E0C0D7EE6CAC6A09677856F /* ImagePickerController.swift in Sources */,
+				075275CE3B5E664E0F3795FE48B2EB8F /* ImageRow.swift in Sources */,
+				D5F055CE50E153E0995A63C8F87D5E62 /* InlineRowType.swift in Sources */,
+				80B9D90A49E9B046B50F7B74309E0D97 /* LabelRow.swift in Sources */,
+				3700C94E5C374A95625D3E0F240A4784 /* ListCheckRow.swift in Sources */,
+				5A9BD5F3DA89253CD0DBF2837362433B /* MultipleSelectorRow.swift in Sources */,
+				4A06316C2EE5C4EAD2D6329B011083EF /* MultipleSelectorViewController.swift in Sources */,
+				E77BB22DA973DA7F4A21A187C1FD7B9E /* NavigationAccessoryView.swift in Sources */,
+				08B8F3A75CE9B9FECAFDA94BE4A79A69 /* Operators.swift in Sources */,
+				040FC3B50EB8AD3DA133F7FDFCD0D60F /* OptionsRow.swift in Sources */,
+				33826DBF6CB3CA3BC4122496517D65B7 /* PickerInlineRow.swift in Sources */,
+				4DFF53B04C9D8AEBC0D131616FDFC930 /* PickerRow.swift in Sources */,
+				627EF66A8132039363361C9B73F571BC /* PopoverSelectorRow.swift in Sources */,
+				D1DB2CBABDCB1154A2D7B8DB2A5BCDBB /* PostalAddressRow.swift in Sources */,
+				6D0BA76BF0C3A60193AC3BCC80CEDF0C /* PresenterRowType.swift in Sources */,
+				DD422FE21F3FDC3702E163972B0B30FF /* Protocols.swift in Sources */,
+				C4909B6DA77B90367DB590B986414E26 /* PushRow.swift in Sources */,
+				4DD9782D6EDDE4A3E0E152F3057B368E /* Row.swift in Sources */,
+				6AF65E1E19A63090F1F8E459BA6B969E /* RowControllerType.swift in Sources */,
+				A7B399EA9DB0669B2F5941B0E0A9A8AA /* RowProtocols.swift in Sources */,
+				966E1E6C2C86DE793863BF6FC5366A59 /* RowType.swift in Sources */,
+				92CA7F5CFBFBED0A0F98C9AF688F3233 /* RuleClosure.swift in Sources */,
+				2F5C90A0614064B41262E2041813D62B /* RuleEmail.swift in Sources */,
+				42425F2C755A7CE9B21A5CC9A19285AB /* RuleLength.swift in Sources */,
+				59004ADD092154D9411F5BFA85F8CB76 /* RuleRange.swift in Sources */,
+				DDBDB14B58BD880B3DD2F0279920369E /* RuleRegExp.swift in Sources */,
+				AE303ED6FFE4F093CF1268D260CB3115 /* RuleRequired.swift in Sources */,
+				BCBFA0EFED02E3D34E6197E59413AC2C /* RuleURL.swift in Sources */,
+				63A5781B85464CB28F1357CA70FAC03C /* Section.swift in Sources */,
+				AC139C1A36D74C05D0F5A7B7BA4EFF67 /* SegmentedRow.swift in Sources */,
+				07F3FA2D7E769356117A424D803A985C /* SelectableRowType.swift in Sources */,
+				E01A5C2AA9EDAEBF7ADE9EB99E54CA05 /* SelectableSection.swift in Sources */,
+				6B7A9A891115AB85DC1FE8FED58B944B /* SelectorAlertController.swift in Sources */,
+				F5324A6E826E11F79B31DDA4B47E4156 /* SelectorRow.swift in Sources */,
+				BE0FF7C139CC3FA2F75D7019A82F49F1 /* SelectorViewController.swift in Sources */,
+				3FDBDFCA0F88C5E5B5F2FB2287B98299 /* SliderRow.swift in Sources */,
+				6F2A10CEE632791904A513A194D2A662 /* StepperRow.swift in Sources */,
+				24408967224602F9F433B419A0480DB9 /* SwitchRow.swift in Sources */,
+				F02B3FB5D2A63FCDF56FCD6DDCD81976 /* TextAreaRow.swift in Sources */,
+				76069458ABF3FC965E1F29CE753EAFDB /* Validation.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D6A62352E751FAF5F32ECEA766508669 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0948EBB2DA2F5CE08FD27630B726F6C7 /* Pods-RFduinoLedButtonInSwift-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		60C89182303A0E0AA0A1840D5F6A53BF /* PBXTargetDependency */ = {
+		03C7139D55C49CA01FEF7318EF2C1C25 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = ZFRippleButton;
-			target = 2D73632FCFCF81C0AC4AF775A80ED0A4 /* ZFRippleButton */;
-			targetProxy = 8E4FC19DE2235E42EC53F0189654A3AF /* PBXContainerItemProxy */;
+			target = B0CC6F39BF8C32EE7558E82725C608BF /* ZFRippleButton */;
+			targetProxy = CA8921E8C13B3DF37D9677D1F754E6F1 /* PBXContainerItemProxy */;
+		};
+		F56AE40400F8D9BF92482351653A96F5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Eureka;
+			target = 6714684D1854593CE52E081A4A8E23CA /* Eureka */;
+			targetProxy = 99C2BB29EC9E5A83A02D27BC703B9521 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		0AD3FFE586090F9FBA8A79EE10CEC792 /* Release */ = {
+		225FB7109148F7C5E076EADF568B7421 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D49ABFA0FCA2ED3BCFDAD4A42F19DC42 /* ZFRippleButton.xcconfig */;
+			baseConfigurationReference = 06D7812A17CDB3A51BEC3FB5E751B78D /* ZFRippleButton.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/ZFRippleButton/ZFRippleButton-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ZFRippleButton/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/ZFRippleButton/ZFRippleButton.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = ZFRippleButton;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		22B180F4006AD1058A54CCCAFE5CDCEE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 77EE97E4B2AA1B51F4DE0ECD8829E330 /* Pods-RFduinoLedButtonInSwift.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -291,16 +687,88 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/ZFRippleButton/ZFRippleButton-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ZFRippleButton/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-RFduinoLedButtonInSwift/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-RFduinoLedButtonInSwift/Pods-RFduinoLedButtonInSwift.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_RFduinoLedButtonInSwift;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		2D1C3D40FBD0FDE395F20101A4E0C9CB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 354968FF4664B42FF9C5B6DE5A081B8E /* Eureka.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Eureka/Eureka-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Eureka/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/ZFRippleButton/ZFRippleButton.modulemap";
+				MODULEMAP_FILE = "Target Support Files/Eureka/Eureka.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = Eureka;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		4207FA0863893BCF26DA14A41E07FEE2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 354968FF4664B42FF9C5B6DE5A081B8E /* Eureka.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Eureka/Eureka-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Eureka/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Eureka/Eureka.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = ZFRippleButton;
+				PRODUCT_NAME = Eureka;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 2.3;
@@ -354,45 +822,9 @@
 			};
 			name = Debug;
 		};
-		702EEE6A94AAFC479B27C87EAC99C61A /* Debug */ = {
+		5BA6FEDF85A30E8676B08CD3E8B06280 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 13CA12879F51E22CA0AC01CA4042538E /* Pods-RFduinoLedButtonInSwift.debug.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-RFduinoLedButtonInSwift/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-RFduinoLedButtonInSwift/Pods-RFduinoLedButtonInSwift.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_RFduinoLedButtonInSwift;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		B0EE92688AD38E859315241F0BBB41C1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 77EE97E4B2AA1B51F4DE0ECD8829E330 /* Pods-RFduinoLedButtonInSwift.release.xcconfig */;
+			baseConfigurationReference = 06D7812A17CDB3A51BEC3FB5E751B78D /* ZFRippleButton.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -403,22 +835,20 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-RFduinoLedButtonInSwift/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/ZFRippleButton/ZFRippleButton-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/ZFRippleButton/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-RFduinoLedButtonInSwift/Pods-RFduinoLedButtonInSwift.modulemap";
+				MODULEMAP_FILE = "Target Support Files/ZFRippleButton/ZFRippleButton.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_RFduinoLedButtonInSwift;
+				PRODUCT_NAME = ZFRippleButton;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -465,9 +895,9 @@
 			};
 			name = Release;
 		};
-		D7B8F8FFD28F62D68248BB6199E5D440 /* Debug */ = {
+		BE2A49D733298EBE6132AE0F5320B75F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D49ABFA0FCA2ED3BCFDAD4A42F19DC42 /* ZFRippleButton.xcconfig */;
+			baseConfigurationReference = 13CA12879F51E22CA0AC01CA4042538E /* Pods-RFduinoLedButtonInSwift.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -478,16 +908,21 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/ZFRippleButton/ZFRippleButton-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/ZFRippleButton/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-RFduinoLedButtonInSwift/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/ZFRippleButton/ZFRippleButton.modulemap";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-RFduinoLedButtonInSwift/Pods-RFduinoLedButtonInSwift.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = ZFRippleButton;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = Pods_RFduinoLedButtonInSwift;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -501,15 +936,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		18630565B042F1C4CFC68CFABE229C3E /* Build configuration list for PBXNativeTarget "Pods-RFduinoLedButtonInSwift" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				702EEE6A94AAFC479B27C87EAC99C61A /* Debug */,
-				B0EE92688AD38E859315241F0BBB41C1 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -519,11 +945,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C8F8D4B17CD8D0905BA1BB25F11D42AE /* Build configuration list for PBXNativeTarget "ZFRippleButton" */ = {
+		43148C5843680E7476C49EF00601FB5F /* Build configuration list for PBXNativeTarget "Pods-RFduinoLedButtonInSwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D7B8F8FFD28F62D68248BB6199E5D440 /* Debug */,
-				0AD3FFE586090F9FBA8A79EE10CEC792 /* Release */,
+				BE2A49D733298EBE6132AE0F5320B75F /* Debug */,
+				22B180F4006AD1058A54CCCAFE5CDCEE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		56615069D55B5916FD6CD588A079E46A /* Build configuration list for PBXNativeTarget "ZFRippleButton" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				225FB7109148F7C5E076EADF568B7421 /* Debug */,
+				5BA6FEDF85A30E8676B08CD3E8B06280 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EB4E47F222003A91469E9225D9CCADD7 /* Build configuration list for PBXNativeTarget "Eureka" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2D1C3D40FBD0FDE395F20101A4E0C9CB /* Debug */,
+				4207FA0863893BCF26DA14A41E07FEE2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

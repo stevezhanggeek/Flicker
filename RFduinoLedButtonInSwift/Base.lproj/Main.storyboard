@@ -96,10 +96,10 @@
             </objects>
             <point key="canvasLocation" x="2005.5999999999999" y="356.67166416791605"/>
         </scene>
-        <!--View Controller-->
+        <!--StudyVC-->
         <scene sceneID="nZ1-jf-czN">
             <objects>
-                <viewController id="cr4-zT-I4l" sceneMemberID="viewController">
+                <viewController id="cr4-zT-I4l" customClass="StudyVC" customModule="RFduinoLedButtonInSwift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NpS-7y-hW1"/>
                         <viewControllerLayoutGuide type="bottom" id="ece-mg-7HJ"/>
@@ -109,6 +109,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="g6E-XD-oqG" kind="show" identifier="showTestVCFromStudyVC" id="jkr-6c-rdT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Tlt-vZ-rsA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -286,4 +289,7 @@
     <resources>
         <image name="SettingIcon" width="22" height="22"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="wQS-Aj-BAW"/>
+    </inferredMetricsTieBreakers>
 </document>

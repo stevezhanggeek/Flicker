@@ -13,7 +13,8 @@ class TestVC: UIViewController, RFduinoDelegate {
     var pauseFlag = false
     var lastTimestamp = NSDate()
     
-    var testOrder = [0, 1, 1, 0]
+    var studyCondition: StudyCondition!
+    var testOrder = [0, 1, 0, 1]
     var testStep = 0
     
     // (Method, Frequency, TimeInterval)
@@ -34,8 +35,9 @@ class TestVC: UIViewController, RFduinoDelegate {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
 
-        sendByte(3)
-        sendByte(1)
+        setupStudyCondition()
+        
+        setupLED()
         
         bigButton.setTitle("Start Test", forState: UIControlState.Normal)
         
@@ -53,6 +55,91 @@ class TestVC: UIViewController, RFduinoDelegate {
         
         resultList.removeAll()
         reset()
+    }
+    
+    func setupStudyCondition() {
+        if studyCondition.useReferenceDevice {
+            let alertController = UIAlertController(title: "Current Study Condition", message: "ReferenceDevice", preferredStyle: .Alert)
+            alertController.addTextFieldWithConfigurationHandler { (textField) in
+                textField.placeholder = "From Min 1"
+                textField.keyboardType = UIKeyboardType.NumberPad
+            }
+            alertController.addTextFieldWithConfigurationHandler { (textField) in
+                textField.placeholder = "From Max 1"
+                textField.keyboardType = UIKeyboardType.NumberPad
+            }
+            alertController.addTextFieldWithConfigurationHandler { (textField) in
+                textField.placeholder = "From Min 2"
+                textField.keyboardType = UIKeyboardType.NumberPad
+            }
+            alertController.addTextFieldWithConfigurationHandler { (textField) in
+                textField.placeholder = "From Max 2"
+                textField.keyboardType = UIKeyboardType.NumberPad
+            }
+
+            let saveAction = UIAlertAction(title: "Save", style: .Default) { (_) in
+                var results = [(String, Int, Double)]()
+                for i in 0 ..< alertController.textFields!.count {
+                    let textField = alertController.textFields![i]
+                    if textField.text != nil {
+                        if let result = Int(textField.text!) {
+                            if i%2 == 0 {
+                                results.append(("limitsFreqFromMin", result, -1))
+                            } else {
+                                results.append(("limitsFreqFromMax", result, -1))
+                            }
+                        } else {
+                            results.append(("Wrong", -1, -1))
+                        }
+                    }
+                }
+                print(results)
+                
+                finalResult.testResultList.append(results)
+
+                saveFinalResultToCSV("Result_0")
+                studyProgress += 1
+                
+                self.navigationController?.popViewControllerAnimated(true)
+            }
+            alertController.addAction(saveAction)
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+        } else {
+            var message = "OurDevice, "
+            if studyCondition.lowAmbientLight {
+                message += "LowAmbient, "
+            } else {
+                message += "HighAmbient, "
+            }
+            if studyCondition.lowIntensityLED {
+                message += "LowLED"
+            } else {
+                message += "HighLED"
+            }
+            
+            let alertController = UIAlertController(title: "Current Study Condition", message: message, preferredStyle: .Alert)
+            
+            let okAction = UIAlertAction(title: "OK", style: .Default) { (_) in
+            }
+            alertController.addAction(okAction)
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
+    }
+    
+    func setupLED() {
+        if studyCondition.lowIntensityLED {
+            sendByte(enumLED.lowIntensity.rawValue)
+        } else {
+            sendByte(enumLED.highIntensity.rawValue)
+        }
+
+        turnOffLED()
+    }
+    
+    func turnOffLED() {
+        sendByte(1)
     }
     
     func reset() {
@@ -149,11 +236,17 @@ class TestVC: UIViewController, RFduinoDelegate {
         let alertController = UIAlertController(title: "Test Completed!", message: message, preferredStyle: .Alert)
         
         let saveAction = UIAlertAction(title: "OK", style: .Default) { (_) in
+            saveFinalResultToCSV("Result_0")
             self.navigationController?.popViewControllerAnimated(true)
         }
         alertController.addAction(saveAction)
         
         self.presentViewController(alertController, animated: true, completion: nil)
+        
+        if studyCondition != nil {
+            finalResult.testResultList.append(resultList)
+            studyProgress += 1
+        }
     }
     
     
@@ -161,6 +254,7 @@ class TestVC: UIViewController, RFduinoDelegate {
     @IBAction func calibrationLEDButtonTouched(sender: AnyObject) {
         // TODO: Ravi will update this parameter
         print("Calibration LED Button Touched.")
+        sendByte(enumLED.calibration.rawValue)
     }
     
     func disconnect(sender: String) {

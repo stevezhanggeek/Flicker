@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "BD52ECF7CC8F02A893F387C79880DB82"
+               BlueprintIdentifier = "2B5B912D4A9FCFB53C4E96B092CAA7A0"
                BuildableName = "Pods_RFduinoLedButtonInSwift.framework"
                BlueprintName = "Pods-RFduinoLedButtonInSwift"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "BD52ECF7CC8F02A893F387C79880DB82"
+            BlueprintIdentifier = "2B5B912D4A9FCFB53C4E96B092CAA7A0"
             BuildableName = "Pods_RFduinoLedButtonInSwift.framework"
             BlueprintName = "Pods-RFduinoLedButtonInSwift"
             ReferencedContainer = "container:Pods.xcodeproj">
