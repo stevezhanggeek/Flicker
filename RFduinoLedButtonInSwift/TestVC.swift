@@ -34,6 +34,10 @@ class TestVC: UIViewController, RFduinoDelegate {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        
+        if studyCondition == nil {
+            studyCondition = StudyCondition(useReferenceDevice: false, lowAmbientLight: false, lowIntensityLED: false)
+        }
 
         setupStudyCondition()
         

@@ -110,7 +110,7 @@ func saveFinalResultToCSV(fileName: String) {
     var content = ""
     
     if finalResult.participantInfo != nil {
-        let fields = ["SessionID", "ParticipantID", "StudyDesign", "Age", "Gender"]
+        let fields = ["ParticipantID", "Age", "Gender"]
         for field in fields {
             if let value = finalResult.participantInfo![field] {
                 if let string = value {

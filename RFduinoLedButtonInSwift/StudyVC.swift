@@ -6,24 +6,17 @@ class StudyVC: FormViewController {
         super.viewDidLoad()
         
         form +++ Section("")
-            <<< IntRow("SessionID"){ row in
-                row.title = "Session ID"
-                row.placeholder = ""
-            }
             <<< IntRow("ParticipantID"){ row in
                 row.title = "Participant ID"
                 row.placeholder = ""
-            }
-            <<< IntRow("StudyDesign"){ row in
-                row.title = "Study Design"
             }
             <<< IntRow("Age"){ row in
                 row.title = "Age"
                 row.placeholder = ""
             }
-            <<< SegmentedRow<String>("Gender") {
-                $0.title = "Gender                "; $0.value = "Female"; $0.options = ["Female", "Male"]
-            }.onCellSelection{ cell, row in
+            <<< TextRow("Gender") { row in
+                row.title = "Gender"
+                row.placeholder = ""
             }
         
         let startButton = UIButton(frame: CGRectMake(0, screenH - 80, screenW, 80))
