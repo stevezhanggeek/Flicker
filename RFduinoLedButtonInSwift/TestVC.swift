@@ -100,10 +100,7 @@ class TestVC: UIViewController, RFduinoDelegate {
                 }
                 print(results)
                 
-                if self.index != -1 {
-                    finalResult.testResultList[self.index] = results
-                    saveFinalResultToCSV("Result_0")
-                }
+                self.saveCSV(results)
                 
                 self.navigationController?.popViewControllerAnimated(true)
             }
@@ -241,19 +238,24 @@ class TestVC: UIViewController, RFduinoDelegate {
         let alertController = UIAlertController(title: "Test Completed!", message: message, preferredStyle: .Alert)
         
         let saveAction = UIAlertAction(title: "OK", style: .Default) { (_) in
-            saveFinalResultToCSV("Result_0")
+            self.saveCSV(self.resultList)
             self.navigationController?.popViewControllerAnimated(true)
         }
         alertController.addAction(saveAction)
         
         self.presentViewController(alertController, animated: true, completion: nil)
-        
-        if self.index != -1 {
-            finalResult.testResultList[self.index] = resultList
-            saveFinalResultToCSV("Result_0")
-        }
     }
     
+    func saveCSV(resultList: [(String, Int, Double)]) {
+        if self.index != -1 {
+            finalResult.testResultList[self.index] = resultList
+            if let value = finalResult.participantInfo!["ParticipantID"] {
+                if let string = value {
+                    saveFinalResultToCSV("Result_" + String(string))
+                }
+            }
+        }
+    }
     
     
     @IBAction func calibrationLEDButtonTouched(sender: AnyObject) {

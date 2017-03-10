@@ -134,14 +134,22 @@ func saveFinalResultToCSV(fileName: String) {
         content += "\n"
     }
     
-    for i in 0 ..< finalResult.testResultList.count {
-        var line = allStudyConditionList[i].toString() + ","
-        for entry in finalResult.testResultList[i] {
-            line += entry.0 + "," + String(entry.1) + "," + String(entry.2) + ","
+    
+    if let value = finalResult.participantInfo!["ParticipantID"] {
+        if let id = value {
+            let order = latinSquare[Int(String(id))! % 6]
+            
+            for i in 0 ..< finalResult.testResultList.count {
+                var line = allStudyConditionList[order[i]].toString() + ","
+                for entry in finalResult.testResultList[i] {
+                    line += entry.0 + "," + String(entry.1) + "," + String(entry.2) + ","
+                }
+                line = String(line.characters.dropLast())
+                content += line + "\n"
+            }
         }
-        line = String(line.characters.dropLast())
-        content += line + "\n"
     }
+
     
     do {
         try content.writeToFile(filePath, atomically: false, encoding: NSUTF8StringEncoding)
