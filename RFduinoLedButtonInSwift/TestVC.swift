@@ -13,6 +13,7 @@ class TestVC: UIViewController, RFduinoDelegate {
     var pauseFlag = false
     var lastTimestamp = NSDate()
     
+    var index = -1
     var studyCondition: StudyCondition!
     var testOrder = [0, 1, 0, 1]
     var testStep = 0
@@ -99,10 +100,10 @@ class TestVC: UIViewController, RFduinoDelegate {
                 }
                 print(results)
                 
-                finalResult.testResultList.append(results)
-
-                saveFinalResultToCSV("Result_0")
-                studyProgress += 1
+                if self.index != -1 {
+                    finalResult.testResultList[self.index] = results
+                    saveFinalResultToCSV("Result_0")
+                }
                 
                 self.navigationController?.popViewControllerAnimated(true)
             }
@@ -247,9 +248,9 @@ class TestVC: UIViewController, RFduinoDelegate {
         
         self.presentViewController(alertController, animated: true, completion: nil)
         
-        if studyCondition != nil {
-            finalResult.testResultList.append(resultList)
-            studyProgress += 1
+        if self.index != -1 {
+            finalResult.testResultList[self.index] = resultList
+            saveFinalResultToCSV("Result_0")
         }
     }
     

@@ -11,7 +11,8 @@ let navbarH: CGFloat  = 44
 var RFduinoSingleton: RFduino!
 let speechSynthesizer = AVSpeechSynthesizer()
 var thresholdMethod = enumMethod.limits
-var studyProgress = 0
+var studyProgress = -1
+var finalResult = Result()
 
 /* --------------------Enum-------------------- */
 
@@ -65,13 +66,24 @@ let allStudyConditionList = [
     StudyCondition(useReferenceDevice: false, lowAmbientLight: true,  lowIntensityLED: false),
     StudyCondition(useReferenceDevice: false, lowAmbientLight: true,  lowIntensityLED: true)]
 
+let latinSquare = [
+    [0,1,5,2,4,3],
+    [1,2,0,3,5,4],
+    [2,3,1,4,0,5],
+    [3,4,2,5,1,0],
+    [4,5,3,0,2,1],
+    [5,0,4,1,3,2]
+]
 
 class Result {
     var participantInfo: [String: Any?]?
-    var testResultList = [[(String, Int, Double)]]()
+    var testResultList = [[(String, Int, Double)](),
+                          [(String, Int, Double)](),
+                          [(String, Int, Double)](),
+                          [(String, Int, Double)](),
+                          [(String, Int, Double)](),
+                          [(String, Int, Double)]()]
 }
-
-var finalResult = Result()
 
 /* --------------------Helper-------------------- */
 
