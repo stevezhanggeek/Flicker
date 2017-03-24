@@ -19,7 +19,7 @@ class TestVC: UIViewController, RFduinoDelegate {
     var testStep = 0
     
     // (Method, Frequency, TimeInterval)
-    var resultList = [(String, Int, Double)]()
+    var resultList = [(String, Double, Double)]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,11 +83,11 @@ class TestVC: UIViewController, RFduinoDelegate {
             }
 
             let saveAction = UIAlertAction(title: "Save", style: .Default) { (_) in
-                var results = [(String, Int, Double)]()
+                var results = [(String, Double, Double)]()
                 for i in 0 ..< alertController.textFields!.count {
                     let textField = alertController.textFields![i]
                     if textField.text != nil {
-                        if let result = Int(textField.text!) {
+                        if let result = Double(textField.text!) {
                             if i%2 == 0 {
                                 results.append(("limitsFreqFromMin", result, -1))
                             } else {
@@ -159,7 +159,7 @@ class TestVC: UIViewController, RFduinoDelegate {
             sendByte(1)
             bigButton.setTitle("Start Test", forState: UIControlState.Normal)
             
-            var result = ("", -1, -1.0)
+            var result = ("", -1.0, -1.0)
             if testOrder[testStep - 1] == 0 {
                 result.0 = "limitsFreqFromMin"
                 result.1 = limitsFreqFromMin
@@ -190,12 +190,14 @@ class TestVC: UIViewController, RFduinoDelegate {
         case 0:
             bigButton.setTitle("Saw Steady Light", forState: UIControlState.Normal)
             readAloudText("Touch screen when the light is steady.")
-            limitsTimerFromMin = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: #selector(self.updateLimitsFromMin), userInfo: nil, repeats: true)
+            // Update frequency 5 time a second
+            limitsTimerFromMin = NSTimer.scheduledTimerWithTimeInterval(0.2, target:self, selector: #selector(self.updateLimitsFromMin), userInfo: nil, repeats: true)
             break
         case 1:
             bigButton.setTitle("Saw Flicker", forState: UIControlState.Normal)
             readAloudText("Touch screen when the light flickers.")
-            limitsTimerFromMax = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector: #selector(self.updateLimitsFromMax), userInfo: nil, repeats: true)
+            // Update frequency 5 time a second
+            limitsTimerFromMax = NSTimer.scheduledTimerWithTimeInterval(0.2, target:self, selector: #selector(self.updateLimitsFromMax), userInfo: nil, repeats: true)
             break
         default:
             break
@@ -213,8 +215,8 @@ class TestVC: UIViewController, RFduinoDelegate {
         if (limitsFreqFromMin > getLimitsMaxFreq()) {
             return
         }
-        limitsFreqFromMin += 1
-        sendByte(limitsFreqFromMin)
+        limitsFreqFromMin += 0.1
+        sendToBoard(limitsFreqFromMin)
         print("Current Freq from Min: " + String(limitsFreqFromMin))
     }
     
@@ -222,8 +224,8 @@ class TestVC: UIViewController, RFduinoDelegate {
         if (limitsFreqFromMax < getLimitsMinFreq()) {
             return
         }
-        limitsFreqFromMax -= 1
-        sendByte(limitsFreqFromMax)
+        limitsFreqFromMax -= 0.1
+        sendToBoard(limitsFreqFromMax)
         print("Current Freq from Max: " + String(limitsFreqFromMax))
     }
     
@@ -246,7 +248,7 @@ class TestVC: UIViewController, RFduinoDelegate {
         self.presentViewController(alertController, animated: true, completion: nil)
     }
     
-    func saveCSV(resultList: [(String, Int, Double)]) {
+    func saveCSV(resultList: [(String, Double, Double)]) {
         if self.index != -1 {
             finalResult.testResultList[self.index] = resultList
             if let value = finalResult.participantInfo!["ParticipantID"] {

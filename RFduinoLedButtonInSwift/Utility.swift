@@ -77,35 +77,35 @@ let latinSquare = [
 
 class Result {
     var participantInfo: [String: Any?]?
-    var testResultList = [[(String, Int, Double)](),
-                          [(String, Int, Double)](),
-                          [(String, Int, Double)](),
-                          [(String, Int, Double)](),
-                          [(String, Int, Double)](),
-                          [(String, Int, Double)]()]
+    var testResultList = [[(String, Double, Double)](),
+                          [(String, Double, Double)](),
+                          [(String, Double, Double)](),
+                          [(String, Double, Double)](),
+                          [(String, Double, Double)](),
+                          [(String, Double, Double)]()]
 }
 
 /* --------------------Helper-------------------- */
 
-func getLimitsMinFreq() -> Int {
-    var freq = NSUserDefaults.standardUserDefaults().integerForKey("limitsMinFreq")
-    if freq <= 0 { freq = 25 }
+func getLimitsMinFreq() -> Double {
+    var freq = NSUserDefaults.standardUserDefaults().doubleForKey("limitsMinFreq")
+    if freq <= 0 { freq = 25.0 }
     return freq
 }
-func setLimitsMinFreq(freq: Int?) {
+func setLimitsMinFreq(freq: Double?) {
     if (freq != nil) {
-        NSUserDefaults.standardUserDefaults().setInteger(freq!, forKey: "limitsMinFreq")
+        NSUserDefaults.standardUserDefaults().setDouble(freq!, forKey: "limitsMinFreq")
     }
 }
 
-func getLimitsMaxFreq() -> Int {
-    var freq = NSUserDefaults.standardUserDefaults().integerForKey("limitsMaxFreq")
-    if freq <= 0 { freq = 55 }
+func getLimitsMaxFreq() -> Double {
+    var freq = NSUserDefaults.standardUserDefaults().doubleForKey("limitsMaxFreq")
+    if freq <= 0 { freq = 55.0 }
     return freq
 }
-func setLimitsMaxFreq(freq: Int?) {
+func setLimitsMaxFreq(freq: Double?) {
     if (freq != nil) {
-        NSUserDefaults.standardUserDefaults().setInteger(freq!, forKey: "limitsMaxFreq")
+        NSUserDefaults.standardUserDefaults().setDouble(freq!, forKey: "limitsMaxFreq")
     }
 }
 
@@ -161,6 +161,23 @@ func sendByte(byte: Int) {
     let data = NSData(bytes: &tx, length: sizeof(UInt8))
     RFduinoSingleton.send(data)
 }
+
+func sendToBoard(data: Double) {
+    let intX10Data = Int(data*10)
+    print(intX10Data)
+    var tx: [UInt16] = [UInt16(bitPattern: Int16(intX10Data))]
+    let data = NSData(bytes: &tx, length: sizeof(UInt16))
+    RFduinoSingleton.send(data)
+}
+
+/*
+func sendToBoard(data: Double) {
+    let int10Data = Int(data*10)
+    var tx: [UInt16] = [UInt16(bitPattern: Int16(int10Data))]
+    let data = NSData(bytes: &tx, length: sizeof(UInt16))
+    RFduinoSingleton.send(data)
+}
+ */
 
 func readAloudText(text: String) {
     let utterance = AVSpeechUtterance(string: text)

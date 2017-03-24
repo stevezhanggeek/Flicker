@@ -9,8 +9,8 @@
 import UIKit
 import AVFoundation
 import ZFRippleButton
-
-class FlickerTestVC: UIViewController, RFduinoDelegate {
+/*
+class OldFlickerTestVC: UIViewController, RFduinoDelegate {
     var rfduino = RFduino()
     let synthesizer = AVSpeechSynthesizer()
 
@@ -341,4 +341,4 @@ class FlickerTestVC: UIViewController, RFduinoDelegate {
     }
 
 }
-
+*/

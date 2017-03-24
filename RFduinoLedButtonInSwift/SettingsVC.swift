@@ -17,8 +17,8 @@ class SettingsVC: UITableViewController, MFMailComposeViewControllerDelegate {
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         
-        setLimitsMinFreq(Int(limitsMinFreqTextField.text!))
-        setLimitsMaxFreq(Int(limitsMaxFreqTextField.text!))
+        setLimitsMinFreq(Double(limitsMinFreqTextField.text!))
+        setLimitsMaxFreq(Double(limitsMaxFreqTextField.text!))
     }
     
     @IBAction func sendEmailButtonTouched(sender: AnyObject) {
