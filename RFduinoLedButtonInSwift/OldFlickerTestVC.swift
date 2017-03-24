@@ -83,7 +83,7 @@ class OldFlickerTestVC: UIViewController, RFduinoDelegate {
         rfduino.disconnect()
     }
     
-    func sendByte(byte: Int) {
+    func sendLEDControl(byte: Int) {
         var tx: [UInt8] = [UInt8(bitPattern: Int8(byte))]
         let data = NSData(bytes: &tx, length: sizeof(UInt8))
         rfduino.send(data)
@@ -101,7 +101,7 @@ class OldFlickerTestVC: UIViewController, RFduinoDelegate {
         self.navigationItem.title = ""
         self.navigationItem.leftBarButtonItem  = UIBarButtonItem(title: "Method", style: .Plain, target: self, action: #selector(self.methodButtonTouched))
         
-        sendByte(1)
+        sendLEDControl(1)
     }
     
     func stopButtonTouched() {
@@ -112,7 +112,7 @@ class OldFlickerTestVC: UIViewController, RFduinoDelegate {
         let alertController = UIAlertController(title: "Which method would you like to choose?", message: "", preferredStyle: .ActionSheet)
         alertController.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
         alertController.addAction(UIAlertAction(title: "Limits", style: .Default) { (action) in
-            self.sendByte(3)
+            self.sendLEDControl(3)
             self.resetAll()
             self.thresholdMethod = enumMethod.limits
             self.bigButton.hidden = false
@@ -123,7 +123,7 @@ class OldFlickerTestVC: UIViewController, RFduinoDelegate {
             self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Stop", style: .Plain, target: self, action: #selector(self.stopButtonTouched))
             })
         alertController.addAction(UIAlertAction(title: "Staircase", style: .Default) { (action) in
-            self.sendByte(4)
+            self.sendLEDControl(4)
             self.resetAll()
             self.thresholdMethod = enumMethod.staircase
             self.bigButton.hidden = false
@@ -150,7 +150,7 @@ class OldFlickerTestVC: UIViewController, RFduinoDelegate {
         if (limitsFreqFromMin > maxFreq) {
             return
         }
-        sendByte(limitsFreqFromMin)
+        sendLEDControl(limitsFreqFromMin)
         limitsFreqFromMin = limitsFreqFromMin + 1
     }
 
@@ -159,19 +159,19 @@ class OldFlickerTestVC: UIViewController, RFduinoDelegate {
         if (limitsFreqFromMax < minFreq) {
             return
         }
-        sendByte(limitsFreqFromMax)
+        sendLEDControl(limitsFreqFromMax)
         limitsFreqFromMax = limitsFreqFromMax - 1
     }
     
     func updateStaircaseFromMin() {
         print("Result: Min = " + String(staircaseFreq))
-        sendByte(staircaseFreq)
+        sendLEDControl(staircaseFreq)
         staircaseFreq = staircaseFreq + 1
     }
     
     func updateStaircaseFromMax() {
         print("Result: Max = " + String(staircaseFreq))
-        sendByte(staircaseFreq)
+        sendLEDControl(staircaseFreq)
         staircaseFreq = staircaseFreq - 1
     }
     
