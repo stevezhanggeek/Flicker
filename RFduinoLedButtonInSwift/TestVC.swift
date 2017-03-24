@@ -132,16 +132,16 @@ class TestVC: UIViewController, RFduinoDelegate {
     
     func setupLED() {
         if studyCondition.lowIntensityLED {
-            sendLEDControl(enumLED.lowIntensity.rawValue)
+            sendToBoard(enumLED.lowIntensity.rawValue)
         } else {
-            sendLEDControl(enumLED.highIntensity.rawValue)
+            sendToBoard(enumLED.highIntensity.rawValue)
         }
 
         turnOffLED()
     }
     
     func turnOffLED() {
-        sendLEDControl(1)
+        sendToBoard(1.0)
     }
     
     func reset() {
@@ -156,7 +156,7 @@ class TestVC: UIViewController, RFduinoDelegate {
             pauseFlag = false
 
             // Stop LED
-            sendLEDControl(1)
+            turnOffLED()
             bigButton.setTitle("Start Test", forState: UIControlState.Normal)
             
             var result = ("", -1.0, -1.0)
@@ -216,7 +216,7 @@ class TestVC: UIViewController, RFduinoDelegate {
             return
         }
         limitsFreqFromMin += 0.1
-        sendFrequency(limitsFreqFromMin)
+        sendToBoard(limitsFreqFromMin)
         print("Current Freq from Min: " + String(limitsFreqFromMin))
     }
     
@@ -225,7 +225,7 @@ class TestVC: UIViewController, RFduinoDelegate {
             return
         }
         limitsFreqFromMax -= 0.1
-        sendFrequency(limitsFreqFromMax)
+        sendToBoard(limitsFreqFromMax)
         print("Current Freq from Max: " + String(limitsFreqFromMax))
     }
     
@@ -263,7 +263,7 @@ class TestVC: UIViewController, RFduinoDelegate {
     @IBAction func calibrationLEDButtonTouched(sender: AnyObject) {
         // TODO: Ravi will update this parameter
         print("Calibration LED Button Touched.")
-        sendLEDControl(enumLED.calibration.rawValue)
+        sendToBoard(enumLED.calibration.rawValue)
     }
     
     func disconnect(sender: String) {

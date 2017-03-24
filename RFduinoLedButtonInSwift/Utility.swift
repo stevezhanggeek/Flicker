@@ -22,10 +22,10 @@ enum enumMethod {
     case twoAFC
 }
 
-enum enumLED : Int {
-    case lowIntensity = 3
-    case highIntensity = 4
-    case calibration = 5
+enum enumLED : Double {
+    case lowIntensity = 3.0
+    case highIntensity = 4.0
+    case calibration = 5.0
 }
 
 class StudyCondition {
@@ -156,28 +156,13 @@ func saveFinalResultToCSV(fileName: String) {
     } catch {}
 }
 
-func sendLEDControl(byte: Int) {
-    var tx: [UInt8] = [UInt8(bitPattern: Int8(byte))]
-    let data = NSData(bytes: &tx, length: sizeof(UInt8))
-    RFduinoSingleton.send(data)
-}
-
-func sendFrequency(data: Double) {
+func sendToBoard(data: Double) {
     let intX10Data = Int(data*10)
     print(intX10Data)
     var tx: [UInt16] = [UInt16(bitPattern: Int16(intX10Data))]
     let data = NSData(bytes: &tx, length: sizeof(UInt16))
     RFduinoSingleton.send(data)
 }
-
-/*
-func sendFrequency(data: Double) {
-    let int10Data = Int(data*10)
-    var tx: [UInt16] = [UInt16(bitPattern: Int16(int10Data))]
-    let data = NSData(bytes: &tx, length: sizeof(UInt16))
-    RFduinoSingleton.send(data)
-}
- */
 
 func readAloudText(text: String) {
     let utterance = AVSpeechUtterance(string: text)
