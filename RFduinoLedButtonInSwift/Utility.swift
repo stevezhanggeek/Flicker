@@ -2,8 +2,8 @@ import Foundation
 import AVFoundation
 
 /* --------------------Constant-------------------- */
-let screenW = UIScreen.mainScreen().bounds.width
-let screenH = UIScreen.mainScreen().bounds.height
+let screenW = UIScreen.main.bounds.width
+let screenH = UIScreen.main.bounds.height
 let fullbarH: CGFloat = 64
 let navbarH: CGFloat  = 44
 
@@ -88,37 +88,37 @@ class Result {
 /* --------------------Helper-------------------- */
 
 func getLimitsMinFreq() -> Double {
-    var freq = NSUserDefaults.standardUserDefaults().doubleForKey("limitsMinFreq")
+    var freq = UserDefaults.standard.double(forKey: "limitsMinFreq")
     if freq <= 0 { freq = 25.0 }
     return freq
 }
 func setLimitsMinFreq(freq: Double?) {
     if (freq != nil) {
-        NSUserDefaults.standardUserDefaults().setDouble(freq!, forKey: "limitsMinFreq")
+        UserDefaults.standard.set(freq!, forKey: "limitsMinFreq")
     }
 }
 
 func getLimitsMaxFreq() -> Double {
-    var freq = NSUserDefaults.standardUserDefaults().doubleForKey("limitsMaxFreq")
+    var freq = UserDefaults.standard.double(forKey: "limitsMaxFreq")
     if freq <= 0 { freq = 55.0 }
     return freq
 }
 func setLimitsMaxFreq(freq: Double?) {
     if (freq != nil) {
-        NSUserDefaults.standardUserDefaults().setDouble(freq!, forKey: "limitsMaxFreq")
+        UserDefaults.standard.set(freq!, forKey: "limitsMaxFreq")
     }
 }
 
 
 func fileInDocumentsDirectory(folderName: String, fileName: String) -> String {
-    let documentsURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
-    let folderURL = documentsURL.URLByAppendingPathComponent(folderName)
-    let fileURL = folderURL!.URLByAppendingPathComponent(fileName)
-    return fileURL!.path!
+    let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+    let folderURL = documentsURL.appendingPathComponent(folderName)
+    let fileURL = folderURL.appendingPathComponent(fileName)
+    return fileURL.path
 }
 
 func saveFinalResultToCSV(fileName: String) {
-    let filePath = fileInDocumentsDirectory("", fileName: fileName + ".csv")
+    let filePath = fileInDocumentsDirectory(folderName: "", fileName: fileName + ".csv")
     var content = ""
     
     if finalResult.participantInfo != nil {
@@ -126,7 +126,7 @@ func saveFinalResultToCSV(fileName: String) {
         for field in fields {
             if let value = finalResult.participantInfo![field] {
                 if let string = value {
-                    content += String(string) + ","
+                    content += String(describing: string) + ","
                 }
             }
         }
@@ -137,7 +137,7 @@ func saveFinalResultToCSV(fileName: String) {
     
     if let value = finalResult.participantInfo!["ParticipantID"] {
         if let id = value {
-            let order = latinSquare[Int(String(id))! % 6]
+            let order = latinSquare[Int(String(describing: id))! % 6]
             
             for i in 0 ..< finalResult.testResultList.count {
                 var line = allStudyConditionList[order[i]].toString() + ","
@@ -152,7 +152,7 @@ func saveFinalResultToCSV(fileName: String) {
 
     
     do {
-        try content.writeToFile(filePath, atomically: false, encoding: NSUTF8StringEncoding)
+        try content.write(toFile: filePath, atomically: false, encoding: String.Encoding.utf8)
     } catch {}
 }
 
@@ -160,14 +160,14 @@ func sendToBoard(data: Double) {
     let intX10Data = Int(data*10)
     print(intX10Data)
     var tx: [UInt16] = [UInt16(bitPattern: Int16(intX10Data))]
-    let data = NSData(bytes: &tx, length: sizeof(UInt16))
-    RFduinoSingleton.send(data)
+    let data = NSData(bytes: &tx, length: MemoryLayout<UInt16>.size)
+    RFduinoSingleton.send(data as Data!)
 }
 
 func readAloudText(text: String) {
     let utterance = AVSpeechUtterance(string: text)
     utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
     utterance.rate = 0.5  // Change speed here.
-    speechSynthesizer.speakUtterance(utterance)
+    speechSynthesizer.speak(utterance)
 }
 

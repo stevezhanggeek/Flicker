@@ -12,7 +12,6 @@
 		4080F4611BA8ACC200573116 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4080F45F1BA8ACC200573116 /* Main.storyboard */; };
 		4080F4631BA8ACC200573116 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4080F4621BA8ACC200573116 /* Images.xcassets */; };
 		4080F4661BA8ACC200573116 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4080F4641BA8ACC200573116 /* LaunchScreen.xib */; };
-		4080F4721BA8ACC200573116 /* RFduinoLedButtonInSwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4080F4711BA8ACC200573116 /* RFduinoLedButtonInSwiftTests.swift */; };
 		4080F4881BA8ACFB00573116 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4080F47D1BA8ACFB00573116 /* AppDelegate.m */; };
 		4080F4891BA8ACFB00573116 /* CustomCellBackground.m in Sources */ = {isa = PBXBuildFile; fileRef = 4080F47F1BA8ACFB00573116 /* CustomCellBackground.m */; };
 		4080F48A1BA8ACFB00573116 /* RFduino.m in Sources */ = {isa = PBXBuildFile; fileRef = 4080F4811BA8ACFB00573116 /* RFduino.m */; };
@@ -28,16 +27,6 @@
 		DA7BF16F1DAECA1E00D27A26 /* ZFRippleButton.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA7BF16E1DAECA1E00D27A26 /* ZFRippleButton.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		4080F46C1BA8ACC200573116 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4080F44E1BA8ACC100573116 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4080F4551BA8ACC200573116;
-			remoteInfo = RFduinoLedButtonInSwift;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		4080F4561BA8ACC200573116 /* RFduinoLedButtonInSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RFduinoLedButtonInSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4080F45A1BA8ACC200573116 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -46,7 +35,6 @@
 		4080F4601BA8ACC200573116 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4080F4621BA8ACC200573116 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4080F4651BA8ACC200573116 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		4080F46B1BA8ACC200573116 /* RFduinoLedButtonInSwiftTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RFduinoLedButtonInSwiftTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4080F4701BA8ACC200573116 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4080F4711BA8ACC200573116 /* RFduinoLedButtonInSwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RFduinoLedButtonInSwiftTests.swift; sourceTree = "<group>"; };
 		4080F47C1BA8ACFB00573116 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -84,13 +72,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4080F4681BA8ACC200573116 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -119,7 +100,6 @@
 			isa = PBXGroup;
 			children = (
 				4080F4561BA8ACC200573116 /* RFduinoLedButtonInSwift.app */,
-				4080F46B1BA8ACC200573116 /* RFduinoLedButtonInSwiftTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -220,24 +200,6 @@
 			productReference = 4080F4561BA8ACC200573116 /* RFduinoLedButtonInSwift.app */;
 			productType = "com.apple.product-type.application";
 		};
-		4080F46A1BA8ACC200573116 /* RFduinoLedButtonInSwiftTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4080F4781BA8ACC200573116 /* Build configuration list for PBXNativeTarget "RFduinoLedButtonInSwiftTests" */;
-			buildPhases = (
-				4080F4671BA8ACC200573116 /* Sources */,
-				4080F4681BA8ACC200573116 /* Frameworks */,
-				4080F4691BA8ACC200573116 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				4080F46D1BA8ACC200573116 /* PBXTargetDependency */,
-			);
-			name = RFduinoLedButtonInSwiftTests;
-			productName = RFduinoLedButtonInSwiftTests;
-			productReference = 4080F46B1BA8ACC200573116 /* RFduinoLedButtonInSwiftTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -253,12 +215,6 @@
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = DKZNRX975N;
 						LastSwiftMigration = 0800;
-					};
-					4080F46A1BA8ACC200573116 = {
-						CreatedOnToolsVersion = 6.4;
-						DevelopmentTeam = DKZNRX975N;
-						LastSwiftMigration = 0800;
-						TestTargetID = 4080F4551BA8ACC200573116;
 					};
 				};
 			};
@@ -276,7 +232,6 @@
 			projectRoot = "";
 			targets = (
 				4080F4551BA8ACC200573116 /* RFduinoLedButtonInSwift */,
-				4080F46A1BA8ACC200573116 /* RFduinoLedButtonInSwiftTests */,
 			);
 		};
 /* End PBXProject section */
@@ -290,13 +245,6 @@
 				4080F4661BA8ACC200573116 /* LaunchScreen.xib in Resources */,
 				DA7BF16B1DACC8D000D27A26 /* Assets.xcassets in Resources */,
 				4080F4631BA8ACC200573116 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4080F4691BA8ACC200573116 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,7 +293,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -370,23 +318,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4080F4671BA8ACC200573116 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4080F4721BA8ACC200573116 /* RFduinoLedButtonInSwiftTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		4080F46D1BA8ACC200573116 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 4080F4551BA8ACC200573116 /* RFduinoLedButtonInSwift */;
-			targetProxy = 4080F46C1BA8ACC200573116 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		4080F45F1BA8ACC200573116 /* Main.storyboard */ = {
@@ -502,7 +434,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = xiaoyiz.rfduinoFlicker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "RFduinoLedButtonInSwift/RFDuinoLedButtonInSwift-Bridging-Header.h";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -519,45 +451,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = xiaoyiz.rfduinoFlicker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "RFduinoLedButtonInSwift/RFDuinoLedButtonInSwift-Bridging-Header.h";
-				SWIFT_VERSION = 2.3;
-			};
-			name = Release;
-		};
-		4080F4791BA8ACC200573116 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = DKZNRX975N;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = RFduinoLedButtonInSwiftTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RFduinoLedButtonInSwift.app/RFduinoLedButtonInSwift";
-			};
-			name = Debug;
-		};
-		4080F47A1BA8ACC200573116 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = DKZNRX975N;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = RFduinoLedButtonInSwiftTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RFduinoLedButtonInSwift.app/RFduinoLedButtonInSwift";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -578,15 +472,6 @@
 			buildConfigurations = (
 				4080F4761BA8ACC200573116 /* Debug */,
 				4080F4771BA8ACC200573116 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		4080F4781BA8ACC200573116 /* Build configuration list for PBXNativeTarget "RFduinoLedButtonInSwiftTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4080F4791BA8ACC200573116 /* Debug */,
-				4080F47A1BA8ACC200573116 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

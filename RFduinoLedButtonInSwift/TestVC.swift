@@ -7,8 +7,8 @@ class TestVC: UIViewController, RFduinoDelegate {
     
     var limitsFreqFromMin = getLimitsMinFreq()
     var limitsFreqFromMax = getLimitsMaxFreq()
-    var limitsTimerFromMin:NSTimer?
-    var limitsTimerFromMax:NSTimer?
+    var limitsTimerFromMin:Timer?
+    var limitsTimerFromMax:Timer?
     
     var pauseFlag = false
     var lastTimestamp = NSDate()
@@ -27,13 +27,13 @@ class TestVC: UIViewController, RFduinoDelegate {
         RFduinoSingleton.delegate = self
         
         bigButton = ZFRippleButton(frame: self.view.frame)
-        bigButton.titleLabel?.font = UIFont.boldSystemFontOfSize(35)
+        bigButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 35)
         bigButton.backgroundColor = UIColor.init(red: 0, green: 0, blue: 1, alpha: 1)
-        bigButton.addTarget(self, action: #selector(self.bigButtonTouched), forControlEvents: .TouchUpInside)
+        bigButton.addTarget(self, action: #selector(self.bigButtonTouched), for: .touchUpInside)
         self.view.addSubview(bigButton)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         if studyCondition == nil {
@@ -44,7 +44,7 @@ class TestVC: UIViewController, RFduinoDelegate {
         
         setupLED()
         
-        bigButton.setTitle("Start Test", forState: UIControlState.Normal)
+        bigButton.setTitle("Start Test", for: .normal)
         
         resultList.removeAll()
         
@@ -55,7 +55,7 @@ class TestVC: UIViewController, RFduinoDelegate {
         reset()
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         resultList.removeAll()
@@ -64,25 +64,25 @@ class TestVC: UIViewController, RFduinoDelegate {
     
     func setupStudyCondition() {
         if studyCondition.useReferenceDevice {
-            let alertController = UIAlertController(title: "Current Study Condition", message: "ReferenceDevice", preferredStyle: .Alert)
-            alertController.addTextFieldWithConfigurationHandler { (textField) in
+            let alertController = UIAlertController(title: "Current Study Condition", message: "ReferenceDevice", preferredStyle: .alert)
+            alertController.addTextField { (textField) in
                 textField.placeholder = "From Min 1"
-                textField.keyboardType = UIKeyboardType.NumberPad
+                textField.keyboardType = UIKeyboardType.numberPad
             }
-            alertController.addTextFieldWithConfigurationHandler { (textField) in
+            alertController.addTextField { (textField) in
                 textField.placeholder = "From Max 1"
-                textField.keyboardType = UIKeyboardType.NumberPad
+                textField.keyboardType = UIKeyboardType.numberPad
             }
-            alertController.addTextFieldWithConfigurationHandler { (textField) in
+            alertController.addTextField { (textField) in
                 textField.placeholder = "From Min 2"
-                textField.keyboardType = UIKeyboardType.NumberPad
+                textField.keyboardType = UIKeyboardType.numberPad
             }
-            alertController.addTextFieldWithConfigurationHandler { (textField) in
+            alertController.addTextField { (textField) in
                 textField.placeholder = "From Max 2"
-                textField.keyboardType = UIKeyboardType.NumberPad
+                textField.keyboardType = UIKeyboardType.numberPad
             }
 
-            let saveAction = UIAlertAction(title: "Save", style: .Default) { (_) in
+            let saveAction = UIAlertAction(title: "Save", style: .default) { (_) in
                 var results = [(String, Double, Double)]()
                 for i in 0 ..< alertController.textFields!.count {
                     let textField = alertController.textFields![i]
@@ -100,13 +100,13 @@ class TestVC: UIViewController, RFduinoDelegate {
                 }
                 print(results)
                 
-                self.saveCSV(results)
+                self.saveCSV(resultList: results)
                 
-                self.navigationController?.popViewControllerAnimated(true)
+                self.navigationController?.popViewController(animated: true)
             }
             alertController.addAction(saveAction)
             
-            self.presentViewController(alertController, animated: true, completion: nil)
+            self.present(alertController, animated: true, completion: nil)
         } else {
             var message = "OurDevice, "
             if studyCondition.lowAmbientLight {
@@ -120,28 +120,28 @@ class TestVC: UIViewController, RFduinoDelegate {
                 message += "HighLED"
             }
             
-            let alertController = UIAlertController(title: "Current Study Condition", message: message, preferredStyle: .Alert)
+            let alertController = UIAlertController(title: "Current Study Condition", message: message, preferredStyle: .alert)
             
-            let okAction = UIAlertAction(title: "OK", style: .Default) { (_) in
+            let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
             }
             alertController.addAction(okAction)
             
-            self.presentViewController(alertController, animated: true, completion: nil)
+            self.present(alertController, animated: true, completion: nil)
         }
     }
     
     func setupLED() {
         if studyCondition.lowIntensityLED {
-            sendToBoard(enumLED.lowIntensity.rawValue)
+            sendToBoard(data: enumLED.lowIntensity.rawValue)
         } else {
-            sendToBoard(enumLED.highIntensity.rawValue)
+            sendToBoard(data: enumLED.highIntensity.rawValue)
         }
 
         turnOffLED()
     }
     
     func turnOffLED() {
-        sendToBoard(1.0)
+        sendToBoard(data: 1.0)
     }
     
     func reset() {
@@ -157,17 +157,17 @@ class TestVC: UIViewController, RFduinoDelegate {
 
             // Stop LED
             turnOffLED()
-            bigButton.setTitle("Start Test", forState: UIControlState.Normal)
+            bigButton.setTitle("Start Test", for: .normal)
             
             var result = ("", -1.0, -1.0)
             if testOrder[testStep - 1] == 0 {
                 result.0 = "limitsFreqFromMin"
                 result.1 = limitsFreqFromMin
-                result.2 = Double(NSDate().timeIntervalSinceDate(lastTimestamp))
+                result.2 = Double(NSDate().timeIntervalSince(lastTimestamp as Date))
             } else {
                 result.0 = "limitsFreqFromMax"
                 result.1 = limitsFreqFromMax
-                result.2 = Double(NSDate().timeIntervalSinceDate(lastTimestamp))
+                result.2 = Double(NSDate().timeIntervalSince(lastTimestamp as Date))
             }
             resultList[testStep - 1] = result
             
@@ -188,16 +188,16 @@ class TestVC: UIViewController, RFduinoDelegate {
         lastTimestamp = NSDate()
         switch testOrder[testStep] {
         case 0:
-            bigButton.setTitle("Saw Steady Light", forState: UIControlState.Normal)
-            readAloudText("Touch screen when the light is steady.")
+            bigButton.setTitle("Saw Steady Light", for: .normal)
+            readAloudText(text: "Touch screen when the light is steady.")
             // Update frequency 5 time a second
-            limitsTimerFromMin = NSTimer.scheduledTimerWithTimeInterval(0.2, target:self, selector: #selector(self.updateLimitsFromMin), userInfo: nil, repeats: true)
+            limitsTimerFromMin = Timer.scheduledTimer(timeInterval: 0.2, target:self, selector: #selector(self.updateLimitsFromMin), userInfo: nil, repeats: true)
             break
         case 1:
-            bigButton.setTitle("Saw Flicker", forState: UIControlState.Normal)
-            readAloudText("Touch screen when the light flickers.")
+            bigButton.setTitle("Saw Flicker", for: .normal)
+            readAloudText(text: "Touch screen when the light flickers.")
             // Update frequency 5 time a second
-            limitsTimerFromMax = NSTimer.scheduledTimerWithTimeInterval(0.2, target:self, selector: #selector(self.updateLimitsFromMax), userInfo: nil, repeats: true)
+            limitsTimerFromMax = Timer.scheduledTimer(timeInterval: 0.2, target:self, selector: #selector(self.updateLimitsFromMax), userInfo: nil, repeats: true)
             break
         default:
             break
@@ -216,7 +216,7 @@ class TestVC: UIViewController, RFduinoDelegate {
             return
         }
         limitsFreqFromMin += 0.1
-        sendToBoard(limitsFreqFromMin)
+        sendToBoard(data: limitsFreqFromMin)
         print("Current Freq from Min: " + String(limitsFreqFromMin))
     }
     
@@ -225,7 +225,7 @@ class TestVC: UIViewController, RFduinoDelegate {
             return
         }
         limitsFreqFromMax -= 0.1
-        sendToBoard(limitsFreqFromMax)
+        sendToBoard(data: limitsFreqFromMax)
         print("Current Freq from Max: " + String(limitsFreqFromMax))
     }
     
@@ -237,15 +237,15 @@ class TestVC: UIViewController, RFduinoDelegate {
             message += result.0 + ", " + String(result.1) + ", " + String(round(100*result.2)/100) + "\n"
         }
         
-        let alertController = UIAlertController(title: "Test Completed!", message: message, preferredStyle: .Alert)
+        let alertController = UIAlertController(title: "Test Completed!", message: message, preferredStyle: .alert)
         
-        let saveAction = UIAlertAction(title: "OK", style: .Default) { (_) in
-            self.saveCSV(self.resultList)
-            self.navigationController?.popViewControllerAnimated(true)
+        let saveAction = UIAlertAction(title: "OK", style: .default) { (_) in
+            self.saveCSV(resultList: self.resultList)
+            self.navigationController?.popViewController(animated: true)
         }
         alertController.addAction(saveAction)
         
-        self.presentViewController(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true, completion: nil)
     }
     
     func saveCSV(resultList: [(String, Double, Double)]) {
@@ -253,7 +253,7 @@ class TestVC: UIViewController, RFduinoDelegate {
             finalResult.testResultList[self.index] = resultList
             if let value = finalResult.participantInfo!["ParticipantID"] {
                 if let string = value {
-                    saveFinalResultToCSV("Result_" + String(string))
+                    saveFinalResultToCSV(fileName: "Result_" + String(describing: string))
                 }
             }
         }
@@ -263,7 +263,7 @@ class TestVC: UIViewController, RFduinoDelegate {
     @IBAction func calibrationLEDButtonTouched(sender: AnyObject) {
         // TODO: Ravi will update this parameter
         print("Calibration LED Button Touched.")
-        sendToBoard(enumLED.calibration.rawValue)
+        sendToBoard(data: enumLED.calibration.rawValue)
     }
     
     func disconnect(sender: String) {

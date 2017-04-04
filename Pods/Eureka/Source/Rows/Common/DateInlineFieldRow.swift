@@ -24,54 +24,56 @@
 
 import Foundation
 
+open class DateInlineCell: Cell<Date>, CellType {
 
-public class DateInlineCell : Cell<NSDate>, CellType {
-    
     public required init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
-    
-    public override func setup() {
+
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
+    open override func setup() {
         super.setup()
-        accessoryType = .None
-        editingAccessoryType =  .None
+        accessoryType = .none
+        editingAccessoryType =  .none
     }
-    
-    public override func update() {
+
+    open override func update() {
         super.update()
-        selectionStyle = row.isDisabled ? .None : .Default
+        selectionStyle = row.isDisabled ? .none : .default
     }
-    
-    public override func didSelect() {
+
+    open override func didSelect() {
         super.didSelect()
         row.deselect()
     }
 }
 
+open class _DateInlineFieldRow: Row<DateInlineCell>, DatePickerRowProtocol, NoValueDisplayTextConformance {
 
-public class _DateInlineFieldRow: Row<NSDate, DateInlineCell>, DatePickerRowProtocol, NoValueDisplayTextConformance {
-    
     /// The minimum value for this row's UIDatePicker
-    public var minimumDate : NSDate?
-    
+    open var minimumDate: Date?
+
     /// The maximum value for this row's UIDatePicker
-    public var maximumDate : NSDate?
-    
+    open var maximumDate: Date?
+
     /// The interval between options for this row's UIDatePicker
-    public var minuteInterval : Int?
-    
+    open var minuteInterval: Int?
+
     /// The formatter for the date picked by the user
-    public var dateFormatter: NSDateFormatter?
-    
-    public var noValueDisplayText: String?
-    
+    open var dateFormatter: DateFormatter?
+
+    open var noValueDisplayText: String?
+
     required public init(tag: String?) {
         super.init(tag: tag)
-        dateFormatter = NSDateFormatter()
-        dateFormatter?.locale = .currentLocale()
+        dateFormatter = DateFormatter()
+        dateFormatter?.locale = Locale.current
         displayValueFor = { [unowned self] value in
             guard let val = value, let formatter = self.dateFormatter else { return nil }
-            return formatter.stringFromDate(val)
+            return formatter.string(from: val)
         }
     }
 }

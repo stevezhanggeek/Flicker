@@ -32,19 +32,27 @@ public enum RegExprPattern: String {
     case ContainsLowercase = "^.*?[a-z].*?$"
 }
 
-public class RuleRegExp: RuleType {
+open class RuleRegExp: RuleType {
 
     public var regExpr: String = ""
     public var id: String?
-    public var validationError = ValidationError(msg: "Invalid field value!")
-    
-    public init(regExpr: String){
+    public var validationError: ValidationError
+    public var allowsEmpty = true
+
+    public init(regExpr: String, allowsEmpty: Bool = true, msg: String = "Invalid field value!") {
+        self.validationError = ValidationError(msg: msg)
         self.regExpr = regExpr
+        self.allowsEmpty = allowsEmpty
     }
-    
+
     public func isValid(value: String?) -> ValidationError? {
-        let predicate = NSPredicate(format: "SELF MATCHES %@", regExpr)
-        guard predicate.evaluateWithObject(value) else {
+        if let value = value, !value.isEmpty {
+            let predicate = NSPredicate(format: "SELF MATCHES %@", regExpr)
+            guard predicate.evaluate(with: value) else {
+                return validationError
+            }
+            return nil
+        } else if !allowsEmpty {
             return validationError
         }
         return nil

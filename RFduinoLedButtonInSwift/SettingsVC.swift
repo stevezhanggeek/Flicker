@@ -8,17 +8,17 @@ class SettingsVC: UITableViewController, MFMailComposeViewControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBarHidden = false
+        self.navigationController?.isNavigationBarHidden = false
         
         limitsMinFreqTextField.text = String(getLimitsMinFreq())
         limitsMaxFreqTextField.text = String(getLimitsMaxFreq())
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        setLimitsMinFreq(Double(limitsMinFreqTextField.text!))
-        setLimitsMaxFreq(Double(limitsMaxFreqTextField.text!))
+        setLimitsMinFreq(freq: Double(limitsMinFreqTextField.text!))
+        setLimitsMaxFreq(freq: Double(limitsMaxFreqTextField.text!))
     }
     
     @IBAction func sendEmailButtonTouched(sender: AnyObject) {
@@ -36,7 +36,7 @@ class SettingsVC: UITableViewController, MFMailComposeViewControllerDelegate {
                 }
             }
  */
-            self.presentViewController(mailComposer, animated: true, completion: nil)
+            self.present(mailComposer, animated: true, completion: nil)
         }
     }
     

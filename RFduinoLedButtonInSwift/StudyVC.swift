@@ -25,16 +25,16 @@ class StudyVC: FormViewController {
                 row.placeholder = ""
             }
         
-        let startButton = UIButton(frame: CGRectMake(0, screenH - 80, screenW, 80))
+        let startButton = UIButton(frame: CGRect(x:0, y:screenH - 80, width:screenW, height:80))
         startButton.backgroundColor = UIColor.init(red: 0, green: 1, blue: 0, alpha: 1)
-        startButton.addTarget(self, action: #selector(self.startButtonTouched), forControlEvents: .TouchUpInside)
-        startButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        startButton.setTitle("Start", forState: .Normal)
+        startButton.addTarget(self, action: #selector(self.startButtonTouched), for: .touchUpInside)
+        startButton.setTitleColor(UIColor.black, for: .normal)
+        startButton.setTitle("Start", for: .normal)
         self.view.addSubview(startButton)
         
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         updateResultView()
@@ -42,22 +42,22 @@ class StudyVC: FormViewController {
     
     func updateResultView() {
         resultView.removeFromSuperview()
-        resultView = UIView(frame: CGRectMake(0, 270, screenW, 300))
+        resultView = UIView(frame: CGRect(x:0, y:270, width:screenW, height:300))
         self.view.addSubview(resultView)
         
-        let row: IntRow? = form.rowByTag("ParticipantID")
+        let row: IntRow? = form.rowBy(tag: "ParticipantID")
         
         if let participantID = row!.value {
             let order = latinSquare[participantID % 6]
             
             for i in 0 ..< 6 {
-                let row = UIView(frame: CGRectMake(0, CGFloat(i) * 50, screenW, 50))
-                let orderLabel = UILabel(frame: CGRectMake(0, 0, 50, 50))
+                let row = UIView(frame: CGRect(x:0, y:CGFloat(i) * 50, width:screenW, height:50))
+                let orderLabel = UILabel(frame: CGRect(x:0, y:0, width:50, height:50))
                 orderLabel.text = String(order[i])
-                orderLabel.textAlignment = .Center
+                orderLabel.textAlignment = .center
                 row.addSubview(orderLabel)
                 if studyProgress >= i {
-                    let resultLabel = UILabel(frame: CGRectMake(50, 0, screenW - 130, 50))
+                    let resultLabel = UILabel(frame: CGRect(x:50, y:0, width:screenW - 130, height:50))
                     var text = ""
                     let resultList = finalResult.testResultList[i]
                     for result in resultList {
@@ -66,11 +66,11 @@ class StudyVC: FormViewController {
                     resultLabel.text = text
                     row.addSubview(resultLabel)
                     
-                    let redoButton = UIButton(frame: CGRectMake(screenW - 80, 0, 80, 50))
-                    redoButton.setTitle("Redo", forState: .Normal)
-                    redoButton.setTitleColor(UIColor.redColor(), forState: .Normal)
+                    let redoButton = UIButton(frame: CGRect(x:screenW - 80, y:0, width:80, height:50))
+                    redoButton.setTitle("Redo", for: .normal)
+                    redoButton.setTitleColor(UIColor.red, for: .normal)
                     redoButton.tag = i
-                    redoButton.addTarget(self, action: #selector(self.redoButtonTouched(_:)), forControlEvents: .TouchUpInside)
+                    redoButton.addTarget(self, action: #selector(redoButtonTouched(button:)), for: .touchUpInside)
                     row.addSubview(redoButton)
                 }
                 
@@ -79,11 +79,11 @@ class StudyVC: FormViewController {
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showTestVCFromStudyVC" {
-            let vc = segue.destinationViewController as! TestVC
+            let vc = segue.destination as! TestVC
             
-            let row: IntRow? = form.rowByTag("ParticipantID")
+            let row: IntRow? = form.rowBy(tag: "ParticipantID")
             if let participantID = row!.value {
                 let order = latinSquare[participantID % 6]
                 if sender == nil {
@@ -99,9 +99,9 @@ class StudyVC: FormViewController {
         }
     }
     
-    func redoButtonTouched(sender: UIButton) {
-        let tag = sender.tag
-        self.performSegueWithIdentifier("showTestVCFromStudyVC", sender: tag)
+    func redoButtonTouched(button: UIButton) {
+        let tag = button.tag
+        self.performSegue(withIdentifier: "showTestVCFromStudyVC", sender: tag)
     }
     
     func startButtonTouched() {
@@ -111,15 +111,15 @@ class StudyVC: FormViewController {
         }
         
         if (studyProgress >= 5) {
-            let alertController = UIAlertController(title: "All 6 Tests Completed!", message: "", preferredStyle: .Alert)
+            let alertController = UIAlertController(title: "All 6 Tests Completed!", message: "", preferredStyle: .alert)
             
-            let okAction = UIAlertAction(title: "OK", style: .Default) { (_) in
+            let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
             }
             alertController.addAction(okAction)
-            self.presentViewController(alertController, animated: true, completion: nil)
+            self.present(alertController, animated: true, completion: nil)
         } else {
             studyProgress += 1
-            self.performSegueWithIdentifier("showTestVCFromStudyVC", sender: nil)
+            self.performSegue(withIdentifier: "showTestVCFromStudyVC", sender: nil)
         }
     }
 }

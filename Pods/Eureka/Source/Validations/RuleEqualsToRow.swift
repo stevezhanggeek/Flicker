@@ -1,4 +1,4 @@
-//  ImagePickerController.swift
+//  RuleRequire.swift
 //  Eureka ( https://github.com/xmartlabs/Eureka )
 //
 //  Copyright (c) 2016 Xmartlabs SRL ( http://xmartlabs.com )
@@ -24,28 +24,30 @@
 
 import Foundation
 
-/// Selector Controller used to pick an image
-public class ImagePickerController : UIImagePickerController, TypedRowControllerType, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
-    /// The row that pushed or presented this controller
-    public var row: RowOf<UIImage>!
-    
-    /// A closure to be called when the controller disappears.
-    public var completionCallback : ((UIViewController) -> ())?
-    
-    public override func viewDidLoad() {
-        super.viewDidLoad()
-        delegate = self
+public struct RuleEqualsToRow<T: Equatable>: RuleType {
+
+    public init(form: Form, tag: String, msg: String = "Fields don't match!") {
+        self.validationError = ValidationError(msg: msg)
+        self.form = form
+        self.tag = tag
+        self.row = nil
     }
-    
-    public func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]){
-        (row as? ImageRow)?.imageURL = info[UIImagePickerControllerReferenceURL] as? NSURL
-        row.value = info[UIImagePickerControllerOriginalImage] as? UIImage
-        completionCallback?(self)
+
+    public init(row: RowOf<T>, msg: String = "Fields don't match!") {
+        self.validationError = ValidationError(msg: msg)
+        self.form = nil
+        self.tag = nil
+        self.row = row
     }
-    
-    public func imagePickerControllerDidCancel(picker: UIImagePickerController){
-        completionCallback?(self)
+
+    public var id: String?
+    public var validationError: ValidationError
+    public var form: Form?
+    public var tag: String?
+    public var row: RowOf<T>?
+
+    public func isValid(value: T?) -> ValidationError? {
+        let rowAux: RowOf<T> = row ?? form!.rowBy(tag: tag!)!
+        return rowAux.value == value ? nil : validationError
     }
 }
-

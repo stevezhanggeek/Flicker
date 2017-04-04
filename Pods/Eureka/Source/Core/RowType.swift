@@ -22,26 +22,25 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-
 import Foundation
 
-protocol Disableable : Taggable {
+protocol Disableable: Taggable {
     func evaluateDisabled()
-    var disabled : Condition? { get set }
-    var isDisabled : Bool { get }
+    var disabled: Condition? { get set }
+    var isDisabled: Bool { get }
 }
 
 protocol Hidable: Taggable {
     func evaluateHidden()
-    var hidden : Condition? { get set }
-    var isHidden : Bool { get }
+    var hidden: Condition? { get set }
+    var isHidden: Bool { get }
 }
 
-public protocol KeyboardReturnHandler : BaseRowType {
-    var keyboardReturnType : KeyboardReturnTypeConfiguration? { get set }
+public protocol KeyboardReturnHandler: BaseRowType {
+    var keyboardReturnType: KeyboardReturnTypeConfiguration? { get set }
 }
 
-public protocol Taggable : AnyObject {
+public protocol Taggable: AnyObject {
     var tag: String? { get set }
 }
 
@@ -54,7 +53,7 @@ public protocol BaseRowType: Taggable {
     var section: Section? { get }
 
     /// Parameter used when creating the cell for this row.
-    var cellStyle : UITableViewCellStyle { get set }
+    var cellStyle: UITableViewCellStyle { get set }
 
     /// The title will be displayed in the textLabel of the row.
     var title: String? { get set }
@@ -68,7 +67,7 @@ public protocol BaseRowType: Taggable {
      Method called when the cell belonging to this row was selected. Must call the corresponding method in its cell.
      */
     func didSelect()
-    
+
     /**
      Typically we don't need to explicitly call this method since it is called by Eureka framework. It will validates the row if you invoke it.
      */
@@ -76,130 +75,123 @@ public protocol BaseRowType: Taggable {
 }
 
 public protocol TypedRowType: BaseRowType {
-    
-    associatedtype Value: Equatable
+
     associatedtype Cell: BaseCell, TypedCellType
 
     /// The typed cell associated to this row.
-    var cell : Self.Cell! { get }
+    var cell: Cell! { get }
 
     /// The typed value this row stores.
-    var value : Self.Value? { get set }
+    var value: Cell.Value? { get set }
 
-    func addRule<Rule: RuleType where Rule.RowValueType == Cell.Value>(rule: Rule) 
-//    func removeRule<Rule: RuleType where Rule.RowValueType == Cell.Value>(rule: Rule)
+    func add<Rule: RuleType>(rule: Rule) where Rule.RowValueType == Cell.Value
+    func remove(ruleWithIdentifier: String)
 }
 
 /**
  *  Protocol that every row type has to conform to.
  */
-public protocol RowType {
-    init(_ tag: String?, @noescape _ initializer: (Self -> ()))
+public protocol RowType: TypedRowType {
+    init(_ tag: String?, _ initializer: (Self) -> Void)
 }
 
-extension RowType where Self: TypedRowType, Self: BaseRow, Self.Cell.Value == Self.Value {
+extension RowType where Self: BaseRow {
 
     /**
      Default initializer for a row
      */
-    public init(_ tag: String? = nil, @noescape _ initializer: (Self -> ()) = { _ in }) {
+    public init(_ tag: String? = nil, _ initializer: (Self) -> Void = { _ in }) {
         self.init(tag: tag)
-        RowDefaults.rowInitialization["\(self.dynamicType)"]?(self)
+        RowDefaults.rowInitialization["\(type(of: self))"]?(self)
         initializer(self)
     }
 }
 
-
-extension RowType where Self: TypedRowType, Self: BaseRow, Self.Cell.Value == Self.Value {
+extension RowType where Self: BaseRow {
 
     /// The default block executed when the cell is updated. Applies to every row of this type.
-    public static var defaultCellUpdate:((Cell, Self) -> ())? {
+    public static var defaultCellUpdate: ((Cell, Self) -> Void)? {
         set {
             if let newValue = newValue {
-                let wrapper : (BaseCell, BaseRow) -> Void = { (baseCell: BaseCell, baseRow: BaseRow) in
+                let wrapper: (BaseCell, BaseRow) -> Void = { (baseCell: BaseCell, baseRow: BaseRow) in
                     newValue(baseCell as! Cell, baseRow as! Self)
                 }
                 RowDefaults.cellUpdate["\(self)"] = wrapper
                 RowDefaults.rawCellUpdate["\(self)"] = newValue
-            }
-            else {
+            } else {
                 RowDefaults.cellUpdate["\(self)"] = nil
                 RowDefaults.rawCellUpdate["\(self)"] = nil
             }
         }
-        get{ return RowDefaults.rawCellUpdate["\(self)"] as? ((Cell, Self) -> ()) }
+        get { return RowDefaults.rawCellUpdate["\(self)"] as? ((Cell, Self) -> Void) }
     }
 
     /// The default block executed when the cell is created. Applies to every row of this type.
-    public static var defaultCellSetup:((Cell, Self) -> ())? {
+    public static var defaultCellSetup: ((Cell, Self) -> Void)? {
         set {
             if let newValue = newValue {
-                let wrapper : (BaseCell, BaseRow) -> Void = { (baseCell: BaseCell, baseRow: BaseRow) in
+                let wrapper: (BaseCell, BaseRow) -> Void = { (baseCell: BaseCell, baseRow: BaseRow) in
                     newValue(baseCell as! Cell, baseRow as! Self)
                 }
                 RowDefaults.cellSetup["\(self)"] = wrapper
                 RowDefaults.rawCellSetup["\(self)"] = newValue
-            }
-            else {
+            } else {
                 RowDefaults.cellSetup["\(self)"] = nil
                 RowDefaults.rawCellSetup["\(self)"] = nil
             }
         }
-        get{ return RowDefaults.rawCellSetup["\(self)"] as? ((Cell, Self) -> ()) }
+        get { return RowDefaults.rawCellSetup["\(self)"] as? ((Cell, Self) -> Void) }
     }
 
     /// The default block executed when the cell becomes first responder. Applies to every row of this type.
-    public static var defaultOnCellHighlightChanged:((Cell, Self) -> ())? {
+    public static var defaultOnCellHighlightChanged: ((Cell, Self) -> Void)? {
         set {
             if let newValue = newValue {
-                let wrapper : (BaseCell, BaseRow) -> Void = { (baseCell: BaseCell, baseRow: BaseRow) in
+                let wrapper: (BaseCell, BaseRow) -> Void = { (baseCell: BaseCell, baseRow: BaseRow) in
                     newValue(baseCell as! Cell, baseRow as! Self)
                 }
                 RowDefaults.onCellHighlightChanged ["\(self)"] = wrapper
                 RowDefaults.rawOnCellHighlightChanged["\(self)"] = newValue
-            }
-            else {
+            } else {
                 RowDefaults.onCellHighlightChanged["\(self)"] = nil
                 RowDefaults.rawOnCellHighlightChanged["\(self)"] = nil
             }
         }
-        get{ return RowDefaults.rawOnCellHighlightChanged["\(self)"] as? ((Cell, Self) -> ()) }
+        get { return RowDefaults.rawOnCellHighlightChanged["\(self)"] as? ((Cell, Self) -> Void) }
     }
 
     /// The default block executed to initialize a row. Applies to every row of this type.
-    public static var defaultRowInitializer:(Self -> ())? {
+    public static var defaultRowInitializer: ((Self) -> Void)? {
         set {
             if let newValue = newValue {
-                let wrapper : (BaseRow) -> Void = { (baseRow: BaseRow) in
+                let wrapper: (BaseRow) -> Void = { (baseRow: BaseRow) in
                     newValue(baseRow as! Self)
                 }
                 RowDefaults.rowInitialization["\(self)"] = wrapper
                 RowDefaults.rawRowInitialization["\(self)"] = newValue
-            }
-            else {
+            } else {
                 RowDefaults.rowInitialization["\(self)"] = nil
                 RowDefaults.rawRowInitialization["\(self)"] = nil
             }
         }
-        get { return RowDefaults.rawRowInitialization["\(self)"] as? (Self -> ()) }
+        get { return RowDefaults.rawRowInitialization["\(self)"] as? ((Self) -> Void) }
     }
 
     /// The default block executed to initialize a row. Applies to every row of this type.
-    public static var defaultOnRowValidationChanged:((Cell, Self) -> ())? {
+    public static var defaultOnRowValidationChanged: ((Cell, Self) -> Void)? {
         set {
             if let newValue = newValue {
-                let wrapper : (BaseCell, BaseRow) -> Void = { (baseCell: BaseCell, baseRow: BaseRow) in
+                let wrapper: (BaseCell, BaseRow) -> Void = { (baseCell: BaseCell, baseRow: BaseRow) in
                     newValue(baseCell as! Cell, baseRow as! Self)
                 }
                 RowDefaults.onRowValidationChanged["\(self)"] = wrapper
                 RowDefaults.rawOnRowValidationChanged["\(self)"] = newValue
-            }
-            else {
+            } else {
                 RowDefaults.onRowValidationChanged["\(self)"] = nil
                 RowDefaults.rawOnRowValidationChanged["\(self)"] = nil
             }
         }
-        get{ return RowDefaults.rawOnRowValidationChanged["\(self)"] as? ((Cell, Self) -> ()) }
+        get { return RowDefaults.rawOnRowValidationChanged["\(self)"] as? ((Cell, Self) -> Void) }
     }
 
     /**
@@ -207,7 +199,8 @@ extension RowType where Self: TypedRowType, Self: BaseRow, Self.Cell.Value == Se
 
      - returns: this row
      */
-    public func onChange(callback: Self -> ()) -> Self{
+    @discardableResult
+    public func onChange(_ callback: @escaping (Self) -> Void) -> Self {
         callbackOnChange = { [unowned self] in callback(self) }
         return self
     }
@@ -217,8 +210,9 @@ extension RowType where Self: TypedRowType, Self: BaseRow, Self.Cell.Value == Se
 
      - returns: this row
      */
-    public func cellUpdate(callback: ((cell: Cell, row: Self) -> ())) -> Self{
-        callbackCellUpdate = { [unowned self] in  callback(cell: self.cell, row: self) }
+    @discardableResult
+    public func cellUpdate(_ callback: @escaping ((_ cell: Cell, _ row: Self) -> Void)) -> Self {
+        callbackCellUpdate = { [unowned self] in  callback(self.cell, self) }
         return self
     }
 
@@ -227,8 +221,9 @@ extension RowType where Self: TypedRowType, Self: BaseRow, Self.Cell.Value == Se
 
      - returns: this row
      */
-    public func cellSetup(callback: ((cell: Cell, row: Self) -> ())) -> Self{
-        callbackCellSetup = { [unowned self] (cell: Cell) in  callback(cell: cell, row: self) }
+    @discardableResult
+    public func cellSetup(_ callback: @escaping ((_ cell: Cell, _ row: Self) -> Void)) -> Self {
+        callbackCellSetup = { [unowned self] (cell: Cell) in  callback(cell, self) }
         return self
     }
 
@@ -237,8 +232,9 @@ extension RowType where Self: TypedRowType, Self: BaseRow, Self.Cell.Value == Se
 
      - returns: this row
      */
-    public func onCellSelection(callback: ((cell: Cell, row: Self) -> ())) -> Self{
-        callbackCellOnSelection = { [unowned self] in  callback(cell: self.cell, row: self) }
+    @discardableResult
+    public func onCellSelection(_ callback: @escaping ((_ cell: Cell, _ row: Self) -> Void)) -> Self {
+        callbackCellOnSelection = { [unowned self] in  callback(self.cell, self) }
         return self
     }
 
@@ -247,13 +243,15 @@ extension RowType where Self: TypedRowType, Self: BaseRow, Self.Cell.Value == Se
 
      - returns: this row
      */
-    public func onCellHighlightChanged(callback: (cell: Cell, row: Self)->()) -> Self {
-        callbackOnCellHighlightChanged = { [unowned self] in callback(cell: self.cell, row: self) }
+    @discardableResult
+    public func onCellHighlightChanged(_ callback: @escaping (_ cell: Cell, _ row: Self) -> Void) -> Self {
+        callbackOnCellHighlightChanged = { [unowned self] in callback(self.cell, self) }
         return self
     }
 
-    public func onRowValidationChanged(callback: (cell: Cell, row: Self)->()) -> Self {
-        callbackOnRowValidationChanged = { [unowned self] in  callback(cell: self.cell, row: self) }
+    @discardableResult
+    public func onRowValidationChanged(_ callback: @escaping (_ cell: Cell, _ row: Self) -> Void) -> Self {
+        callbackOnRowValidationChanged = { [unowned self] in  callback(self.cell, self) }
         return self
     }
 }

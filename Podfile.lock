@@ -1,25 +1,24 @@
 PODS:
-  - Eureka (1.7.0)
-  - ZFRippleButton (0.5.1)
+  - Eureka (3.0.0)
+  - ZFRippleButton (0.6)
 
 DEPENDENCIES:
-  - Eureka (from `https://github.com/xmartlabs/Eureka.git`, branch `swift2.3`)
+  - Eureka (from `https://github.com/xmartlabs/Eureka.git`)
   - ZFRippleButton
 
 EXTERNAL SOURCES:
   Eureka:
-    :branch: swift2.3
     :git: https://github.com/xmartlabs/Eureka.git
 
 CHECKOUT OPTIONS:
   Eureka:
-    :commit: be9e11baaba4092c36373e8c8ba774fddd6788cc
+    :commit: 074ad432e697650087276e01c67bbb255e3ab1f4
     :git: https://github.com/xmartlabs/Eureka.git
 
 SPEC CHECKSUMS:
-  Eureka: 2020d9faeef7b7e9adeb9e3d8af779e5931c1897
-  ZFRippleButton: 263bdf4e31dabd5826133b121d9ff908c87a6a11
+  Eureka: 5b9418d7bfdc21ca977d69d124a6409f3e9af2c7
+  ZFRippleButton: 62ea35e209757704dea697d66489fe69c13d7b77
 
-PODFILE CHECKSUM: 3dbfe892de015a49b272165fd9435c9840e6c3a1
+PODFILE CHECKSUM: 1e078631dc5608413b312fd75248e586323b530f
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.2.1.beta.1

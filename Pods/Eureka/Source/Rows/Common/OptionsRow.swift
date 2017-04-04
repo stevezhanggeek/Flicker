@@ -24,15 +24,15 @@
 
 import Foundation
 
-public class OptionsRow<T: Equatable, Cell: CellType where Cell: BaseCell, Cell: TypedCellType, Cell.Value == T> : Row<T, Cell>, NoValueDisplayTextConformance {
-    
-    public var options: [T] {
+open class OptionsRow<Cell: CellType> : Row<Cell>, NoValueDisplayTextConformance where Cell: BaseCell {
+
+    open var options: [Cell.Value] {
         get { return dataProvider?.arrayData ?? [] }
         set { dataProvider = DataProvider(arrayData: newValue) }
     }
-    public var selectorTitle: String?
-    public var noValueDisplayText: String?
-    
+    open var selectorTitle: String?
+    open var noValueDisplayText: String?
+
     required public init(tag: String?) {
         super.init(tag: tag)
     }

@@ -26,46 +26,49 @@ import Foundation
 
 // MARK: CheckCell
 
-public final class CheckCell : Cell<Bool>, CellType {
-    
+public final class CheckCell: Cell<Bool>, CellType {
+
     required public init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
-    
-    public override func update() {
+
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
+    open override func update() {
         super.update()
-        accessoryType = row.value == true ? .Checkmark : .None
+        accessoryType = row.value == true ? .checkmark : .none
         editingAccessoryType = accessoryType
-        selectionStyle = .Default
+        selectionStyle = .default
         var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 0
         tintColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
         if row.isDisabled {
             tintColor = UIColor(red: red, green: green, blue: blue, alpha: 0.3)
-            selectionStyle = .None
-        }
-        else {
+            selectionStyle = .none
+        } else {
             tintColor = UIColor(red: red, green: green, blue: blue, alpha: 1)
         }
     }
-    
-    public override func setup() {
+
+    open override func setup() {
         super.setup()
-        accessoryType =  .Checkmark
+        accessoryType = .checkmark
         editingAccessoryType = accessoryType
     }
-    
-    public override func didSelect() {
+
+    open override func didSelect() {
         row.value = row.value ?? false ? false : true
         row.deselect()
         row.updateCell()
     }
-    
+
 }
 
 // MARK: CheckRow
 
-public class _CheckRow: Row<Bool, CheckCell> {
-    
+open class _CheckRow: Row<CheckCell> {
+
     required public init(tag: String?) {
         super.init(tag: tag)
         displayValueFor = nil
@@ -74,7 +77,7 @@ public class _CheckRow: Row<Bool, CheckCell> {
 
 ///// Boolean row that has a checkmark as accessoryType
 public final class CheckRow: _CheckRow, RowType {
-        
+
     required public init(tag: String?) {
         super.init(tag: tag)
     }

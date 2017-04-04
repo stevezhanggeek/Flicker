@@ -24,45 +24,49 @@
 
 import Foundation
 
-public class PickerInlineCell<T: Equatable> : Cell<T>, CellType {
-    
+open class PickerInlineCell<T: Equatable> : Cell<T>, CellType {
+
     required public init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
-    
-    public override func setup() {
+
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
+    open override func setup() {
         super.setup()
-        accessoryType = .None
-        editingAccessoryType =  .None
+        accessoryType = .none
+        editingAccessoryType =  .none
     }
-    
-    public override func update() {
+
+    open override func update() {
         super.update()
-        selectionStyle = row.isDisabled ? .None : .Default
+        selectionStyle = row.isDisabled ? .none : .default
     }
-    
-    public override func didSelect() {
+
+    open override func didSelect() {
         super.didSelect()
         row.deselect()
     }
 }
 
-//MARK: PickerInlineRow
+// MARK: PickerInlineRow
 
-public class _PickerInlineRow<T where T: Equatable> : Row<T, PickerInlineCell<T>>, NoValueDisplayTextConformance {
-    
+open class _PickerInlineRow<T> : Row<PickerInlineCell<T>>, NoValueDisplayTextConformance where T: Equatable {
+
     public typealias InlineRow = PickerRow<T>
-    public var options = [T]()
-    public var noValueDisplayText: String?
-    
+    open var options = [T]()
+    open var noValueDisplayText: String?
+
     required public init(tag: String?) {
         super.init(tag: tag)
     }
 }
 
-/// A generic inline row where the user can pick an option from a picker view
-public final class PickerInlineRow<T where T: Equatable> : _PickerInlineRow<T>, RowType, InlineRowType {
-    
+/// A generic inline row where the user can pick an option from a picker view which shows and hides itself automatically
+public final class PickerInlineRow<T> : _PickerInlineRow<T>, RowType, InlineRowType where T: Equatable {
+
     required public init(tag: String?) {
         super.init(tag: tag)
         onExpandInlineRow { cell, row, _ in
@@ -73,17 +77,16 @@ public final class PickerInlineRow<T where T: Equatable> : _PickerInlineRow<T>, 
             cell.detailTextLabel?.textColor = cell.tintColor
         }
     }
-    
+
     public override func customDidSelect() {
         super.customDidSelect()
         if !isDisabled {
             toggleInlineRow()
         }
     }
-    
-    public func setupInlineRow(inlineRow: InlineRow) {
+
+    public func setupInlineRow(_ inlineRow: InlineRow) {
         inlineRow.options = self.options
         inlineRow.displayValueFor = self.displayValueFor
     }
 }
-

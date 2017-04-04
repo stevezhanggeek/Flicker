@@ -26,50 +26,51 @@ import Foundation
 
 // MARK: SwitchCell
 
-public class SwitchCell : Cell<Bool>, CellType {
-    
-    public typealias Value = Bool
-    
+open class SwitchCell: Cell<Bool>, CellType {
+
+    @IBOutlet public weak var switchControl: UISwitch!
+
     required public init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-    }
-    
-    public var switchControl: UISwitch? {
-        return accessoryView as? UISwitch
-    }
-    
-    public override func setup() {
-        super.setup()
-        selectionStyle = .None
-        accessoryView = UISwitch()
+        let switchC = UISwitch()
+        switchControl = switchC
+        accessoryView = switchControl
         editingAccessoryView = accessoryView
-        switchControl?.addTarget(self, action: #selector(SwitchCell.valueChanged), forControlEvents: .ValueChanged)
     }
-    
+
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
+    open override func setup() {
+        super.setup()
+        selectionStyle = .none
+        switchControl.addTarget(self, action: #selector(SwitchCell.valueChanged), for: .valueChanged)
+    }
+
     deinit {
-        switchControl?.removeTarget(self, action: nil, forControlEvents: .AllEvents)
+        switchControl?.removeTarget(self, action: nil, for: .allEvents)
     }
-    
-    public override func update() {
+
+    open override func update() {
         super.update()
-        switchControl?.on = row.value ?? false
-        switchControl?.enabled = !row.isDisabled
+        switchControl.isOn = row.value ?? false
+        switchControl.isEnabled = !row.isDisabled
     }
-    
+
     func valueChanged() {
-        row.value = switchControl?.on.boolValue ?? false
+        row.value = switchControl?.isOn ?? false
     }
 }
 
 // MARK: SwitchRow
 
-public class _SwitchRow: Row<Bool, SwitchCell> {
+open class _SwitchRow: Row<SwitchCell> {
     required public init(tag: String?) {
         super.init(tag: tag)
         displayValueFor = nil
     }
 }
-
 
 /// Boolean row that has a UISwitch as accessoryType
 public final class SwitchRow: _SwitchRow, RowType {

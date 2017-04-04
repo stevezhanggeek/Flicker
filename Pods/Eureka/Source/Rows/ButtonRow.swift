@@ -26,25 +26,29 @@ import Foundation
 
 // MARK: ButtonCell
 
-public class ButtonCellOf<T: Equatable>: Cell<T>, CellType {
-    
+open class ButtonCellOf<T: Equatable>: Cell<T>, CellType {
+
     required public init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
-    
-    public override func update() {
+
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
+    open override func update() {
         super.update()
-        selectionStyle = row.isDisabled ? .None : .Default
-        accessoryType = .None
+        selectionStyle = row.isDisabled ? .none : .default
+        accessoryType = .none
         editingAccessoryType = accessoryType
-        textLabel?.textAlignment = .Center
+        textLabel?.textAlignment = .center
         textLabel?.textColor = tintColor
         var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 0
         tintColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
         textLabel?.textColor  = UIColor(red: red, green: green, blue: blue, alpha: row.isDisabled ? 0.3 : 1.0)
     }
-    
-    public override func didSelect() {
+
+    open override func didSelect() {
         super.didSelect()
         row.deselect()
     }
@@ -52,52 +56,49 @@ public class ButtonCellOf<T: Equatable>: Cell<T>, CellType {
 
 public typealias ButtonCell = ButtonCellOf<String>
 
+// MARK: ButtonRow
 
-//MARK: ButtonRow
+open class _ButtonRowOf<T: Equatable> : Row<ButtonCellOf<T>> {
+    open var presentationMode: PresentationMode<UIViewController>?
 
-public class _ButtonRowOf<T: Equatable> : Row<T, ButtonCellOf<T>> {
-    public var presentationMode: PresentationMode<UIViewController>?
-    
     required public init(tag: String?) {
         super.init(tag: tag)
         displayValueFor = nil
-        cellStyle = .Default
+        cellStyle = .default
     }
-    
-    public override func customDidSelect() {
+
+    open override func customDidSelect() {
         super.customDidSelect()
         if !isDisabled {
             if let presentationMode = presentationMode {
-                if let controller = presentationMode.createController(){
-                    presentationMode.presentViewController(controller, row: self, presentingViewController: self.cell.formViewController()!)
-                }
-                else{
-                    presentationMode.presentViewController(nil, row: self, presentingViewController: self.cell.formViewController()!)
+                if let controller = presentationMode.makeController() {
+                    presentationMode.present(controller, row: self, presentingController: self.cell.formViewController()!)
+                } else {
+                    presentationMode.present(nil, row: self, presentingController: self.cell.formViewController()!)
                 }
             }
         }
     }
-    
-    public override func customUpdateCell() {
+
+    open override func customUpdateCell() {
         super.customUpdateCell()
         let leftAligmnment = presentationMode != nil
-        cell.textLabel?.textAlignment = leftAligmnment ? .Left : .Center
-        cell.accessoryType = !leftAligmnment || isDisabled ? .None : .DisclosureIndicator
+        cell.textLabel?.textAlignment = leftAligmnment ? .left : .center
+        cell.accessoryType = !leftAligmnment || isDisabled ? .none : .disclosureIndicator
         cell.editingAccessoryType = cell.accessoryType
-        if (!leftAligmnment){
+        if !leftAligmnment {
             var red: CGFloat = 0, green: CGFloat = 0, blue: CGFloat = 0, alpha: CGFloat = 0
             cell.tintColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
             cell.textLabel?.textColor  = UIColor(red: red, green: green, blue: blue, alpha:isDisabled ? 0.3 : 1.0)
-        }
-        else{
+        } else {
             cell.textLabel?.textColor = nil
         }
     }
-    
-    public override func prepareForSegue(segue: UIStoryboardSegue) {
-        super.prepareForSegue(segue)
-        let rowVC = segue.destinationViewController as? RowControllerType
-        rowVC?.completionCallback = self.presentationMode?.completionHandler
+
+    open override func prepare(for segue: UIStoryboardSegue) {
+        super.prepare(for: segue)
+        let rowVC = segue.destination as? RowControllerType
+        rowVC?.onDismissCallback = presentationMode?.onDismissCallback
     }
 }
 

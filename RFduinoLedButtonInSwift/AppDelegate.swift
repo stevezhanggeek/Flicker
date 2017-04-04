@@ -15,19 +15,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var wasScanning :  Bool = false
     var rfduinoManager = RFduinoManager()
-    var viewController = ScanViewController(style: .Plain)
+    var viewController = ScanViewController(style: .plain)
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
 
-        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        self.window = UIWindow(frame: UIScreen.main.bounds)
 
         let navController: UINavigationController = UINavigationController(rootViewController: viewController)
         
         self.window!.rootViewController = navController
         
-        navController.navigationBar.tintColor = UIColor.blackColor()
-        self.window!.backgroundColor = UIColor.whiteColor()
+        navController.navigationBar.tintColor = UIColor.black
+        self.window!.backgroundColor = UIColor.white
         self.window!.makeKeyAndVisible()
 
         return true
