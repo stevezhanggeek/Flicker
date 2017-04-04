@@ -37,7 +37,7 @@ class TestVC: UIViewController, RFduinoDelegate {
         super.viewWillAppear(animated)
         
         if studyCondition == nil {
-            studyCondition = StudyCondition(useReferenceDevice: false, lowAmbientLight: false, lowIntensityLED: false)
+            studyCondition = StudyCondition(LED: 1)
         }
 
         setupStudyCondition()
@@ -63,25 +63,19 @@ class TestVC: UIViewController, RFduinoDelegate {
     }
     
     func setupStudyCondition() {
-        if studyCondition.useReferenceDevice {
+        if studyCondition.LED == 0 {
             let alertController = UIAlertController(title: "Current Study Condition", message: "ReferenceDevice", preferredStyle: .alert)
-            alertController.addTextField { (textField) in
-                textField.placeholder = "From Min 1"
-                textField.keyboardType = UIKeyboardType.numberPad
+            for i in 0 ..< testOrder.count/2 {
+                alertController.addTextField { (textField) in
+                    textField.placeholder = "From Min " + String(i)
+                    textField.keyboardType = UIKeyboardType.numberPad
+                }
+                alertController.addTextField { (textField) in
+                    textField.placeholder = "From Max " + String(i)
+                    textField.keyboardType = UIKeyboardType.numberPad
+                }
             }
-            alertController.addTextField { (textField) in
-                textField.placeholder = "From Max 1"
-                textField.keyboardType = UIKeyboardType.numberPad
-            }
-            alertController.addTextField { (textField) in
-                textField.placeholder = "From Min 2"
-                textField.keyboardType = UIKeyboardType.numberPad
-            }
-            alertController.addTextField { (textField) in
-                textField.placeholder = "From Max 2"
-                textField.keyboardType = UIKeyboardType.numberPad
-            }
-
+            
             let saveAction = UIAlertAction(title: "Save", style: .default) { (_) in
                 var results = [(String, Double, Double)]()
                 for i in 0 ..< alertController.textFields!.count {
@@ -108,17 +102,7 @@ class TestVC: UIViewController, RFduinoDelegate {
             
             self.present(alertController, animated: true, completion: nil)
         } else {
-            var message = "OurDevice, "
-            if studyCondition.lowAmbientLight {
-                message += "LowAmbient, "
-            } else {
-                message += "HighAmbient, "
-            }
-            if studyCondition.lowIntensityLED {
-                message += "LowLED"
-            } else {
-                message += "HighLED"
-            }
+            var message = "OurDevice, LED" + String(studyCondition.LED)
             
             let alertController = UIAlertController(title: "Current Study Condition", message: message, preferredStyle: .alert)
             
@@ -131,12 +115,8 @@ class TestVC: UIViewController, RFduinoDelegate {
     }
     
     func setupLED() {
-        if studyCondition.lowIntensityLED {
-            sendToBoard(data: enumLED.lowIntensity.rawValue)
-        } else {
-            sendToBoard(data: enumLED.highIntensity.rawValue)
-        }
-
+        sendToBoard(data: enumLED.study.rawValue)
+        
         turnOffLED()
     }
     

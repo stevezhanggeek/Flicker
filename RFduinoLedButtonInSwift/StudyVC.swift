@@ -42,42 +42,36 @@ class StudyVC: FormViewController {
     
     func updateResultView() {
         resultView.removeFromSuperview()
-        resultView = UIView(frame: CGRect(x:0, y:270, width:screenW, height:300))
+        resultView = UIView(frame: CGRect(x:0, y:220, width:screenW, height:350))
         self.view.addSubview(resultView)
-        
-        let row: IntRow? = form.rowBy(tag: "ParticipantID")
-        
-        if let participantID = row!.value {
-            let order = latinSquare[participantID % 6]
-            
-            for i in 0 ..< 6 {
-                let row = UIView(frame: CGRect(x:0, y:CGFloat(i) * 50, width:screenW, height:50))
-                let orderLabel = UILabel(frame: CGRect(x:0, y:0, width:50, height:50))
-                orderLabel.text = String(order[i])
-                orderLabel.textAlignment = .center
-                row.addSubview(orderLabel)
-                if studyProgress >= i {
-                    let resultLabel = UILabel(frame: CGRect(x:50, y:0, width:screenW - 130, height:50))
-                    var text = ""
-                    let resultList = finalResult.testResultList[i]
-                    for result in resultList {
-                        text += String(result.1) + ", "
-                    }
-                    resultLabel.text = text
-                    resultLabel.font = UIFont.systemFont(ofSize: 10)
-                    resultLabel.numberOfLines = 2
-                    row.addSubview(resultLabel)
-                    
-                    let redoButton = UIButton(frame: CGRect(x:screenW - 80, y:0, width:80, height:50))
-                    redoButton.setTitle("Redo", for: .normal)
-                    redoButton.setTitleColor(UIColor.red, for: .normal)
-                    redoButton.tag = i
-                    redoButton.addTarget(self, action: #selector(redoButtonTouched(button:)), for: .touchUpInside)
-                    row.addSubview(redoButton)
+    
+        for i in 0 ..< 7 {
+            let row = UIView(frame: CGRect(x:0, y:CGFloat(i) * 50, width:screenW, height:50))
+            let orderLabel = UILabel(frame: CGRect(x:0, y:0, width:50, height:50))
+            orderLabel.text = String(studyOrder[i])
+            orderLabel.textAlignment = .center
+            row.addSubview(orderLabel)
+            if studyProgress >= i {
+                let resultLabel = UILabel(frame: CGRect(x:50, y:0, width:screenW - 130, height:50))
+                var text = ""
+                let resultList = finalResult.testResultList[i]
+                for result in resultList {
+                    text += String(result.1) + ", "
                 }
+                resultLabel.text = text
+                resultLabel.font = UIFont.systemFont(ofSize: 10)
+                resultLabel.numberOfLines = 2
+                row.addSubview(resultLabel)
                 
-                resultView.addSubview(row)
+                let redoButton = UIButton(frame: CGRect(x:screenW - 80, y:0, width:80, height:50))
+                redoButton.setTitle("Redo", for: .normal)
+                redoButton.setTitleColor(UIColor.red, for: .normal)
+                redoButton.tag = i
+                redoButton.addTarget(self, action: #selector(redoButtonTouched(button:)), for: .touchUpInside)
+                row.addSubview(redoButton)
             }
+            
+            resultView.addSubview(row)
         }
     }
     
@@ -87,15 +81,14 @@ class StudyVC: FormViewController {
             
             let row: IntRow? = form.rowBy(tag: "ParticipantID")
             if let participantID = row!.value {
-                let order = latinSquare[participantID % 6]
                 if sender == nil {
                     // Next study
                     vc.index = studyProgress
-                    vc.studyCondition = allStudyConditionList[order[studyProgress]]
+                    vc.studyCondition = allStudyConditionList[studyOrder[studyProgress]]
                 } else {
                     // Redo
                     vc.index = sender as! Int
-                    vc.studyCondition = allStudyConditionList[order[sender as! Int]]
+                    vc.studyCondition = allStudyConditionList[studyOrder[sender as! Int]]
                 }
             }
         }
@@ -112,8 +105,8 @@ class StudyVC: FormViewController {
             print("Participant Info recorded")
         }
         
-        if (studyProgress >= 5) {
-            let alertController = UIAlertController(title: "All 6 Tests Completed!", message: "", preferredStyle: .alert)
+        if (studyProgress >= 6) {
+            let alertController = UIAlertController(title: "All 7 Conditions Completed!", message: "", preferredStyle: .alert)
             
             let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
             }

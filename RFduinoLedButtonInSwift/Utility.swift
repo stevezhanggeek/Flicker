@@ -23,61 +23,65 @@ enum enumMethod {
 }
 
 enum enumLED : Double {
-    case lowIntensity = 3.0
-    case highIntensity = 4.0
+    case study = 3.0
     case calibration = 5.0
 }
 
+extension MutableCollection where Indices.Iterator.Element == Index {
+    /// Shuffles the contents of this collection.
+    mutating func shuffle() {
+        let c = count
+        guard c > 1 else { return }
+        
+        for (firstUnshuffled , unshuffledCount) in zip(indices, stride(from: c, to: 1, by: -1)) {
+            let d: IndexDistance = numericCast(arc4random_uniform(numericCast(unshuffledCount)))
+            guard d != 0 else { continue }
+            let i = index(firstUnshuffled, offsetBy: d)
+            swap(&self[firstUnshuffled], &self[i])
+        }
+    }
+}
+
+extension Sequence {
+    /// Returns an array with the contents of this sequence, shuffled.
+    func shuffled() -> [Iterator.Element] {
+        var result = Array(self)
+        result.shuffle()
+        return result
+    }
+}
+
 class StudyCondition {
-    var useReferenceDevice = false
-    var lowAmbientLight = false
-    var lowIntensityLED = false
-    init(useReferenceDevice: Bool, lowAmbientLight: Bool, lowIntensityLED: Bool) {
-        self.useReferenceDevice = useReferenceDevice
-        self.lowAmbientLight = lowAmbientLight
-        self.lowIntensityLED = lowIntensityLED
+    var LED = -1
+    init(LED: Int) {
+        self.LED = LED
     }
     func toString() -> String {
         var string = ""
-        if useReferenceDevice {
+        if LED == 0 {
             string = "useReferenceDevice"
         } else {
-            string = "useOurDevice"
-            if lowAmbientLight {
-                string += "+lowAmbientLight"
-            } else {
-                string += "+highAmbientLight"
-            }
-            if lowIntensityLED {
-                string += "+lowIntensityLED"
-            } else {
-                string += "+highIntensityLED"
-            }
+            string = "useOurDevice: LED" + String(LED)
         }
         return string
     }
 }
 
-let allStudyConditionList = [
-    StudyCondition(useReferenceDevice: true,  lowAmbientLight: false, lowIntensityLED: false),
-    StudyCondition(useReferenceDevice: true,  lowAmbientLight: false, lowIntensityLED: false),
-    StudyCondition(useReferenceDevice: false, lowAmbientLight: false, lowIntensityLED: false),
-    StudyCondition(useReferenceDevice: false, lowAmbientLight: false, lowIntensityLED: true),
-    StudyCondition(useReferenceDevice: false, lowAmbientLight: true,  lowIntensityLED: false),
-    StudyCondition(useReferenceDevice: false, lowAmbientLight: true,  lowIntensityLED: true)]
+let studyOrder = [0, 1, 2, 3, 4, 5, 6].shuffled()
 
-let latinSquare = [
-    [0,1,5,2,4,3],
-    [1,2,0,3,5,4],
-    [2,3,1,4,0,5],
-    [3,4,2,5,1,0],
-    [4,5,3,0,2,1],
-    [5,0,4,1,3,2]
-]
+let allStudyConditionList = [
+    StudyCondition(LED: 0),
+    StudyCondition(LED: 1),
+    StudyCondition(LED: 2),
+    StudyCondition(LED: 3),
+    StudyCondition(LED: 4),
+    StudyCondition(LED: 5),
+    StudyCondition(LED: 0)]
 
 class Result {
     var participantInfo: [String: Any?]?
     var testResultList = [[(String, Double, Double)](),
+                          [(String, Double, Double)](),
                           [(String, Double, Double)](),
                           [(String, Double, Double)](),
                           [(String, Double, Double)](),
@@ -135,22 +139,16 @@ func saveFinalResultToCSV(fileName: String) {
     }
     
     
-    if let value = finalResult.participantInfo!["ParticipantID"] {
-        if let id = value {
-            let order = latinSquare[Int(String(describing: id))! % 6]
-            
-            for i in 0 ..< finalResult.testResultList.count {
-                var line = allStudyConditionList[order[i]].toString() + ","
-                for entry in finalResult.testResultList[i] {
-                    line += entry.0 + "," + String(entry.1) + "," + String(entry.2) + ","
-                }
-                line = String(line.characters.dropLast())
-                content += line + "\n"
-            }
+    for i in 0 ..< finalResult.testResultList.count {
+        var line = allStudyConditionList[studyOrder[i]].toString() + ","
+        for entry in finalResult.testResultList[i] {
+            line += entry.0 + "," + String(entry.1) + "," + String(entry.2) + ","
         }
+        line = String(line.characters.dropLast())
+        content += line + "\n"
     }
 
-    
+
     do {
         try content.write(toFile: filePath, atomically: false, encoding: String.Encoding.utf8)
     } catch {}
