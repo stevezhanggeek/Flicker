@@ -21,7 +21,7 @@ class SettingsVC: UITableViewController, MFMailComposeViewControllerDelegate {
         setLimitsMaxFreq(freq: Double(limitsMaxFreqTextField.text!))
     }
     
-    @IBAction func sendEmailButtonTouched(sender: AnyObject) {
+    @IBAction func sendEmailButtonTouched(_ sender: Any) {
         if MFMailComposeViewController.canSendMail() {
             let mailComposer = MFMailComposeViewController()
             mailComposer.mailComposeDelegate = self

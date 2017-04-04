@@ -239,8 +239,7 @@ class TestVC: UIViewController, RFduinoDelegate {
         }
     }
     
-    
-    @IBAction func calibrationLEDButtonTouched(sender: AnyObject) {
+    @IBAction func calibrationButtonTouched(_ sender: Any) {
         // TODO: Ravi will update this parameter
         print("Calibration LED Button Touched.")
         sendToBoard(data: enumLED.calibration.rawValue)
