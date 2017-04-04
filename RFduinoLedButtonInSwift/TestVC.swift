@@ -15,7 +15,7 @@ class TestVC: UIViewController, RFduinoDelegate {
     
     var index = -1
     var studyCondition: StudyCondition!
-    var testOrder = [0, 1, 0, 1]
+    var testOrder = [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1]
     var testStep = 0
     
     // (Method, Frequency, TimeInterval)

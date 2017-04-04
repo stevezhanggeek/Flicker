@@ -64,6 +64,8 @@ class StudyVC: FormViewController {
                         text += String(result.1) + ", "
                     }
                     resultLabel.text = text
+                    resultLabel.font = UIFont.systemFont(ofSize: 10)
+                    resultLabel.numberOfLines = 2
                     row.addSubview(resultLabel)
                     
                     let redoButton = UIButton(frame: CGRect(x:screenW - 80, y:0, width:80, height:50))
@@ -79,7 +81,7 @@ class StudyVC: FormViewController {
         }
     }
     
-    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showTestVCFromStudyVC" {
             let vc = segue.destination as! TestVC
             
