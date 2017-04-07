@@ -116,7 +116,6 @@ class TestVC: UIViewController, RFduinoDelegate {
     
     func setupLED() {
         sendToBoard(data: enumLED.study.rawValue)
-        sendToBoard(data: enumLED.calibration.rawValue)
         
         turnOffLED()
     }

@@ -114,15 +114,14 @@ func setLimitsMaxFreq(freq: Double?) {
 }
 
 
-func fileInDocumentsDirectory(folderName: String, fileName: String) -> String {
+func fileInDocumentsDirectory(fileName: String) -> String {
     let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-    let folderURL = documentsURL.appendingPathComponent(folderName)
-    let fileURL = folderURL.appendingPathComponent(fileName)
+    let fileURL = documentsURL.appendingPathComponent(fileName)
     return fileURL.path
 }
 
 func saveFinalResultToCSV(fileName: String) {
-    let filePath = fileInDocumentsDirectory(folderName: "", fileName: fileName + ".csv")
+    let filePath = fileInDocumentsDirectory(fileName: fileName + ".csv")
     var content = ""
     
     if finalResult.participantInfo != nil {

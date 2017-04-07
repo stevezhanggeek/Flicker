@@ -27,18 +27,23 @@ class SettingsVC: UITableViewController, MFMailComposeViewControllerDelegate {
             mailComposer.mailComposeDelegate = self
             
             mailComposer.setToRecipients(["xiaoyiz@cs.washington.edu", "rkarkar@cs.washington.edu"])
-            mailComposer.setSubject("[FlickerUserStudy] "+"Participant 1")
-            mailComposer.setMessageBody("CSV file is attached.", isHTML: false)
-            /*
-            if let filePath = NSBundle.mainBundle().pathForResource("swifts", ofType: "wav") {
-                if let fileData = NSData(contentsOfFile: filePath) {
-                    mailComposer.addAttachmentData(fileData, mimeType: "audio/wav", fileName: "swifts")
+            if let value = finalResult.participantInfo!["ParticipantID"] {
+                if let id = value {
+                    mailComposer.setSubject("[FlickerUserStudy] "+"Participant " + String(describing: id))
+                    mailComposer.setMessageBody("CSV file is attached.", isHTML: false)
+                    let filePath = fileInDocumentsDirectory(fileName: "Result_" + String(describing: id) +  ".csv")
+                    if let contents = try? String(contentsOfFile: filePath) {
+                        let data = contents.data(using: String.Encoding.utf8, allowLossyConversion: false)
+                        mailComposer.addAttachmentData(data!, mimeType: "text/csv", fileName: "Results_" + String(describing: id) +  ".csv")
+                    }
                 }
             }
- */
             self.present(mailComposer, animated: true, completion: nil)
         }
     }
     
-    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        // Dismiss the mail compose view controller.
+        controller.dismiss(animated: true, completion: nil)
+    }
 }

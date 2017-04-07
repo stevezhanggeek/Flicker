@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4080F45C1BA8ACC200573116 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4080F45B1BA8ACC200573116 /* AppDelegate.swift */; };
-		4080F45E1BA8ACC200573116 /* OldFlickerTestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4080F45D1BA8ACC200573116 /* OldFlickerTestVC.swift */; };
 		4080F4611BA8ACC200573116 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4080F45F1BA8ACC200573116 /* Main.storyboard */; };
 		4080F4631BA8ACC200573116 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4080F4621BA8ACC200573116 /* Images.xcassets */; };
 		4080F4661BA8ACC200573116 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4080F4641BA8ACC200573116 /* LaunchScreen.xib */; };
@@ -31,7 +30,6 @@
 		4080F4561BA8ACC200573116 /* RFduinoLedButtonInSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RFduinoLedButtonInSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4080F45A1BA8ACC200573116 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4080F45B1BA8ACC200573116 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4080F45D1BA8ACC200573116 /* OldFlickerTestVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldFlickerTestVC.swift; sourceTree = "<group>"; };
 		4080F4601BA8ACC200573116 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4080F4621BA8ACC200573116 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		4080F4651BA8ACC200573116 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -113,7 +111,6 @@
 				DA48AF231E6D1A91007DDE21 /* MainVC.swift */,
 				DA48AF251E6D1B08007DDE21 /* TestVC.swift */,
 				DA51020C1E6D473200F7AE57 /* StudyVC.swift */,
-				4080F45D1BA8ACC200573116 /* OldFlickerTestVC.swift */,
 				DA7BBDE81E4C630C005E84C6 /* SettingsVC.swift */,
 				4080F45F1BA8ACC200573116 /* Main.storyboard */,
 				4080F4621BA8ACC200573116 /* Images.xcassets */,
@@ -305,7 +302,6 @@
 			files = (
 				4080F4891BA8ACFB00573116 /* CustomCellBackground.m in Sources */,
 				4080F48B1BA8ACFB00573116 /* RfduinoManager.m in Sources */,
-				4080F45E1BA8ACC200573116 /* OldFlickerTestVC.swift in Sources */,
 				DA48AF261E6D1B08007DDE21 /* TestVC.swift in Sources */,
 				DA48AF241E6D1A91007DDE21 /* MainVC.swift in Sources */,
 				4080F45C1BA8ACC200573116 /* AppDelegate.swift in Sources */,
