@@ -68,11 +68,11 @@ class TestVC: UIViewController, RFduinoDelegate {
             for i in 0 ..< testOrder.count/2 {
                 alertController.addTextField { (textField) in
                     textField.placeholder = "From Min " + String(i)
-                    textField.keyboardType = UIKeyboardType.numberPad
+                    textField.keyboardType = UIKeyboardType.decimalPad
                 }
                 alertController.addTextField { (textField) in
                     textField.placeholder = "From Max " + String(i)
-                    textField.keyboardType = UIKeyboardType.numberPad
+                    textField.keyboardType = UIKeyboardType.decimalPad
                 }
             }
             
@@ -102,7 +102,7 @@ class TestVC: UIViewController, RFduinoDelegate {
             
             self.present(alertController, animated: true, completion: nil)
         } else {
-            var message = "OurDevice, LED" + String(studyCondition.LED)
+            let message = "OurDevice, LED" + String(studyCondition.LED)
             
             let alertController = UIAlertController(title: "Current Study Condition", message: message, preferredStyle: .alert)
             
@@ -215,7 +215,9 @@ class TestVC: UIViewController, RFduinoDelegate {
         
         var message = "Your results:\n"
         for result in resultList {
-            message += result.0 + ", " + String(result.1) + ", " + String(round(100*result.2)/100) + "\n"
+            let freq = String(round(10*result.1)/10)
+            let time = String(round(100*result.2)/100)
+            message += result.0 + ", " + freq + ", " + time + "\n"
         }
         
         let alertController = UIAlertController(title: "Test Completed!", message: message, preferredStyle: .alert)
