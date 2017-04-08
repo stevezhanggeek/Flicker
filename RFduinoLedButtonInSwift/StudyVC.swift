@@ -42,17 +42,21 @@ class StudyVC: FormViewController {
     
     func updateResultView() {
         resultView.removeFromSuperview()
-        resultView = UIView(frame: CGRect(x:0, y:220, width:screenW, height:350))
+        
+        let resultHeight = screenH - 80 - 220
+        let rowH = resultHeight / 7
+        
+        resultView = UIView(frame: CGRect(x:0, y:220, width:screenW, height:resultHeight))
         self.view.addSubview(resultView)
     
         for i in 0 ..< 7 {
-            let row = UIView(frame: CGRect(x:0, y:CGFloat(i) * 50, width:screenW, height:50))
-            let orderLabel = UILabel(frame: CGRect(x:0, y:0, width:50, height:50))
+            let row = UIView(frame: CGRect(x:0, y:CGFloat(i) * rowH, width:screenW, height:rowH))
+            let orderLabel = UILabel(frame: CGRect(x:0, y:0, width:50, height:rowH))
             orderLabel.text = String(studyOrder[i])
             orderLabel.textAlignment = .center
             row.addSubview(orderLabel)
             if studyProgress >= i {
-                let resultLabel = UILabel(frame: CGRect(x:50, y:0, width:screenW - 130, height:50))
+                let resultLabel = UILabel(frame: CGRect(x:50, y:0, width:screenW - 130, height:rowH))
                 var text = ""
                 let resultList = finalResult.testResultList[i]
                 for result in resultList {
@@ -63,7 +67,7 @@ class StudyVC: FormViewController {
                 resultLabel.numberOfLines = 2
                 row.addSubview(resultLabel)
                 
-                let redoButton = UIButton(frame: CGRect(x:screenW - 80, y:0, width:80, height:50))
+                let redoButton = UIButton(frame: CGRect(x:screenW - 80, y:0, width:80, height:rowH))
                 redoButton.setTitle("Redo", for: .normal)
                 redoButton.setTitleColor(UIColor.red, for: .normal)
                 redoButton.tag = i
