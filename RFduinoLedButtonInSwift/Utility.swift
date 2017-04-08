@@ -23,8 +23,8 @@ enum enumMethod {
 }
 
 enum enumLED : Double {
-    case study = 0.3
-    case calibration = 0.5
+    case study = 3.0
+    case calibration = 5.0
 }
 
 extension MutableCollection where Indices.Iterator.Element == Index {
