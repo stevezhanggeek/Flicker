@@ -31,10 +31,10 @@ class SettingsVC: UITableViewController, MFMailComposeViewControllerDelegate {
                 if let id = value {
                     mailComposer.setSubject("[FlickerUserStudy] "+"Participant " + String(describing: id))
                     mailComposer.setMessageBody("CSV file is attached.", isHTML: false)
-                    let filePath = fileInDocumentsDirectory(fileName: "Result_" + String(describing: id) +  ".csv")
+                    let filePath = fileInDocumentsDirectory(fileName: "Result_" + String(describing: id)+"_"+String(describing: finalResult.participantInfo!["Age"]!!) + ".csv")
                     if let contents = try? String(contentsOfFile: filePath) {
                         let data = contents.data(using: String.Encoding.utf8, allowLossyConversion: false)
-                        mailComposer.addAttachmentData(data!, mimeType: "text/csv", fileName: "Results_" + String(describing: id) +  ".csv")
+                        mailComposer.addAttachmentData(data!, mimeType: "text/csv", fileName: "Results_" + String(describing: id) + "_"+String(describing: finalResult.participantInfo!["Age"]!!) + ".csv")
                     }
                 }
             }

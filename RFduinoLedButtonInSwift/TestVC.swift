@@ -24,8 +24,8 @@ class TestVC: UIViewController, RFduinoDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //RFduinoSingleton.delegate = self
-        
+        RFduinoSingleton.delegate = self
+
         bigButton = ZFRippleButton(frame: self.view.frame)
         bigButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 35)
         bigButton.backgroundColor = UIColor.init(red: 0, green: 0, blue: 1, alpha: 1)
@@ -240,11 +240,7 @@ class TestVC: UIViewController, RFduinoDelegate {
     func saveCSV(resultList: [(String, Double, Double)]) {
         if self.index != -1 {
             finalResult.testResultList[self.index] = resultList
-            if let value = finalResult.participantInfo!["ParticipantID"] {
-                if let string = value {
-                    saveFinalResultToCSV(fileName: "Result_" + String(describing: string))
-                }
-            }
+            saveFinalResultToCSV(fileName: "Result_" + String(describing: finalResult.participantInfo!["ParticipantID"]!!)+"_"+String(describing: finalResult.participantInfo!["Age"]!!))
         }
     }
     
