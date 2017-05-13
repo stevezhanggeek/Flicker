@@ -44,12 +44,12 @@ class StudyVC: FormViewController {
         resultView.removeFromSuperview()
         
         let resultHeight = screenH - 80 - 220
-        let rowH = resultHeight / 7
+        let rowH = resultHeight / 2
         
         resultView = UIView(frame: CGRect(x:0, y:220, width:screenW, height:resultHeight))
         self.view.addSubview(resultView)
     
-        for i in 0 ..< 7 {
+        for i in 0 ..< 2 {
             let row = UIView(frame: CGRect(x:0, y:CGFloat(i) * rowH, width:screenW, height:rowH))
             let orderLabel = UILabel(frame: CGRect(x:0, y:0, width:50, height:rowH))
             orderLabel.text = String(studyOrder[i])
@@ -109,14 +109,21 @@ class StudyVC: FormViewController {
             print("Participant Info recorded")
         }
         
-        if (studyProgress >= 6) {
-            let alertController = UIAlertController(title: "All 7 Conditions Completed!", message: "", preferredStyle: .alert)
+        if (studyProgress >= 1) {
+            let alertController = UIAlertController(title: "All 2 Conditions Completed!", message: "", preferredStyle: .alert)
             
             let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
             }
             alertController.addAction(okAction)
             self.present(alertController, animated: true, completion: nil)
         } else {
+            let row: IntRow? = form.rowBy(tag: "ParticipantID")
+            if let participantID = row!.value {
+                if participantID % 2 == 0 {
+                    studyOrder = [1, 0]
+                }
+            }
+            
             studyProgress += 1
             self.performSegue(withIdentifier: "showTestVCFromStudyVC", sender: nil)
         }

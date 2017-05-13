@@ -15,7 +15,7 @@ class TestVC: UIViewController, RFduinoDelegate {
     
     var index = -1
     var studyCondition: StudyCondition!
-    var testOrder = [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1]
+    var testOrder = [0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1]
     var testStep = 0
     
     // (Method, Frequency, TimeInterval)
@@ -24,7 +24,7 @@ class TestVC: UIViewController, RFduinoDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        RFduinoSingleton.delegate = self
+        //RFduinoSingleton.delegate = self
         
         bigButton = ZFRippleButton(frame: self.view.frame)
         bigButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 35)
@@ -142,12 +142,12 @@ class TestVC: UIViewController, RFduinoDelegate {
             var result = ("", -1.0, -1.0)
             if testOrder[testStep - 1] == 0 {
                 result.0 = "limitsFreqFromMin"
-                result.1 = limitsFreqFromMin
-                result.2 = Double(NSDate().timeIntervalSince(lastTimestamp as Date))
+                result.1 = round(10*limitsFreqFromMin)/10
+                result.2 = round(100*Double(NSDate().timeIntervalSince(lastTimestamp as Date)))/100
             } else {
                 result.0 = "limitsFreqFromMax"
-                result.1 = limitsFreqFromMax
-                result.2 = Double(NSDate().timeIntervalSince(lastTimestamp as Date))
+                result.1 = round(10*limitsFreqFromMax)/10
+                result.2 = round(100*Double(NSDate().timeIntervalSince(lastTimestamp as Date)))/100
             }
             resultList[testStep - 1] = result
             
@@ -158,6 +158,12 @@ class TestVC: UIViewController, RFduinoDelegate {
             }
             
             reset()
+            
+            if testOrder[testStep - 1] == 0 {
+                sleep(3)
+                processLimitsTest()
+            }
+
             return
         }
         
@@ -176,6 +182,7 @@ class TestVC: UIViewController, RFduinoDelegate {
         case 1:
             bigButton.setTitle("Saw Flicker", for: .normal)
             readAloudText(text: "Touch screen when the light flickers.")
+            sleep(3)
             // Update frequency 5 time a second
             limitsTimerFromMax = Timer.scheduledTimer(timeInterval: 0.2, target:self, selector: #selector(self.updateLimitsFromMax), userInfo: nil, repeats: true)
             break

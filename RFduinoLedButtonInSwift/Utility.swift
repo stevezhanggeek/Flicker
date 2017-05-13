@@ -67,25 +67,15 @@ class StudyCondition {
     }
 }
 
-let studyOrder = [0, 1, 2, 3, 4, 5, 6].shuffled()
+var studyOrder = [0, 1]
 
 let allStudyConditionList = [
     StudyCondition(LED: 0),
-    StudyCondition(LED: 1),
-    StudyCondition(LED: 2),
-    StudyCondition(LED: 3),
-    StudyCondition(LED: 4),
-    StudyCondition(LED: 5),
-    StudyCondition(LED: 0)]
+    StudyCondition(LED: 1)]
 
 class Result {
     var participantInfo: [String: Any?]?
     var testResultList = [[(String, Double, Double)](),
-                          [(String, Double, Double)](),
-                          [(String, Double, Double)](),
-                          [(String, Double, Double)](),
-                          [(String, Double, Double)](),
-                          [(String, Double, Double)](),
                           [(String, Double, Double)]()]
 }
 
@@ -158,7 +148,7 @@ func sendToBoard(data: Double) {
     print(intX10Data)
     var tx: [UInt16] = [UInt16(bitPattern: Int16(intX10Data))]
     let data = NSData(bytes: &tx, length: MemoryLayout<UInt16>.size)
-    RFduinoSingleton.send(data as Data!)
+    //RFduinoSingleton.send(data as Data!)
 }
 
 func readAloudText(text: String) {
