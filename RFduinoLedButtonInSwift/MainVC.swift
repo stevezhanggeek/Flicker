@@ -8,5 +8,12 @@ class MainVC: UIViewController {
         
         RFduinoSingleton = rfduino
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showTestVC" {
+            let vc = segue.destination as! TestVC
+            vc.testOrder = [0, 1, 0, 1]
+        }
+    }    
 }
 
