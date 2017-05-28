@@ -131,6 +131,14 @@ class TestVC: UIViewController, RFduinoDelegate {
         limitsTimerFromMax?.invalidate()
     }
     
+    func disableButton() {
+        bigButton.isUserInteractionEnabled = false
+    }
+    
+    func enableButton() {
+        bigButton.isUserInteractionEnabled = true
+    }
+    
     func processLimitsTest() {
         if pauseFlag {
             pauseFlag = false
@@ -178,6 +186,8 @@ class TestVC: UIViewController, RFduinoDelegate {
             readAloudText(text: "Touch screen when the light is steady.")
             // Update frequency 5 time a second
             limitsTimerFromMin = Timer.scheduledTimer(timeInterval: 0.2, target:self, selector: #selector(self.updateLimitsFromMin), userInfo: nil, repeats: true)
+            disableButton()
+            Timer.scheduledTimer(timeInterval: 2, target:self, selector: #selector(self.enableButton), userInfo: nil, repeats: false)
             break
         case 1:
             bigButton.setTitle("Saw Flicker", for: .normal)
@@ -185,6 +195,8 @@ class TestVC: UIViewController, RFduinoDelegate {
             sleep(3)
             // Update frequency 5 time a second
             limitsTimerFromMax = Timer.scheduledTimer(timeInterval: 0.2, target:self, selector: #selector(self.updateLimitsFromMax), userInfo: nil, repeats: true)
+            disableButton()
+            Timer.scheduledTimer(timeInterval: 2, target:self, selector: #selector(self.enableButton), userInfo: nil, repeats: false)
             break
         default:
             break
